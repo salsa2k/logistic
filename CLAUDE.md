@@ -20,8 +20,8 @@ When unsure about implementation details, ALWAYS ask the developer.
 
 ### Documentation Guidelines
 
-- **Special documentation**: If any special documentation needs to be written, place it in the `documentation/` folder with a proper child folder structure
-- **Folder organization**: Use descriptive subfolder names based on the documentation type (e.g., `documentation/prompt/`, `documentation/guides/`, `documentation/architecture/`)
+- **Special documentation**: If any special documentation needs to be written, place it in the `Documentation/` folder with a proper child folder structure
+- **Folder organization**: Use descriptive subfolder names based on the documentation type (e.g., `Documentation/ai-prompt/`, `Documentation/guides/`, `Documentation/architecture/`)
 
 ### Decision-Making Boundaries
 

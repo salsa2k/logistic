@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__sequential-thinking__sequentialthinking",
+      "mcp__serena__create_text_file",
+      "mcp__serena__activate_project",
+      "mcp__filesystem__list_directory",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(rm:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "sequential-thinking",
+    "serena",
+    "context7",
+    "filesystem",
+    "memory",
+    "unityMCP"
+  ]
+}
