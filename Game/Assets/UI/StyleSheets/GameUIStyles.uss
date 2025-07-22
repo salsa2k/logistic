@@ -1,8 +1,10 @@
 /* AIDEV-NOTE: Game-specific UI styles for logistics game components */
 
 /* AIDEV-NOTE: Unity USS doesn't support @import. 
-   To use these styles, add both DarkGraphiteTheme.uss and GameUIStyles.uss 
-   to your UI Document in Unity Editor. */
+   To use these styles, add the required stylesheets to your UI Document in Unity Editor:
+   - DarkGraphiteTheme.uss (always required for theme variables)
+   - GameUIStyles.uss (for game-specific components)
+   - BaseWindowStyles.uss (for windows that extend BaseWindow component) */
 
 /* =================================
    MAIN MENU STYLES

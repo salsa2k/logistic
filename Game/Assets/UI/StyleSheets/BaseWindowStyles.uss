@@ -1,0 +1,403 @@
+/* AIDEV-NOTE: Base window styles for all major game interface windows */
+
+/* =================================
+   BASE WINDOW CONTAINER STYLES
+   ================================= */
+
+.base-window {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent backdrop */
+}
+
+.base-window-container {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-medium);
+    border-radius: var(--border-radius-large);
+    min-width: 400px;
+    max-width: 80%;
+    min-height: 300px;
+    max-height: 80%;
+    flex-direction: column;
+    overflow: hidden;
+    /* Shadow effect simulation using border */
+    border-left-color: var(--color-border-alpha);
+    border-top-color: var(--color-border-alpha);
+    border-right-color: var(--color-border);
+    border-bottom-color: var(--color-border);
+}
+
+.base-window-container.modal {
+    /* Additional styling for modal windows */
+    border-color: var(--color-accent);
+    border-width: var(--border-width-medium);
+}
+
+/* =================================
+   TITLE BAR STYLES
+   ================================= */
+
+.window-title-bar {
+    background-color: var(--color-primary-bg);
+    border-bottom-color: var(--color-border);
+    border-bottom-width: var(--border-width-thin);
+    padding: var(--spacing-md) var(--spacing-lg);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+}
+
+.window-title-text {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-large);
+    -unity-font-style: bold;
+    flex-grow: 1;
+    -unity-text-align: middle-left;
+}
+
+.window-close-button {
+    background-color: transparent;
+    border-width: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xl);
+    width: 30px;
+    height: 30px;
+    border-radius: var(--border-radius-small);
+    -unity-text-align: middle-center;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.window-close-button:hover {
+    background-color: var(--color-hover);
+    color: var(--color-text-primary);
+}
+
+.window-close-button:active {
+    background-color: var(--color-active);
+}
+
+/* =================================
+   TOOLBAR STYLES
+   ================================= */
+
+.window-toolbar {
+    background-color: var(--color-accent-bg);
+    border-bottom-color: var(--color-border);
+    border-bottom-width: var(--border-width-thin);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    flex-direction: row;
+    align-items: center;
+    min-height: 40px;
+}
+
+.window-toolbar-button {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    color: var(--color-text-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin-right: var(--spacing-xs);
+    font-size: var(--font-size-small);
+}
+
+.window-toolbar-button:hover {
+    background-color: var(--color-hover);
+}
+
+.window-toolbar-button:active {
+    background-color: var(--color-active);
+}
+
+/* =================================
+   CONTENT AREA STYLES
+   ================================= */
+
+.window-content-scroll {
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-secondary-bg);
+}
+
+.window-content {
+    padding: var(--spacing-lg);
+    background-color: var(--color-secondary-bg);
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+.window-content.padded {
+    padding: var(--spacing-xl);
+}
+
+.window-content.compact {
+    padding: var(--spacing-md);
+}
+
+/* Custom scrollbar styling for content area */
+.window-content-scroll > .unity-scroll-view__content-viewport {
+    background-color: var(--color-secondary-bg);
+}
+
+.window-content-scroll .unity-scroller--vertical {
+    background-color: var(--color-primary-bg);
+    border-left-color: var(--color-border);
+    border-left-width: var(--border-width-thin);
+    width: 16px;
+}
+
+.window-content-scroll .unity-scroller--vertical .unity-base-slider__tracker {
+    background-color: var(--color-primary-bg);
+    border-radius: var(--border-radius-small);
+}
+
+.window-content-scroll .unity-scroller--vertical .unity-base-slider__dragger {
+    background-color: var(--color-accent-bg);
+    border-radius: var(--border-radius-small);
+    border-width: 0;
+    margin: var(--spacing-xs);
+}
+
+.window-content-scroll .unity-scroller--vertical .unity-base-slider__dragger:hover {
+    background-color: var(--color-hover);
+}
+
+/* =================================
+   FOOTER STYLES
+   ================================= */
+
+.window-footer {
+    background-color: var(--color-accent-bg);
+    border-top-color: var(--color-border);
+    border-top-width: var(--border-width-thin);
+    padding: var(--spacing-md) var(--spacing-lg);
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 50px;
+    flex-shrink: 0;
+}
+
+.window-footer.center {
+    justify-content: center;
+}
+
+.window-footer.space-between {
+    justify-content: space-between;
+}
+
+.window-footer.hidden {
+    display: none;
+}
+
+/* Footer buttons */
+.window-footer-button {
+    background-color: var(--color-accent);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    color: var(--color-text-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-left: var(--spacing-sm);
+    font-size: var(--font-size-medium);
+    min-width: 80px;
+}
+
+.window-footer-button:hover {
+    background-color: var(--color-hover);
+}
+
+.window-footer-button:active {
+    background-color: var(--color-active);
+}
+
+.window-footer-button.primary {
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
+}
+
+.window-footer-button.primary:hover {
+    background-color: var(--color-text-primary);
+}
+
+.window-footer-button.secondary {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-primary);
+}
+
+/* =================================
+   MODAL BACKDROP STYLES
+   ================================= */
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1; /* Behind the window but above everything else */
+}
+
+/* =================================
+   WINDOW SIZE VARIANTS
+   ================================= */
+
+.window-small {
+    min-width: 300px;
+    max-width: 400px;
+    min-height: 200px;
+    max-height: 300px;
+}
+
+.window-medium {
+    min-width: 400px;
+    max-width: 600px;
+    min-height: 300px;
+    max-height: 500px;
+}
+
+.window-large {
+    min-width: 600px;
+    max-width: 800px;
+    min-height: 400px;
+    max-height: 600px;
+}
+
+.window-fullscreen {
+    min-width: 90%;
+    max-width: 95%;
+    min-height: 80%;
+    max-height: 90%;
+}
+
+/* =================================
+   WINDOW STATE STYLES
+   ================================= */
+
+.window-hidden {
+    display: none;
+}
+
+.window-visible {
+    display: flex;
+}
+
+.window-minimized {
+    /* AIDEV-TODO: Implement minimized window state when needed */
+    display: none;
+}
+
+/* =================================
+   ANIMATION PLACEHOLDERS
+   ================================= */
+
+/* AIDEV-NOTE: Unity UI Toolkit doesn't currently support CSS transitions or opacity
+   These classes are placeholders for future animation system integration */
+
+.window-fade-in {
+    /* Placeholder for fade-in animation */
+    display: flex;
+}
+
+.window-fade-out {
+    /* Placeholder for fade-out animation */
+    display: none;
+}
+
+.window-scale-in {
+    /* Placeholder for scale-in animation */
+    display: flex;
+}
+
+.window-scale-out {
+    /* Placeholder for scale-out animation */
+    display: none;
+}
+
+/* =================================
+   RESPONSIVE DESIGN
+   ================================= */
+
+/* AIDEV-NOTE: Unity UI Toolkit doesn't support media queries
+   These styles provide responsive behavior through alternative means */
+
+.window-responsive {
+    width: 80%;
+    height: 70%;
+    min-width: 320px;
+    min-height: 240px;
+    max-width: 1200px;
+    max-height: 800px;
+}
+
+.window-mobile-friendly {
+    width: 95%;
+    height: 85%;
+    min-width: 280px;
+    min-height: 200px;
+}
+
+/* =================================
+   ACCESSIBILITY HELPERS
+   ================================= */
+
+.window-high-contrast .window-title-bar {
+    border-bottom-width: var(--border-width-medium);
+}
+
+.window-high-contrast .window-close-button {
+    border-color: var(--color-accent);
+    border-width: var(--border-width-thin);
+}
+
+.window-high-contrast .window-footer {
+    border-top-width: var(--border-width-medium);
+}
+
+/* =================================
+   FOCUS AND INTERACTION STATES
+   ================================= */
+
+.base-window:focus-within .base-window-container {
+    border-color: var(--color-accent);
+}
+
+.base-window-container.focused {
+    border-color: var(--color-accent);
+    border-width: var(--border-width-medium);
+}
+
+/* =================================
+   UTILITY CLASSES
+   ================================= */
+
+.window-no-title .window-title-bar {
+    display: none;
+}
+
+.window-no-footer .window-footer {
+    display: none;
+}
+
+.window-no-close .window-close-button {
+    display: none;
+}
+
+.window-transparent-bg {
+    background-color: rgba(43, 43, 43, 0.9);
+}
+
+.window-solid-bg {
+    background-color: var(--color-secondary-bg);
+}

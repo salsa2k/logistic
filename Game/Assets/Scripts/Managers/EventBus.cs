@@ -93,6 +93,29 @@ namespace LogisticGame.Events
         }
     }
 
+    // AIDEV-NOTE: UI Window related events for BaseWindow integration
+    public struct WindowOpenedEvent : IGameEvent
+    {
+        public string WindowName { get; }
+        public bool IsModal { get; }
+        public WindowOpenedEvent(string windowName, bool isModal)
+        {
+            WindowName = windowName;
+            IsModal = isModal;
+        }
+    }
+
+    public struct WindowClosedEvent : IGameEvent
+    {
+        public string WindowName { get; }
+        public bool IsModal { get; }
+        public WindowClosedEvent(string windowName, bool isModal)
+        {
+            WindowName = windowName;
+            IsModal = isModal;
+        }
+    }
+
     // AIDEV-NOTE: Global event bus for decoupled communication between systems
     public static class EventBus
     {

@@ -21,7 +21,9 @@
       "mcp__unityMCP__read_console",
       "mcp__filesystem__directory_tree",
       "mcp__filesystem__read_file",
-      "mcp__context7__get-library-docs"
+      "mcp__context7__get-library-docs",
+      "mcp__filesystem__write_file",
+      "mcp__filesystem__edit_file"
     ]
   },
   "enableAllProjectMcpServers": true,

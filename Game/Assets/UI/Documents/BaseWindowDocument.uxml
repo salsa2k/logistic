@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <!-- AIDEV-NOTE: Base window UXML template for all major game interfaces -->
+    <!-- Root container for the entire window -->
+    <engine:VisualElement name="base-window-root" class="base-window container-fullscreen">
+        
+        <!-- Window container - the actual window with background and borders -->
+        <engine:VisualElement name="window-container" class="base-window-container">
+            
+            <!-- Title bar section -->
+            <engine:VisualElement name="title-bar" class="window-title-bar">
+                <engine:Label name="window-title" class="window-title-text" text="Window Title" />
+                <engine:Button name="close-button" class="window-close-button" text="×" />
+            </engine:VisualElement>
+            
+            <!-- Optional toolbar section (hidden by default) -->
+            <engine:VisualElement name="toolbar-container" class="window-toolbar" style="display: none;">
+                <!-- Toolbar content will be added dynamically -->
+            </engine:VisualElement>
+            
+            <!-- Main content area with scroll support -->
+            <engine:ScrollView name="content-scroll" class="window-content-scroll" vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden">
+                <engine:VisualElement name="content-container" class="window-content">
+                    <!-- Content will be populated dynamically -->
+                    <engine:Label class="text-secondary" text="Window content will be loaded here..." />
+                </engine:VisualElement>
+            </engine:ScrollView>
+            
+            <!-- Footer section for action buttons -->
+            <engine:VisualElement name="footer-container" class="window-footer">
+                <!-- Footer content will be added dynamically -->
+            </engine:VisualElement>
+            
+        </engine:VisualElement>
+        
+        <!-- Modal backdrop (only visible for modal windows) -->
+        <engine:VisualElement name="modal-backdrop" class="modal-backdrop" style="display: none;" />
+        
+    </engine:VisualElement>
+</engine:UXML>
