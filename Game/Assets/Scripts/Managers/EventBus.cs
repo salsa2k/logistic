@@ -27,6 +27,72 @@ namespace LogisticGame.Events
         }
     }
 
+    // AIDEV-NOTE: Save system related events
+    public struct SaveGameRequestedEvent : IGameEvent 
+    { 
+        public string SlotName { get; }
+        public string Reason { get; }
+        public SaveGameRequestedEvent(string slotName, string reason)
+        {
+            SlotName = slotName;
+            Reason = reason;
+        }
+    }
+
+    public struct GameSavedEvent : IGameEvent 
+    { 
+        public string SlotName { get; }
+        public bool Success { get; }
+        public GameSavedEvent(string slotName, bool success)
+        {
+            SlotName = slotName;
+            Success = success;
+        }
+    }
+
+    public struct GameLoadedEvent : IGameEvent 
+    { 
+        public string SlotName { get; }
+        public bool Success { get; }
+        public GameLoadedEvent(string slotName, bool success)
+        {
+            SlotName = slotName;
+            Success = success;
+        }
+    }
+
+    // AIDEV-NOTE: Contract related events (for future auto-save triggers)
+    public struct ContractCompletedEvent : IGameEvent
+    {
+        public string ContractId { get; }
+        public float Reward { get; }
+        public ContractCompletedEvent(string contractId, float reward)
+        {
+            ContractId = contractId;
+            Reward = reward;
+        }
+    }
+
+    public struct VehiclePurchasedEvent : IGameEvent
+    {
+        public string VehicleId { get; }
+        public float Cost { get; }
+        public VehiclePurchasedEvent(string vehicleId, float cost)
+        {
+            VehicleId = vehicleId;
+            Cost = cost;
+        }
+    }
+
+    public struct CityDiscoveredEvent : IGameEvent
+    {
+        public string CityName { get; }
+        public CityDiscoveredEvent(string cityName)
+        {
+            CityName = cityName;
+        }
+    }
+
     // AIDEV-NOTE: Global event bus for decoupled communication between systems
     public static class EventBus
     {
