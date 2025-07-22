@@ -1,0 +1,298 @@
+/* AIDEV-NOTE: Button size variations - small, medium, large, and responsive sizing */
+
+/* =================================
+   SMALL BUTTONS (28px height)
+   ================================= */
+
+.btn-small {
+    height: var(--button-height-small);
+    min-width: 60px;
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+    padding-top: var(--spacing-xs);
+    padding-bottom: var(--spacing-xs);
+    font-size: var(--font-size-small);
+    border-radius: var(--border-radius-small);
+}
+
+.btn-small.btn-icon-only {
+    width: var(--button-height-small);
+    min-width: var(--button-height-small);
+    padding: var(--spacing-xs);
+}
+
+.btn-small.btn-square {
+    width: var(--button-height-small);
+    height: var(--button-height-small);
+    min-width: var(--button-height-small);
+}
+
+.btn-small.btn-rounded {
+    border-radius: calc(var(--button-height-small) / 2);
+}
+
+.btn-small .btn-icon {
+    width: var(--icon-size-small);
+    height: var(--icon-size-small);
+}
+
+.btn-small .btn-icon-left {
+    margin-right: var(--spacing-xs);
+}
+
+.btn-small .btn-icon-right {
+    margin-left: var(--spacing-xs);
+}
+
+/* =================================
+   MEDIUM BUTTONS (36px height) - DEFAULT
+   ================================= */
+
+.btn-medium {
+    height: var(--button-height-medium);
+    min-width: 80px;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    padding-top: var(--spacing-xs);
+    padding-bottom: var(--spacing-xs);
+    font-size: var(--font-size-medium);
+    border-radius: var(--border-radius-medium);
+}
+
+.btn-medium.btn-icon-only {
+    width: var(--button-height-medium);
+    min-width: var(--button-height-medium);
+    padding: var(--spacing-xs);
+}
+
+.btn-medium.btn-square {
+    width: var(--button-height-medium);
+    height: var(--button-height-medium);
+    min-width: var(--button-height-medium);
+}
+
+.btn-medium.btn-rounded {
+    border-radius: calc(var(--button-height-medium) / 2);
+}
+
+.btn-medium .btn-icon {
+    width: var(--icon-size-medium);
+    height: var(--icon-size-medium);
+}
+
+.btn-medium .btn-icon-left {
+    margin-right: var(--spacing-sm);
+}
+
+.btn-medium .btn-icon-right {
+    margin-left: var(--spacing-sm);
+}
+
+/* =================================
+   LARGE BUTTONS (48px height)
+   ================================= */
+
+.btn-large {
+    height: var(--button-height-large);
+    min-width: 120px;
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    font-size: var(--font-size-large);
+    border-radius: var(--border-radius-medium);
+    -unity-font-style: bold;
+}
+
+.btn-large.btn-icon-only {
+    width: var(--button-height-large);
+    min-width: var(--button-height-large);
+    padding: var(--spacing-sm);
+}
+
+.btn-large.btn-square {
+    width: var(--button-height-large);
+    height: var(--button-height-large);
+    min-width: var(--button-height-large);
+}
+
+.btn-large.btn-rounded {
+    border-radius: calc(var(--button-height-large) / 2);
+}
+
+.btn-large .btn-icon {
+    width: var(--icon-size-large);
+    height: var(--icon-size-large);
+}
+
+.btn-large .btn-icon-left {
+    margin-right: var(--spacing-sm);
+}
+
+.btn-large .btn-icon-right {
+    margin-left: var(--spacing-sm);
+}
+
+/* =================================
+   EXTRA SMALL BUTTONS (20px height)
+   ================================= */
+
+.btn-xs {
+    height: 20px;
+    min-width: 40px;
+    padding-left: var(--spacing-xs);
+    padding-right: var(--spacing-xs);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 10px;
+    border-radius: var(--border-radius-small);
+}
+
+.btn-xs.btn-icon-only {
+    width: 20px;
+    min-width: 20px;
+    padding: 2px;
+}
+
+.btn-xs.btn-square {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+}
+
+.btn-xs.btn-rounded {
+    border-radius: 10px;
+}
+
+.btn-xs .btn-icon {
+    width: 12px;
+    height: 12px;
+}
+
+.btn-xs .btn-icon-left {
+    margin-right: 2px;
+}
+
+.btn-xs .btn-icon-right {
+    margin-left: 2px;
+}
+
+/* =================================
+   EXTRA LARGE BUTTONS (56px height)
+   ================================= */
+
+.btn-xl {
+    height: 56px;
+    min-width: 160px;
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+    border-radius: var(--border-radius-large);
+    -unity-font-style: bold;
+}
+
+.btn-xl.btn-icon-only {
+    width: 56px;
+    min-width: 56px;
+    padding: var(--spacing-md);
+}
+
+.btn-xl.btn-square {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+}
+
+.btn-xl.btn-rounded {
+    border-radius: 28px;
+}
+
+.btn-xl .btn-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.btn-xl .btn-icon-left {
+    margin-right: var(--spacing-md);
+}
+
+.btn-xl .btn-icon-right {
+    margin-left: var(--spacing-md);
+}
+
+/* =================================
+   RESPONSIVE SIZE CLASSES
+   ================================= */
+
+.btn-responsive {
+    min-width: 80px;
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+}
+
+/* NOTE: Unity doesn't support @media queries
+   Use btn-responsive-mobile class conditionally via C# */
+.btn-responsive-mobile {
+    height: var(--button-height-large);
+    min-width: 100px;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    font-size: var(--font-size-large);
+}
+
+.btn-responsive-mobile.btn-icon-only {
+    width: var(--button-height-large);
+    min-width: var(--button-height-large);
+    padding: var(--spacing-sm);
+}
+
+/* =================================
+   COMPACT SIZE VARIATIONS
+   ================================= */
+
+.btn-compact {
+    padding-left: var(--spacing-xs);
+    padding-right: var(--spacing-xs);
+    min-width: 60px;
+}
+
+.btn-compact.btn-icon-only {
+    padding: var(--spacing-xs);
+}
+
+/* =================================
+   WIDE SIZE VARIATIONS
+   ================================= */
+
+.btn-wide {
+    min-width: 150px;
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+}
+
+/* =================================
+   AUTO SIZE
+   ================================= */
+
+.btn-auto {
+    width: auto;
+    min-width: auto;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+/* =================================
+   FULL WIDTH RESPONSIVE
+   ================================= */
+
+.btn-full-width-mobile {
+    width: auto;
+}
+
+/* Apply this class conditionally via C# for mobile */
+.btn-full-width-mobile-active {
+    width: 100%;
+    flex-grow: 1;
+}

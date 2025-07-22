@@ -1,0 +1,393 @@
+/* AIDEV-NOTE: Button interactive states - hover, active, disabled, loading, and selected states */
+
+/* =================================
+   PRIMARY BUTTON STATES
+   ================================= */
+
+.btn-primary:hover {
+    background-color: var(--color-hover);
+    border-color: var(--color-focus);
+    /* NOTE: transform may have limited support in Unity */
+}
+
+.btn-primary:active {
+    background-color: var(--color-active);
+    border-color: var(--color-accent);
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-alpha);
+    cursor: default;
+    transform: none;
+}
+
+.btn-primary:disabled .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-disabled);
+}
+
+/* =================================
+   SECONDARY BUTTON STATES
+   ================================= */
+
+.btn-secondary:hover {
+    background-color: var(--color-accent-bg);
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+    background-color: var(--color-active);
+    border-color: var(--color-accent);
+    transform: translateY(0);
+}
+
+.btn-secondary:disabled {
+    background-color: var(--color-primary-bg);
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-alpha);
+    cursor: default;
+    transform: none;
+}
+
+.btn-secondary:disabled .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-disabled);
+}
+
+/* =================================
+   DESTRUCTIVE BUTTON STATES
+   ================================= */
+
+.btn-destructive:hover {
+    background-color: var(--color-destructive-hover);
+    border-color: var(--color-destructive-hover);
+    transform: translateY(-1px);
+}
+
+.btn-destructive:active {
+    background-color: var(--color-destructive-active);
+    border-color: var(--color-destructive-active);
+    transform: translateY(0);
+}
+
+.btn-destructive:disabled {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-alpha);
+    cursor: default;
+    transform: none;
+}
+
+.btn-destructive:disabled .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-disabled);
+}
+
+/* =================================
+   ICON BUTTON STATES
+   ================================= */
+
+.btn-icon-only:hover {
+    background-color: var(--color-hover);
+    color: var(--color-text-primary);
+}
+
+.btn-icon-only:hover .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+.btn-icon-only:active {
+    background-color: var(--color-active);
+    color: var(--color-text-primary);
+    transform: scale(0.95);
+}
+
+.btn-icon-only:active .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+.btn-icon-only:disabled {
+    background-color: transparent;
+    color: var(--color-text-disabled);
+    cursor: default;
+    transform: none;
+}
+
+.btn-icon-only:disabled .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-disabled);
+}
+
+/* =================================
+   TEXT BUTTON STATES
+   ================================= */
+
+.btn-text:hover {
+    color: var(--color-focus);
+    background-color: var(--color-hover);
+}
+
+.btn-text:hover .btn-icon {
+    -unity-background-image-tint-color: var(--color-focus);
+}
+
+.btn-text:active {
+    color: var(--color-accent);
+    background-color: var(--color-active);
+    transform: scale(0.98);
+}
+
+.btn-text:active .btn-icon {
+    -unity-background-image-tint-color: var(--color-accent);
+}
+
+.btn-text:disabled {
+    color: var(--color-text-disabled);
+    background-color: transparent;
+    cursor: default;
+    transform: none;
+}
+
+.btn-text:disabled .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-disabled);
+}
+
+/* =================================
+   OUTLINED BUTTON STATES
+   ================================= */
+
+.btn-outlined:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
+}
+
+.btn-outlined:hover .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+.btn-outlined:active {
+    background-color: var(--color-active);
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+    transform: translateY(0);
+}
+
+.btn-outlined:active .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+.btn-outlined:disabled {
+    background-color: transparent;
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-alpha);
+    cursor: default;
+    transform: none;
+}
+
+.btn-outlined:disabled .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-disabled);
+}
+
+/* =================================
+   TOGGLE BUTTON STATES
+   ================================= */
+
+.btn-toggle:hover {
+    background-color: var(--color-hover);
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+}
+
+.btn-toggle:hover .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+.btn-toggle:active {
+    background-color: var(--color-active);
+    transform: scale(0.98);
+}
+
+.btn-toggle.btn-toggle-selected:hover {
+    background-color: var(--color-focus);
+    border-color: var(--color-focus);
+}
+
+.btn-toggle.btn-toggle-selected:active {
+    background-color: var(--color-active);
+    transform: scale(0.98);
+}
+
+.btn-toggle:disabled {
+    background-color: var(--color-primary-bg);
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-alpha);
+    cursor: default;
+    transform: none;
+}
+
+.btn-toggle:disabled .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-disabled);
+}
+
+/* =================================
+   GHOST BUTTON STATES
+   ================================= */
+
+.btn-ghost:hover {
+    background-color: var(--color-hover);
+    color: var(--color-text-primary);
+}
+
+.btn-ghost:hover .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+.btn-ghost:active {
+    background-color: var(--color-active);
+    color: var(--color-text-primary);
+    transform: scale(0.95);
+}
+
+.btn-ghost:active .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+.btn-ghost:disabled {
+    background-color: transparent;
+    color: var(--color-text-disabled);
+    cursor: default;
+    transform: none;
+}
+
+.btn-ghost:disabled .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-disabled);
+}
+
+/* =================================
+   TOOLBAR BUTTON STATES
+   ================================= */
+
+.btn-toolbar:hover {
+    background-color: var(--color-hover);
+    color: var(--color-text-primary);
+}
+
+.btn-toolbar:hover .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+.btn-toolbar:active {
+    background-color: var(--color-active);
+    transform: scale(0.95);
+}
+
+.btn-toolbar:disabled {
+    background-color: transparent;
+    color: var(--color-text-disabled);
+    cursor: default;
+    transform: none;
+}
+
+.btn-toolbar:disabled .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-disabled);
+}
+
+/* =================================
+   FLOATING ACTION BUTTON STATES
+   ================================= */
+
+.btn-fab:hover {
+    background-color: var(--color-focus);
+    border-color: var(--color-focus);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-fab:active {
+    background-color: var(--color-active);
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-fab:disabled {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-alpha);
+    cursor: default;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-fab:disabled .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-disabled);
+}
+
+/* =================================
+   LOADING STATE
+   ================================= */
+
+.btn-loading {
+    cursor: default;
+    pointer-events: none;
+}
+
+.btn-loading .btn-text {
+    opacity: 0.6;
+}
+
+/* Loading spinner animation will be handled in button-animations.uss */
+
+/* =================================
+   FOCUS STATE (ACCESSIBILITY)
+   ================================= */
+
+.btn:focus {
+    outline: var(--focus-outline-width) solid var(--color-focus);
+    outline-offset: var(--focus-outline-offset);
+}
+
+/* =================================
+   SUCCESS AND WARNING STATES
+   ================================= */
+
+.btn-success:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+    transform: translateY(-1px);
+}
+
+.btn-success:active {
+    background-color: #3d8b40;
+    border-color: #3d8b40;
+    transform: translateY(0);
+}
+
+.btn-success:disabled {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-alpha);
+    cursor: default;
+    transform: none;
+}
+
+.btn-warning:hover {
+    background-color: #f57c00;
+    border-color: #f57c00;
+    transform: translateY(-1px);
+}
+
+.btn-warning:active {
+    background-color: #ef6c00;
+    border-color: #ef6c00;
+    transform: translateY(0);
+}
+
+.btn-warning:disabled {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-alpha);
+    cursor: default;
+    transform: none;
+}

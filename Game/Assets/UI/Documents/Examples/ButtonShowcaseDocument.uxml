@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+    <!-- AIDEV-NOTE: Button showcase document demonstrating all button styles and variants -->
+    
+    <engine:VisualElement name="showcase-root" class="dark-theme container-fullscreen">
+        
+        <!-- Header -->
+        <engine:VisualElement class="padding-large">
+            <engine:Label class="text-title" text="Button Styles Showcase" />
+            <engine:Label class="text-secondary" text="Comprehensive demonstration of all button variants, sizes, and states" />
+        </engine:VisualElement>
+        
+        <engine:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden">
+            <engine:VisualElement class="padding-large" style="gap: 32px;">
+                
+                <!-- Button Variants Section -->
+                <engine:VisualElement>
+                    <engine:Label class="text-header margin-medium" text="Button Variants" />
+                    
+                    <engine:VisualElement class="btn-group" style="margin-bottom: 16px;">
+                        <engine:Button name="primary-btn" class="btn btn-primary" text="Primary" />
+                        <engine:Button name="secondary-btn" class="btn btn-secondary" text="Secondary" />
+                        <engine:Button name="destructive-btn" class="btn btn-destructive" text="Destructive" />
+                        <engine:Button name="outlined-btn" class="btn btn-outlined" text="Outlined" />
+                    </engine:VisualElement>
+                    
+                    <engine:VisualElement class="btn-group" style="margin-bottom: 16px;">
+                        <engine:Button name="text-btn" class="btn btn-text" text="Text Button" />
+                        <engine:Button name="ghost-btn" class="btn btn-ghost" text="Ghost" />
+                        <engine:Button name="success-btn" class="btn btn-success" text="Success" />
+                        <engine:Button name="warning-btn" class="btn btn-warning" text="Warning" />
+                    </engine:VisualElement>
+                    
+                    <engine:VisualElement class="btn-group">
+                        <engine:Button name="icon-btn" class="btn btn-icon-only" text="⚙" />
+                        <engine:Button name="toggle-btn" class="btn btn-toggle" text="Toggle" />
+                        <engine:Button name="toolbar-btn" class="btn btn-toolbar" text="Tool" />
+                        <engine:Button name="fab-btn" class="btn btn-fab" text="+" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                
+                <!-- Button Sizes Section -->
+                <engine:VisualElement>
+                    <engine:Label class="text-header margin-medium" text="Button Sizes" />
+                    
+                    <engine:VisualElement class="btn-group" style="margin-bottom: 16px; align-items: center;">
+                        <engine:Button name="xs-btn" class="btn btn-primary btn-xs" text="Extra Small" />
+                        <engine:Button name="small-btn" class="btn btn-primary btn-small" text="Small" />
+                        <engine:Button name="medium-btn" class="btn btn-primary btn-medium" text="Medium" />
+                        <engine:Button name="large-btn" class="btn btn-primary btn-large" text="Large" />
+                        <engine:Button name="xl-btn" class="btn btn-primary btn-xl" text="Extra Large" />
+                    </engine:VisualElement>
+                    
+                    <engine:VisualElement class="btn-group" style="margin-bottom: 16px; align-items: center;">
+                        <engine:Button name="xs-icon" class="btn btn-secondary btn-xs btn-icon-only" text="⚙" />
+                        <engine:Button name="small-icon" class="btn btn-secondary btn-small btn-icon-only" text="⚙" />
+                        <engine:Button name="medium-icon" class="btn btn-secondary btn-medium btn-icon-only" text="⚙" />
+                        <engine:Button name="large-icon" class="btn btn-secondary btn-large btn-icon-only" text="⚙" />
+                        <engine:Button name="xl-icon" class="btn btn-secondary btn-xl btn-icon-only" text="⚙" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                
+                <!-- Button States Section -->
+                <engine:VisualElement>
+                    <engine:Label class="text-header margin-medium" text="Button States" />
+                    
+                    <engine:VisualElement class="btn-group" style="margin-bottom: 16px;">
+                        <engine:Button name="normal-state" class="btn btn-primary" text="Normal" />
+                        <engine:Button name="disabled-state" class="btn btn-primary" text="Disabled" enabled="false" />
+                        <engine:Button name="loading-state" class="btn btn-primary btn-loading" text="Loading..." />
+                        <engine:Button name="selected-state" class="btn btn-toggle btn-toggle-selected" text="Selected" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                
+                <!-- Icon Button Combinations -->
+                <engine:VisualElement>
+                    <engine:Label class="text-header margin-medium" text="Icon Combinations" />
+                    
+                    <engine:VisualElement class="btn-group" style="margin-bottom: 16px;">
+                        <engine:Button name="icon-left" class="btn btn-primary" text="📁 Open File" />
+                        <engine:Button name="icon-right" class="btn btn-secondary" text="Save As 💾" />
+                        <engine:Button name="icon-center" class="btn btn-destructive" text="🗑" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                
+                <!-- Special Buttons -->
+                <engine:VisualElement>
+                    <engine:Label class="text-header margin-medium" text="Special Buttons" />
+                    
+                    <engine:VisualElement class="btn-group-vertical" style="margin-bottom: 16px; max-width: 300px;">
+                        <engine:Button name="full-width" class="btn btn-primary btn-full-width" text="Full Width Button" />
+                        <engine:Button name="compact-btn" class="btn btn-secondary btn-compact" text="Compact" />
+                        <engine:Button name="wide-btn" class="btn btn-outlined btn-wide" text="Wide Button" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                
+                <!-- Animation Examples -->
+                <engine:VisualElement>
+                    <engine:Label class="text-header margin-medium" text="Animated Buttons" />
+                    
+                    <engine:VisualElement class="btn-group" style="margin-bottom: 16px;">
+                        <engine:Button name="pulse-btn" class="btn btn-primary btn-pulse" text="Pulse" />
+                        <engine:Button name="glow-btn" class="btn btn-accent btn-glow" text="Glow" />
+                        <engine:Button name="lift-btn" class="btn btn-secondary btn-lift" text="Lift on Hover" />
+                        <engine:Button name="ripple-btn" class="btn btn-outlined btn-ripple" text="Ripple Effect" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                
+                <!-- Button Groups -->
+                <engine:VisualElement>
+                    <engine:Label class="text-header margin-medium" text="Button Groups" />
+                    
+                    <engine:VisualElement style="margin-bottom: 16px;">
+                        <engine:Label class="text-body margin-small" text="Horizontal Group:" />
+                        <engine:VisualElement class="btn-group">
+                            <engine:Button name="group-1" class="btn btn-outlined" text="Option 1" />
+                            <engine:Button name="group-2" class="btn btn-outlined" text="Option 2" />
+                            <engine:Button name="group-3" class="btn btn-outlined" text="Option 3" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                    
+                    <engine:VisualElement style="margin-bottom: 16px;">
+                        <engine:Label class="text-body margin-small" text="Vertical Group:" />
+                        <engine:VisualElement class="btn-group-vertical" style="max-width: 200px;">
+                            <engine:Button name="vertical-1" class="btn btn-secondary" text="First Action" />
+                            <engine:Button name="vertical-2" class="btn btn-secondary" text="Second Action" />
+                            <engine:Button name="vertical-3" class="btn btn-secondary" text="Third Action" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                
+                <!-- Usage Guidelines -->
+                <engine:VisualElement>
+                    <engine:Label class="text-header margin-medium" text="Usage Guidelines" />
+                    
+                    <engine:VisualElement class="panel-secondary padding-medium">
+                        <engine:Label class="text-body" text="• Primary: Use for the main action in each interface (limit one per dialog)" />
+                        <engine:Label class="text-body" text="• Secondary: Supporting actions like Cancel, Back, or alternative options" />
+                        <engine:Label class="text-body" text="• Destructive: Clearly mark dangerous operations like delete or remove" />
+                        <engine:Label class="text-body" text="• Icon: Use in toolbars and compact interfaces for space efficiency" />
+                        <engine:Label class="text-body" text="• Text: Subtle actions and navigation links that don't need emphasis" />
+                        <engine:Label class="text-body" text="• Large: Important calls-to-action and primary interface actions" />
+                        <engine:Label class="text-body" text="• Small: Secondary actions and compact interface elements" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                
+            </engine:VisualElement>
+        </engine:ScrollView>
+        
+    </engine:VisualElement>
+</engine:UXML>

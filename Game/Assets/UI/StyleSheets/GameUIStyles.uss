@@ -2,9 +2,22 @@
 
 /* AIDEV-NOTE: Unity USS doesn't support @import. 
    To use these styles, add the required stylesheets to your UI Document in Unity Editor:
+   
+   REQUIRED FOR ALL UI:
    - DarkGraphiteTheme.uss (always required for theme variables)
    - GameUIStyles.uss (for game-specific components)
-   - BaseWindowStyles.uss (for windows that extend BaseWindow component) */
+   
+   BUTTON SYSTEM (for comprehensive button styling):
+   - ButtonStyles/base-buttons.uss (core button foundation)
+   - ButtonStyles/button-variants.uss (primary, secondary, destructive, etc.)
+   - ButtonStyles/button-states.uss (hover, active, disabled states)
+   - ButtonStyles/button-sizes.uss (small, medium, large variations)
+   - ButtonStyles/button-animations.uss (smooth transitions and effects)
+   
+   COMPONENT-SPECIFIC:
+   - BaseWindowStyles.uss (for windows that extend BaseWindow component)
+   - BaseListStyles.uss (for list components)
+   - Cards/BaseCardStyles.uss (for card components) */
 
 /* =================================
    MAIN MENU STYLES

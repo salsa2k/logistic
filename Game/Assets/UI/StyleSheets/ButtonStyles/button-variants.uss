@@ -1,0 +1,203 @@
+/* AIDEV-NOTE: Button variant styles - primary, secondary, destructive, icon, and text buttons */
+
+/* =================================
+   PRIMARY BUTTON
+   ================================= */
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+    -unity-font-style: bold;
+}
+
+.btn-primary .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+/* =================================
+   SECONDARY BUTTON
+   ================================= */
+
+.btn-secondary {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+}
+
+.btn-secondary .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+/* =================================
+   DESTRUCTIVE BUTTON
+   ================================= */
+
+.btn-destructive {
+    background-color: var(--color-destructive);
+    color: var(--color-text-primary);
+    border-color: var(--color-destructive);
+    -unity-font-style: bold;
+}
+
+.btn-destructive .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+/* =================================
+   ICON BUTTON VARIANT
+   ================================= */
+
+.btn-icon-only {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-text-secondary);
+    min-width: var(--button-height-medium);
+    width: var(--button-height-medium);
+    padding-left: var(--spacing-xs);
+    padding-right: var(--spacing-xs);
+}
+
+.btn-icon-only .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-secondary);
+}
+
+/* =================================
+   TEXT BUTTON VARIANT
+   ================================= */
+
+.btn-text {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-accent);
+    min-width: auto;
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+    -unity-font-style: normal;
+}
+
+.btn-text .btn-icon {
+    -unity-background-image-tint-color: var(--color-accent);
+}
+
+/* =================================
+   OUTLINED BUTTON VARIANT
+   ================================= */
+
+.btn-outlined {
+    background-color: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    border-width: var(--border-width-medium);
+}
+
+.btn-outlined .btn-icon {
+    -unity-background-image-tint-color: var(--color-accent);
+}
+
+/* =================================
+   TOGGLE BUTTON VARIANT
+   ================================= */
+
+.btn-toggle {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-secondary);
+    border-color: var(--color-border);
+}
+
+.btn-toggle.btn-toggle-selected {
+    background-color: var(--color-accent);
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+    -unity-font-style: bold;
+}
+
+.btn-toggle .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-secondary);
+}
+
+.btn-toggle.btn-toggle-selected .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+/* =================================
+   GHOST BUTTON VARIANT
+   ================================= */
+
+.btn-ghost {
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    border-color: transparent;
+}
+
+.btn-ghost .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-secondary);
+}
+
+/* =================================
+   SUCCESS BUTTON VARIANT
+   ================================= */
+
+.btn-success {
+    background-color: #4CAF50;
+    color: var(--color-text-primary);
+    border-color: #4CAF50;
+    -unity-font-style: bold;
+}
+
+.btn-success .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+/* =================================
+   WARNING BUTTON VARIANT
+   ================================= */
+
+.btn-warning {
+    background-color: #FF9800;
+    color: var(--color-text-primary);
+    border-color: #FF9800;
+    -unity-font-style: bold;
+}
+
+.btn-warning .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}
+
+/* =================================
+   TOOLBAR BUTTON VARIANT
+   ================================= */
+
+.btn-toolbar {
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    border-color: transparent;
+    height: var(--button-height-small);
+    min-width: var(--button-height-small);
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius-small);
+}
+
+.btn-toolbar .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-secondary);
+}
+
+/* =================================
+   FLOATING ACTION BUTTON
+   ================================= */
+
+.btn-fab {
+    background-color: var(--color-accent);
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+    border-radius: calc(var(--button-height-large) / 2);
+    width: var(--button-height-large);
+    height: var(--button-height-large);
+    min-width: var(--button-height-large);
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-fab .btn-icon {
+    -unity-background-image-tint-color: var(--color-text-primary);
+}

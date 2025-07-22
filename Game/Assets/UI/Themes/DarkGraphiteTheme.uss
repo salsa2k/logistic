@@ -20,6 +20,12 @@
     --color-hover: #555555;
     --color-active: #333333;
     --color-accent: #7A9CC6;
+    --color-focus: #8AB4D3;
+    
+    /* Destructive colors */
+    --color-destructive: #D32F2F;
+    --color-destructive-hover: #B71C1C;
+    --color-destructive-active: #A91B1B;
     
     /* Transparency variations */
     --color-primary-bg-alpha: rgba(43, 43, 43, 0.9);
@@ -46,6 +52,25 @@
     --font-size-large: 16px;
     --font-size-xl: 20px;
     --font-size-xxl: 24px;
+    
+    /* Button heights */
+    --button-height-small: 28px;
+    --button-height-medium: 36px;
+    --button-height-large: 48px;
+    
+    /* Icon sizes */
+    --icon-size-small: 16px;
+    --icon-size-medium: 20px;
+    --icon-size-large: 24px;
+    
+    /* Animation timings */
+    --transition-fast: 0.1s;
+    --transition-normal: 0.2s;
+    --transition-slow: 0.3s;
+    
+    /* Focus outline */
+    --focus-outline-width: 2px;
+    --focus-outline-offset: 2px;
 }
 
 /* =================================
