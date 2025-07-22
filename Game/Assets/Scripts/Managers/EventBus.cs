@@ -154,6 +154,70 @@ namespace LogisticGame.Events
 
     public struct AllModalsClosedEvent : IGameEvent { }
 
+    // AIDEV-NOTE: Notification system events
+    public enum NotificationType
+    {
+        Success,
+        Warning,
+        Error,
+        Info,
+        Progress
+    }
+
+    public struct NotificationRequestedEvent : IGameEvent
+    {
+        public NotificationType Type { get; }
+        public string Message { get; }
+        public float Duration { get; }
+        public string[] ActionLabels { get; }
+        public System.Action[] ActionCallbacks { get; }
+        public bool IsPriority { get; }
+        
+        public NotificationRequestedEvent(NotificationType type, string message, float duration = 4f, 
+            string[] actionLabels = null, System.Action[] actionCallbacks = null, bool isPriority = false)
+        {
+            Type = type;
+            Message = message;
+            Duration = duration;
+            ActionLabels = actionLabels;
+            ActionCallbacks = actionCallbacks;
+            IsPriority = isPriority;
+        }
+    }
+
+    public struct NotificationShownEvent : IGameEvent
+    {
+        public string NotificationId { get; }
+        public NotificationType Type { get; }
+        public NotificationShownEvent(string notificationId, NotificationType type)
+        {
+            NotificationId = notificationId;
+            Type = type;
+        }
+    }
+
+    public struct NotificationDismissedEvent : IGameEvent
+    {
+        public string NotificationId { get; }
+        public bool WasManual { get; }
+        public NotificationDismissedEvent(string notificationId, bool wasManual)
+        {
+            NotificationId = notificationId;
+            WasManual = wasManual;
+        }
+    }
+
+    public struct NotificationActionTriggeredEvent : IGameEvent
+    {
+        public string NotificationId { get; }
+        public int ActionIndex { get; }
+        public NotificationActionTriggeredEvent(string notificationId, int actionIndex)
+        {
+            NotificationId = notificationId;
+            ActionIndex = actionIndex;
+        }
+    }
+
     // AIDEV-NOTE: Card-related events for BaseCard system
     public struct CardDataBoundEvent : IGameEvent
     {
