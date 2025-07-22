@@ -227,7 +227,7 @@ namespace LogisticGame.SaveSystem
                     result.Errors.Add($"{prefix}: Fuel cannot be negative: {vehicle.CurrentFuel}");
                 }
                 
-                if (vehicle.CurrentFuel > vehicle.VehicleData.FuelCapacity * 1.1f) // Allow small tolerance
+                if (vehicle.VehicleData.FuelCapacity > 0 && vehicle.CurrentFuel > vehicle.VehicleData.FuelCapacity * 1.1f) // Allow small tolerance
                 {
                     result.Errors.Add($"{prefix}: Fuel exceeds capacity: {vehicle.CurrentFuel}/{vehicle.VehicleData.FuelCapacity}");
                 }
@@ -238,7 +238,7 @@ namespace LogisticGame.SaveSystem
                     result.Errors.Add($"{prefix}: Weight cannot be negative: {vehicle.CurrentWeight}");
                 }
                 
-                if (vehicle.CurrentWeight > vehicle.VehicleData.WeightCapacity * 1.05f) // Allow small tolerance
+                if (vehicle.VehicleData.WeightCapacity > 0 && vehicle.CurrentWeight > vehicle.VehicleData.WeightCapacity * 1.05f) // Allow small tolerance
                 {
                     result.Warnings.Add($"{prefix}: Weight exceeds capacity: {vehicle.CurrentWeight}/{vehicle.VehicleData.WeightCapacity}");
                 }
@@ -318,26 +318,26 @@ namespace LogisticGame.SaveSystem
                     result.Warnings.Add($"{prefix}: Acceptance time is in the future");
                 }
                 
-                if (contract.Deadline < contract.AcceptanceTime)
+                if (contract.ExpirationTime < contract.AcceptanceTime)
                 {
                     result.Errors.Add($"{prefix}: Deadline cannot be before acceptance time");
                 }
                 
                 // Progress validation
-                if (contract.ProgressPercentage < 0 || contract.ProgressPercentage > 100)
+                if (contract.DeliveryProgress < 0 || contract.DeliveryProgress > 1)
                 {
-                    result.Errors.Add($"{prefix}: Progress percentage must be 0-100: {contract.ProgressPercentage}");
+                    result.Errors.Add($"{prefix}: Delivery progress must be 0-1: {contract.DeliveryProgress}");
                 }
                 
                 // Financial validation
-                if (contract.AgreedReward < 0)
+                if (contract.OriginalReward < 0)
                 {
-                    result.Errors.Add($"{prefix}: Agreed reward cannot be negative: {contract.AgreedReward}");
+                    result.Errors.Add($"{prefix}: Original reward cannot be negative: {contract.OriginalReward}");
                 }
                 
-                if (contract.ActualReward < 0)
+                if (contract.CurrentReward < 0)
                 {
-                    result.Errors.Add($"{prefix}: Actual reward cannot be negative: {contract.ActualReward}");
+                    result.Errors.Add($"{prefix}: Current reward cannot be negative: {contract.CurrentReward}");
                 }
                 
                 if (contract.PenaltyAmount < 0)
@@ -369,21 +369,21 @@ namespace LogisticGame.SaveSystem
                     break;
                     
                 case ContractStatus.Completed:
-                    if (contract.ProgressPercentage < 100f)
+                    if (contract.DeliveryProgress < 1f)
                     {
-                        result.Warnings.Add($"{prefix}: Completed contract should have 100% progress");
+                        result.Warnings.Add($"{prefix}: Completed contract should have full progress");
                     }
-                    if (contract.ActualReward == 0f && contract.AgreedReward > 0f)
+                    if (contract.CurrentReward == 0f && contract.OriginalReward > 0f)
                     {
-                        result.Warnings.Add($"{prefix}: Completed contract should have actual reward");
+                        result.Warnings.Add($"{prefix}: Completed contract should have current reward");
                     }
                     break;
                     
                 case ContractStatus.Cancelled:
                 case ContractStatus.Expired:
-                    if (contract.ActualReward > 0f)
+                    if (contract.CurrentReward > 0f)
                     {
-                        result.Warnings.Add($"{prefix}: Cancelled/expired contract should not have actual reward");
+                        result.Warnings.Add($"{prefix}: Cancelled/expired contract should not have current reward");
                     }
                     break;
             }
@@ -423,21 +423,16 @@ namespace LogisticGame.SaveSystem
                 }
                 
                 // Economic validation
-                if (city.CurrentFuelPrice <= 0)
+                if (city.FuelPrice <= 0)
                 {
-                    result.Errors.Add($"{prefix}: Fuel price must be positive: {city.CurrentFuelPrice}");
+                    result.Errors.Add($"{prefix}: Fuel price must be positive: {city.FuelPrice}");
                 }
                 
-                if (city.EconomicMultiplier <= 0)
-                {
-                    result.Errors.Add($"{prefix}: Economic multiplier must be positive: {city.EconomicMultiplier}");
-                }
+                // Economic multiplier not available in current data structure
+                // TODO: Add economic multiplier validation when property is added
                 
-                // Population validation
-                if (city.CurrentPopulation < 0)
-                {
-                    result.Errors.Add($"{prefix}: Population cannot be negative: {city.CurrentPopulation}");
-                }
+                // Population validation not available in current data structure  
+                // TODO: Add population validation when property is added
                 
                 // Reputation validation
                 if (city.PlayerReputation < 0)
@@ -445,16 +440,13 @@ namespace LogisticGame.SaveSystem
                     result.Errors.Add($"{prefix}: Player reputation cannot be negative: {city.PlayerReputation}");
                 }
                 
-                // Traffic validation
-                if (city.TrafficLevel < 0)
-                {
-                    result.Errors.Add($"{prefix}: Traffic level cannot be negative: {city.TrafficLevel}");
-                }
+                // Traffic level not available in current data structure
+                // TODO: Add traffic level validation when property is added
                 
                 // Date validation
-                if (city.IsDiscovered && city.DiscoveryDate > DateTime.Now.AddDays(1))
+                if (city.IsDiscovered && city.FirstVisitTime > DateTime.Now.AddDays(1))
                 {
-                    result.Warnings.Add($"{prefix}: Discovery date is in the future");
+                    result.Warnings.Add($"{prefix}: First visit time is in the future");
                 }
             }
         }
@@ -670,8 +662,8 @@ namespace LogisticGame.SaveSystem
                         continue;
                     }
                     
-                    if (contract.ProgressPercentage < 0 || contract.ProgressPercentage > 100)
-                        contract.ProgressPercentage = Mathf.Clamp(contract.ProgressPercentage, 0f, 100f);
+                    if (contract.DeliveryProgress < 0 || contract.DeliveryProgress > 1)
+                        contract.DeliveryProgress = Mathf.Clamp01(contract.DeliveryProgress);
                 }
                 
                 // Recalculate checksum after sanitization

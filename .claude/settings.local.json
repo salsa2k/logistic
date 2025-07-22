@@ -16,7 +16,9 @@
       "Bash(dotnet restore:*)",
       "mcp__serena__initial_instructions",
       "mcp__serena__list_memories",
-      "mcp__serena__list_dir"
+      "mcp__serena__list_dir",
+      "mcp__filesystem__search_files",
+      "mcp__unityMCP__read_console"
     ]
   },
   "enableAllProjectMcpServers": true,
