@@ -325,7 +325,7 @@ namespace LogisticGame.SaveSystem
             // Unity-specific cleanup
             if (Application.isPlaying)
             {
-                Resources.UnloadUnusedAssets();
+                await Resources.UnloadUnusedAssets();
             }
         }
 
@@ -345,7 +345,7 @@ namespace LogisticGame.SaveSystem
             // Unity cleanup
             if (Application.isPlaying)
             {
-                Resources.UnloadUnusedAssets();
+                await Resources.UnloadUnusedAssets();
                 await Task.Delay(200);
             }
 

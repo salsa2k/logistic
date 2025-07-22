@@ -401,3 +401,448 @@
 .window-solid-bg {
     background-color: var(--color-secondary-bg);
 }
+
+/* =================================
+   MODAL-SPECIFIC STYLES
+   ================================= */
+
+/* Modal root container */
+.modal-root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* High z-index for modal layering */
+}
+
+/* Enhanced modal backdrop */
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker backdrop for modals */
+    align-items: center;
+    justify-content: center;
+    /* Backdrop blur effect simulation */
+    backdrop-filter: blur(2px);
+}
+
+.modal-backdrop:hover {
+    cursor: pointer; /* Indicate backdrop is clickable */
+}
+
+/* Modal window container */
+.modal-window {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-accent);
+    border-width: var(--border-width-medium);
+    border-radius: var(--border-radius-large);
+    flex-direction: column;
+    overflow: hidden;
+    /* Enhanced shadow effect for modals */
+    border-left-color: var(--color-accent-alpha);
+    border-top-color: var(--color-accent-alpha);
+    border-right-color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+    /* Prevent backdrop clicks from reaching the window */
+    pointer-events: auto;
+}
+
+.modal-window:hover {
+    cursor: default; /* Reset cursor for window content */
+}
+
+/* =================================
+   MODAL SIZE VARIANTS
+   ================================= */
+
+/* Small modals - confirmations, alerts */
+.modal-small {
+    min-width: 320px;
+    max-width: 400px;
+    min-height: 180px;
+    max-height: 250px;
+}
+
+/* Medium modals - standard forms */
+.modal-medium {
+    min-width: 480px;
+    max-width: 600px;
+    min-height: 300px;
+    max-height: 500px;
+}
+
+/* Large modals - complex forms, detailed views */
+.modal-large {
+    min-width: 700px;
+    max-width: 900px;
+    min-height: 400px;
+    max-height: 700px;
+}
+
+/* Fullscreen modals - overlays */
+.modal-fullscreen {
+    min-width: 90%;
+    max-width: 95%;
+    min-height: 80%;
+    max-height: 90%;
+}
+
+/* =================================
+   MODAL HEADER STYLES
+   ================================= */
+
+.modal-header {
+    background-color: var(--color-accent-bg);
+    border-bottom-color: var(--color-accent);
+    border-bottom-width: var(--border-width-medium);
+    padding: var(--spacing-md) var(--spacing-lg);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+    flex-shrink: 0;
+}
+
+.modal-title {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-large);
+    -unity-font-style: bold;
+    flex-grow: 1;
+    -unity-text-align: middle-left;
+}
+
+.modal-close-button {
+    background-color: transparent;
+    border-width: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xl);
+    width: 32px;
+    height: 32px;
+    border-radius: var(--border-radius-medium);
+    -unity-text-align: middle-center;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.modal-close-button:hover {
+    background-color: var(--color-hover);
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+    border-width: var(--border-width-thin);
+}
+
+.modal-close-button:active {
+    background-color: var(--color-active);
+}
+
+/* =================================
+   MODAL CONTENT STYLES
+   ================================= */
+
+.modal-content-scroll {
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-secondary-bg);
+}
+
+.modal-content {
+    padding: var(--spacing-lg);
+    background-color: var(--color-secondary-bg);
+    flex-grow: 1;
+    min-height: 100px;
+}
+
+.modal-content.compact {
+    padding: var(--spacing-md);
+}
+
+.modal-content.spacious {
+    padding: var(--spacing-xl);
+}
+
+.modal-placeholder {
+    color: var(--color-text-secondary);
+    -unity-text-align: middle-center;
+    -unity-font-style: italic;
+    padding: var(--spacing-lg);
+}
+
+.modal-message {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+    -unity-text-align: middle-left;
+    white-space: normal;
+    padding-bottom: var(--spacing-md);
+}
+
+/* =================================
+   MODAL FOOTER STYLES
+   ================================= */
+
+.modal-footer {
+    background-color: var(--color-primary-bg);
+    border-top-color: var(--color-accent);
+    border-top-width: var(--border-width-medium);
+    padding: var(--spacing-md) var(--spacing-lg);
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 60px;
+    flex-shrink: 0;
+    gap: var(--spacing-sm);
+}
+
+.modal-footer.center {
+    justify-content: center;
+}
+
+.modal-footer.space-between {
+    justify-content: space-between;
+}
+
+.modal-footer.hidden {
+    display: none;
+}
+
+/* =================================
+   MODAL BUTTON STYLES
+   ================================= */
+
+.modal-button {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    color: var(--color-text-primary);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-medium);
+    min-width: 90px;
+    height: 36px;
+}
+
+.modal-button:hover {
+    background-color: var(--color-hover);
+    border-color: var(--color-accent);
+}
+
+.modal-button:active {
+    background-color: var(--color-active);
+}
+
+.modal-button-primary {
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
+    border-color: var(--color-accent);
+}
+
+.modal-button-primary:hover {
+    background-color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+}
+
+.modal-button-confirm {
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
+    border-color: var(--color-accent);
+}
+
+.modal-button-confirm:hover {
+    background-color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+}
+
+.modal-button-cancel {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-secondary);
+    border-color: var(--color-border);
+}
+
+.modal-button-cancel:hover {
+    background-color: var(--color-hover);
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+}
+
+.modal-button-danger {
+    background-color: #d32f2f; /* Red for destructive actions */
+    color: var(--color-primary-bg);
+    border-color: #d32f2f;
+}
+
+.modal-button-danger:hover {
+    background-color: #b71c1c;
+    border-color: #b71c1c;
+}
+
+/* =================================
+   MODAL ANIMATION PLACEHOLDERS
+   ================================= */
+
+/* AIDEV-NOTE: These classes prepare for future animation system integration */
+.modal-fade-in {
+    /* Placeholder for modal fade-in animation */
+    display: flex;
+}
+
+.modal-fade-out {
+    /* Placeholder for modal fade-out animation */
+    display: none;
+}
+
+.modal-scale-in {
+    /* Placeholder for modal scale-in animation */
+    display: flex;
+}
+
+.modal-scale-out {
+    /* Placeholder for modal scale-out animation */
+    display: none;
+}
+
+.modal-slide-down-in {
+    /* Placeholder for slide-down animation */
+    display: flex;
+}
+
+.modal-slide-up-out {
+    /* Placeholder for slide-up animation */
+    display: none;
+}
+
+/* =================================
+   MODAL FOCUS AND ACCESSIBILITY
+   ================================= */
+
+.modal-window:focus {
+    border-color: var(--color-accent);
+    border-width: var(--border-width-thick);
+}
+
+.modal-window:focus-within {
+    border-color: var(--color-accent);
+}
+
+/* High contrast mode for accessibility */
+.modal-high-contrast .modal-header {
+    border-bottom-width: var(--border-width-thick);
+}
+
+.modal-high-contrast .modal-close-button {
+    border-color: var(--color-accent);
+    border-width: var(--border-width-medium);
+}
+
+.modal-high-contrast .modal-footer {
+    border-top-width: var(--border-width-thick);
+}
+
+.modal-high-contrast .modal-button {
+    border-width: var(--border-width-medium);
+}
+
+/* =================================
+   MODAL RESPONSIVE DESIGN
+   ================================= */
+
+/* Mobile-friendly modal adjustments */
+.modal-mobile .modal-small {
+    min-width: 280px;
+    max-width: 95%;
+}
+
+.modal-mobile .modal-medium {
+    min-width: 300px;
+    max-width: 95%;
+    min-height: 250px;
+    max-height: 80%;
+}
+
+.modal-mobile .modal-large {
+    min-width: 320px;
+    max-width: 98%;
+    min-height: 300px;
+    max-height: 90%;
+}
+
+.modal-mobile .modal-content {
+    padding: var(--spacing-md);
+}
+
+.modal-mobile .modal-footer {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.modal-mobile .modal-button {
+    width: 100%;
+    margin: 0;
+}
+
+/* =================================
+   MODAL STACK LAYERING
+   ================================= */
+
+/* AIDEV-NOTE: Z-index management for stacked modals */
+.modal-stack-1 {
+    z-index: 1000;
+}
+
+.modal-stack-2 {
+    z-index: 1100;
+}
+
+.modal-stack-3 {
+    z-index: 1200;
+}
+
+.modal-stack-4 {
+    z-index: 1300;
+}
+
+.modal-stack-5 {
+    z-index: 1400;
+}
+
+/* =================================
+   MODAL UTILITY CLASSES
+   ================================= */
+
+.modal-no-header .modal-header {
+    display: none;
+}
+
+.modal-no-footer .modal-footer {
+    display: none;
+}
+
+.modal-no-close .modal-close-button {
+    display: none;
+}
+
+.modal-no-backdrop-close .modal-backdrop {
+    pointer-events: none;
+}
+
+.modal-no-backdrop-close .modal-window {
+    pointer-events: auto;
+}
+
+.modal-transparent-backdrop .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-dark-backdrop .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-blurred-backdrop .modal-backdrop {
+    backdrop-filter: blur(4px);
+}

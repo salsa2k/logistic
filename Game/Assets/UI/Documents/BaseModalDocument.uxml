@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <!-- AIDEV-NOTE: Specialized UXML template for modal dialogs with optimized structure -->
+    <!-- Root modal container -->
+    <engine:VisualElement name="base-window-root" class="modal-root container-fullscreen">
+        
+        <!-- Modal backdrop for click-to-close and visual overlay -->
+        <engine:VisualElement name="modal-backdrop" class="modal-backdrop">
+            
+            <!-- Modal window container - the actual modal dialog -->
+            <engine:VisualElement name="window-container" class="modal-window">
+                
+                <!-- Modal header with title and close button -->
+                <engine:VisualElement name="title-bar" class="modal-header">
+                    <engine:Label name="window-title" class="modal-title" text="Modal Title" />
+                    <engine:Button name="close-button" class="modal-close-button" text="×" />
+                </engine:VisualElement>
+                
+                <!-- Modal content area with automatic scrolling -->
+                <engine:ScrollView name="content-scroll" class="modal-content-scroll" 
+                                   vertical-scroller-visibility="Auto" 
+                                   horizontal-scroller-visibility="Hidden">
+                    <engine:VisualElement name="content-container" class="modal-content">
+                        <!-- Default content placeholder -->
+                        <engine:Label class="modal-placeholder" text="Modal content will be loaded here..." />
+                    </engine:VisualElement>
+                </engine:ScrollView>
+                
+                <!-- Modal footer for action buttons -->
+                <engine:VisualElement name="footer-container" class="modal-footer">
+                    <!-- Footer buttons will be added dynamically -->
+                </engine:VisualElement>
+                
+            </engine:VisualElement>
+            
+        </engine:VisualElement>
+        
+    </engine:VisualElement>
+</engine:UXML>

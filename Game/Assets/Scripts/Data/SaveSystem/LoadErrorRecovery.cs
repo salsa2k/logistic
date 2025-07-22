@@ -283,7 +283,7 @@ namespace LogisticGame.SaveSystem
                     
                     if (Application.isPlaying)
                     {
-                        Resources.UnloadUnusedAssets();
+                        await Resources.UnloadUnusedAssets();
                     }
 
                     // Attempt standard load

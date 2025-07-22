@@ -249,7 +249,7 @@ namespace LogisticGame.UI.SaveLoad
             SetStatus("Save slots loaded");
         }
         
-        private async Task<SaveSlotData> CreateSaveSlotData(string slotName, string displayName, SaveSlotInfo slotInfo = null)
+        private SaveSlotData CreateSaveSlotData(string slotName, string displayName, SaveSlotInfo slotInfo = null)
         {
             if (slotInfo == null && SaveManager.Instance.HasSaveData(slotName))
             {

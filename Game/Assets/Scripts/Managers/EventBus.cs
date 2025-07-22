@@ -116,6 +116,44 @@ namespace LogisticGame.Events
         }
     }
 
+    // AIDEV-NOTE: Modal-specific events for BaseModal and ModalManager
+    public struct ModalOpenedEvent : IGameEvent
+    {
+        public string ModalName { get; }
+        public ModalSize ModalSize { get; }
+        public ModalOpenedEvent(string modalName, ModalSize modalSize)
+        {
+            ModalName = modalName;
+            ModalSize = modalSize;
+        }
+    }
+
+    public struct ModalClosedEvent : IGameEvent
+    {
+        public string ModalName { get; }
+        public ModalSize ModalSize { get; }
+        public ModalClosedEvent(string modalName, ModalSize modalSize)
+        {
+            ModalName = modalName;
+            ModalSize = modalSize;
+        }
+    }
+
+    public struct ModalStackChangedEvent : IGameEvent
+    {
+        public int StackDepth { get; }
+        public string ModalName { get; }
+        public bool WasPushed { get; }
+        public ModalStackChangedEvent(int stackDepth, string modalName, bool wasPushed)
+        {
+            StackDepth = stackDepth;
+            ModalName = modalName;
+            WasPushed = wasPushed;
+        }
+    }
+
+    public struct AllModalsClosedEvent : IGameEvent { }
+
     // AIDEV-NOTE: Global event bus for decoupled communication between systems
     public static class EventBus
     {

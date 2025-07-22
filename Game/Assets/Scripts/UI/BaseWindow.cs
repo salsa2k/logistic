@@ -10,10 +10,10 @@ using LogisticGame.Events;
 public class BaseWindow : MonoBehaviour
 {
     [Header("Window Configuration")]
-    [SerializeField] private string _windowTitle = "Window";
-    [SerializeField] private bool _isModal = false;
-    [SerializeField] private bool _showCloseButton = true;
-    [SerializeField] private bool _centerOnShow = true;
+    [SerializeField] protected string _windowTitle = "Window";
+    [SerializeField] protected bool _isModal = false;
+    [SerializeField] protected bool _showCloseButton = true;
+    [SerializeField] protected bool _centerOnShow = true;
     
     [Header("UI References")]
     [SerializeField] private UIDocument _uiDocument;
@@ -25,12 +25,12 @@ public class BaseWindow : MonoBehaviour
     [SerializeField] private AnimationCurve _hideCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
     
     // UI Elements
-    private VisualElement _rootContainer;
-    private VisualElement _windowContainer;
-    private Label _titleLabel;
-    private Button _closeButton;
-    private VisualElement _contentContainer;
-    private VisualElement _footerContainer;
+    protected VisualElement _rootContainer;
+    protected VisualElement _windowContainer;
+    protected Label _titleLabel;
+    protected Button _closeButton;
+    protected VisualElement _contentContainer;
+    protected VisualElement _footerContainer;
     
     // State
     private bool _isVisible = false;
@@ -57,7 +57,7 @@ public class BaseWindow : MonoBehaviour
     public VisualElement ContentContainer => _contentContainer;
     public VisualElement FooterContainer => _footerContainer;
     
-    private void Awake()
+    protected virtual void Awake()
     {
         // AIDEV-NOTE: Initialize UI document if not set in inspector
         if (_uiDocument == null)
@@ -79,14 +79,14 @@ public class BaseWindow : MonoBehaviour
         }
     }
     
-    private void Start()
+    protected virtual void Start()
     {
         // AIDEV-NOTE: Hide window by default
         SetWindowVisibility(false, false);
         ApplyWindowStyles();
     }
     
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         // AIDEV-NOTE: Clean up event listeners and unregister from ThemeManager
         RemoveEventListeners();

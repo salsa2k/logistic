@@ -164,7 +164,7 @@ public class SettingsData : ScriptableObject
     public void SetResolution(Resolution resolution)
     {
         _resolution = resolution;
-        Screen.SetResolution(resolution.width, resolution.height, _screenMode, resolution.refreshRate);
+        Screen.SetResolution(resolution.width, resolution.height, _screenMode, resolution.refreshRateRatio);
     }
     
     public void SetUiScale(float scale)
@@ -331,7 +331,7 @@ public class SettingsData : ScriptableObject
         // Apply resolution if valid
         if (_resolution.width > 0 && _resolution.height > 0)
         {
-            Screen.SetResolution(_resolution.width, _resolution.height, _screenMode, _resolution.refreshRate);
+            Screen.SetResolution(_resolution.width, _resolution.height, _screenMode, _resolution.refreshRateRatio);
         }
         
         // Debug mode
