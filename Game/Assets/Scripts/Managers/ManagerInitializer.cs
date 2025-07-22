@@ -32,6 +32,10 @@ namespace LogisticGame.Managers
             var assetManager = AssetManager.Instance;
             LogInitialization("AssetManager", assetManager != null);
 
+            // LocalizationManager for language support - early init for UI systems
+            var localizationManager = LocalizationManager.Instance;
+            LogInitialization("LocalizationManager", localizationManager != null);
+
             // SceneTransitionManager for scene management
             var sceneManager = SceneTransitionManager.Instance;
             LogInitialization("SceneTransitionManager", sceneManager != null);
@@ -70,6 +74,12 @@ namespace LogisticGame.Managers
             if (AssetManager.Instance == null)
             {
                 Debug.LogError("AssetManager not initialized!");
+                allManagersReady = false;
+            }
+
+            if (LocalizationManager.Instance == null)
+            {
+                Debug.LogError("LocalizationManager not initialized!");
                 allManagersReady = false;
             }
 

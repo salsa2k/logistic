@@ -30,7 +30,7 @@
         "npx",
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "C:/Users/rafae/OneDrive/Documents/operation",
+        "C:/Users/rafae/OneDrive/Documents/logistic",
         "C:/Users/rafae/OneDrive/Pictures/Screenshots"
       ]
     },

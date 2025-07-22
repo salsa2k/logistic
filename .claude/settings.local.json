@@ -9,7 +9,11 @@
       "Bash(find:*)",
       "Bash(rm:*)",
       "mcp__filesystem__create_directory",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "mcp__context7__resolve-library-id",
+      "WebFetch(domain:docs.unity3d.com)",
+      "Bash(dotnet build:*)",
+      "Bash(dotnet restore:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

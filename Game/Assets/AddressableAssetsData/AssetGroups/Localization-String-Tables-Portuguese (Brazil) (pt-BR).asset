@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Portuguese (Brazil) (pt-BR)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-Portuguese (Brazil) (pt-BR)
+  m_GUID: f937d9d6b7cce5c479eaf62acdffe13b
+  m_SerializeEntries:
+  - m_GUID: 26af613bd5bb7294b9aaa560b9c6bb2a
+    m_Address: Vehicles_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4358e9355a3fe4c44a518502d4b0d3a7
+    m_Address: Common_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4923d43870d4a5948b4fa6af1423fc7f
+    m_Address: Game_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 870a9d39f06d5594f8320e24c205c78e
+    m_Address: Settings_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ab7f818247bc234ea7fbb577de864ef
+    m_Address: Contracts_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a99dc7b9c2c21934c8e0e88a69ceae75
+    m_Address: MainMenu_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: a18c22255c071804a93c2230e6c5625a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a4697ae532445b4419fe756a8f0f5787, type: 2}
+    - {fileID: 11400000, guid: 2484da93f8bfebe429f8cd1d6a558b95, type: 2}

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Common Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Common
+  m_TableCollectionNameGuidString: d39c1eca85abe07468a2cd13ac632f73
+  m_Entries:
+  - m_Id: 947551817728
+    m_Key: OK_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1015780560896
+    m_Key: Cancel_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1050752667648
+    m_Key: Yes_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1112622845952
+    m_Key: No_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1159871680512
+    m_Key: Close_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1199549796352
+    m_Key: Back_Button
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5415604308274577657
+  references:
+    version: 2
+    RefIds:
+    - rid: 5415604308274577657
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1753149110615
