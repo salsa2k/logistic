@@ -20,16 +20,6 @@ The main menu screen, which will have buttons for "New Game", "Load Game", "Sett
 - The main menu will have a background image that represents the game theme.
 - The buttons will be arranged in a vertical list, with the "New Game" button at the top and the "Exit" button at the bottom.
 
-## Visual Layout of the main game scene
-
-### Description
-The main game scene will have a top menu bar with buttons for "Contracts", "Vehicles", "Shopping", and "Company". It will also display the player's credits and a settings button.
-
-- The left top widget will show the path of the selected vehicle, using phaser.
-- The right bottom widget will display a side scroller view of the game world with the vehicle's position using phaser.
-- The top-down map will provide a bird's eye view of the game world using phaser.
-- All 3 phasers will be 3 different instances of the phaser game engine, each with its own canvas (like views).
-
 ## Save/Load Game
 
 ### Description
@@ -91,6 +81,16 @@ It should display how much credits the player has, which can be used to purchase
 - The credits will be updated in real-time as the player earns or spends money.
 - The credits color will be yellow to indicate the player's current balance.
 
+## Main game scene
+
+### Description
+The main game scene will have a top menu bar with buttons for "Contracts", "Vehicles", "Shopping", "Company". It will also display the player's credits and a settings button.
+
+- Top Menu Bar with the buttons: "Contracts", "Vehicles", "Shopping", and "Company" aligned to the left.
+- Top Menu Bar with the button: "Settings" aligned to the right.
+- Top Menu Bar with a label displaying the player's credits aligned to the right on yellow color.
+- The top-down map will provide a eye view of the game world.
+
 ## Top Menu Bar
 
 ### Description
@@ -103,61 +103,25 @@ The top menu bar will contain two buttons: "Contracts" and "Vehicles". These but
 - The "Vehicles" button will display the vehicles view, where the user can see the available vehicles and select one to view its details.
 - The "Shopping" button will allow the user to purchase vehicles.
 
-## Left Top Widget
+## Game map
 
 ### Description
-User starts from a city (A), to the city (B), and on the road between them, there could have a gas station (G) and a police checkpoint (P), or even another city (C).
+The game map will provide a view of the game world, showing the positions of the vehicles and cities.
 
 ### Layout
-- The top widget will display a side view (straight line) of the path of a selected vehicle. Where (S) is 0% and (E) is 100% of the path.
-- When the vehicle is moving a dot representing the vehicle will move along the path horizontally.
-- The path will be represented as a straight line with the following elements:
-  - S: Start of the path
-  - C: City
-  - G: Gas Station
-  - P: Police Checkpoint
-  - E: End of the path
-
-## Right Bottom Widget
-
-### Description
-The right bottom widget will display a side scroller view of the game world, showing the vehicle's centered on the screen, with the road, gas station, police checks, and cities image scrolling horizontally as the vehicle moves.
-
-### Layout
-- The current speed of the vehicle will be displayed in the top left corner with a small control to increase or decrease the speed.
-- The current gas level will be displayed in the top right corner.
-- The vehicle sprite will be centered on the screen and will move horizontally as the vehicle moves.
-- The road sprite will be a repeating image that scrolls horizontally as the vehicle moves.
-- The gas station sprite will be displayed when the vehicle is near a gas station.
-- The police checkpoint sprite will be displayed when the vehicle is near a police checkpoint.
-- The city sprite will be displayed when the vehicle is near a city.
-- The road sprite should be be moving faster or slower depending on the vehicle's speed to give the illusion of movement.
-- ETA (Estimated Time of Arrival) will be displayed at the top of the widget, showing the estimated time it will take for the vehicle to reach its destination.
-- STATUS will be displayed at the bottom of the widget, showing the current status of the vehicle (e.g., "Moving", "Stopped", "Waiting for Contract Completion").
-
-### Business Logic
-- If the vehicle speed is increased, the vehicle will move faster along the road.
-- If the vehicle speed is decreased, the vehicle will move slower along the road.
-
-## Top Down map
-
-### Description
-The top down map will provide a bird's eye view of the game world, showing the positions of the vehicles and cities.
-
-### Layout
-- The map will be displayed in the top right corner of the screen.
 - The vehicle will be represented by a dot on the map.
 - The vehicle dot will move along the map as the vehicle moves in the game world.
 - The cities will be represented by larger dots on the map.
 - The map will be scrollable, allowing the player to see areas of the game world that are not currently visible on the main screen.
-- If the vehicle dot is clicked, the Left Top Widget and the Right Bottom Widget will be updated to show the vehicle's path and position in the game world.
 
 ### Business Logic
 - The map should be generated based on the available cities and the locations of the vehicles.
-- The map should not show gas stations or police checkpoints, as they are not relevant to the player's navigation.
+- The map should not show gas stations or police checkpoints if the vehicle is not selected, as they are not relevant to the player's navigation.
 - The map should update in real-time as the vehicle moves.
 - When the vehicle is assigned for a contract, it will follow the road from the origin city to the destination city. Use a pathfinding algorithm to calculate the best route between the cities.
 - If the vehicle is selected, show the vehicle's path on the map, and highlight the vehicle dot.
+- If the vehicle is selected and is moving, it should show the police checkpoints and gas stations on the map, as they are relevant to the vehicle's navigation.
+- If the vehicle dot is clicked, it will show the vehicle's path and position in the game world.
 
 ### Goods
 
