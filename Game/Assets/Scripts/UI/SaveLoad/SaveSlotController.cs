@@ -208,7 +208,7 @@ namespace LogisticGame.UI.SaveLoad
         }
         
         // Save slot management
-        private async void RefreshSaveSlots()
+        private void RefreshSaveSlots()
         {
             if (SaveManager.Instance == null) return;
             
@@ -219,12 +219,12 @@ namespace LogisticGame.UI.SaveLoad
             // Add special slots if enabled
             if (_showQuickSave)
             {
-                _saveSlots.Add(await CreateSaveSlotData("quicksave", "Quick Save"));
+                _saveSlots.Add(CreateSaveSlotData("quicksave", "Quick Save"));
             }
             
             if (_showAutoSave)
             {
-                _saveSlots.Add(await CreateSaveSlotData("autosave", "Auto Save"));
+                _saveSlots.Add(CreateSaveSlotData("autosave", "Auto Save"));
             }
             
             // Get available save slots
@@ -233,7 +233,7 @@ namespace LogisticGame.UI.SaveLoad
             {
                 if (slotInfo.SlotName != "quicksave" && slotInfo.SlotName != "autosave")
                 {
-                    _saveSlots.Add(await CreateSaveSlotData(slotInfo.SlotName, slotInfo.DisplayName, slotInfo));
+                    _saveSlots.Add(CreateSaveSlotData(slotInfo.SlotName, slotInfo.DisplayName, slotInfo));
                 }
             }
             

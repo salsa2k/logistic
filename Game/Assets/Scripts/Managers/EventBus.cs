@@ -154,6 +154,41 @@ namespace LogisticGame.Events
 
     public struct AllModalsClosedEvent : IGameEvent { }
 
+    // AIDEV-NOTE: Card-related events for BaseCard system
+    public struct CardDataBoundEvent : IGameEvent
+    {
+        public string CardId { get; }
+        public string DataType { get; }
+        public CardDataBoundEvent(string cardId, string dataType)
+        {
+            CardId = cardId;
+            DataType = dataType;
+        }
+    }
+
+    public struct CardSelectedEvent : IGameEvent
+    {
+        public string CardId { get; }
+        public CardSelectedEvent(string cardId) => CardId = cardId;
+    }
+
+    public struct CardDeselectedEvent : IGameEvent
+    {
+        public string CardId { get; }
+        public CardDeselectedEvent(string cardId) => CardId = cardId;
+    }
+
+    public struct CardActionEvent : IGameEvent
+    {
+        public string CardId { get; }
+        public string ActionType { get; }
+        public CardActionEvent(string cardId, string actionType)
+        {
+            CardId = cardId;
+            ActionType = actionType;
+        }
+    }
+
     // AIDEV-NOTE: Global event bus for decoupled communication between systems
     public static class EventBus
     {

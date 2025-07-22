@@ -1,0 +1,351 @@
+/* AIDEV-NOTE: Base card styles using Dark Graphite theme variables and patterns */
+
+/* =================================
+   BASE CARD STYLES
+   ================================= */
+
+.base-card {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    padding: 0px;
+    margin: var(--spacing-xs);
+    min-height: 120px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Card interaction states */
+.base-card:hover {
+    background-color: var(--color-hover);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.base-card.card-selected {
+    background-color: var(--color-accent-bg);
+    border-color: var(--color-accent);
+    border-width: var(--border-width-medium);
+    box-shadow: 0px 2px 8px rgba(122, 156, 198, 0.3);
+}
+
+.base-card.card-disabled {
+    background-color: var(--color-primary-bg);
+    border-color: var(--color-border-alpha);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.base-card.card-disabled:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--color-border-alpha);
+    background-color: var(--color-primary-bg);
+}
+
+/* =================================
+   CARD BADGE STYLES
+   ================================= */
+
+.card-badge-container {
+    position: absolute;
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+    z-index: 10;
+}
+
+.card-badge-text {
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
+    font-size: var(--font-size-small);
+    padding: 2px var(--spacing-xs);
+    border-radius: var(--border-radius-small);
+    -unity-font-style: bold;
+}
+
+/* =================================
+   CARD HEADER STYLES
+   ================================= */
+
+.card-header {
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm) var(--spacing-md);
+    border-bottom: var(--border-width-thin) solid var(--color-border-alpha);
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-header-content {
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.card-icon-container {
+    margin-right: var(--spacing-sm);
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.card-title-container {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.card-title-text {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-large);
+    -unity-font-style: bold;
+    margin: 0px;
+    -unity-text-align: middle-left;
+}
+
+.card-subtitle-text {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-medium);
+    margin: 2px 0px 0px 0px;
+    -unity-text-align: middle-left;
+}
+
+/* =================================
+   CARD IMAGE STYLES
+   ================================= */
+
+.card-image-container {
+    height: 150px;
+    margin: 0px var(--spacing-md);
+    border-radius: var(--border-radius-small);
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+/* =================================
+   CARD CONTENT STYLES
+   ================================= */
+
+.card-content {
+    padding: var(--spacing-sm) var(--spacing-md);
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.card-description-text {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+    margin-bottom: var(--spacing-sm);
+    white-space: normal;
+    -unity-text-align: middle-left;
+}
+
+.card-details-container {
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Card detail row styling for key-value pairs */
+.card-detail-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xs);
+    align-items: center;
+}
+
+.card-detail-label {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-medium);
+    flex-shrink: 0;
+}
+
+.card-detail-value {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+    -unity-text-align: middle-right;
+    flex-grow: 1;
+    margin-left: var(--spacing-sm);
+}
+
+/* =================================
+   CARD FOOTER STYLES
+   ================================= */
+
+.card-footer {
+    padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md) var(--spacing-md);
+    border-top: var(--border-width-thin) solid var(--color-border-alpha);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-status-container {
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-actions-container {
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-primary-action {
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
+    border-color: var(--color-accent);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-medium);
+    -unity-font-style: bold;
+    margin-left: var(--spacing-xs);
+}
+
+.card-primary-action:hover {
+    background-color: var(--color-text-primary);
+    color: var(--color-primary-bg);
+}
+
+.card-primary-action:disabled {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-alpha);
+}
+
+.card-secondary-action {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-medium);
+}
+
+.card-secondary-action:hover {
+    background-color: var(--color-accent-bg);
+}
+
+.card-secondary-action:disabled {
+    color: var(--color-text-disabled);
+    border-color: var(--color-border-alpha);
+}
+
+/* =================================
+   CARD LOADING STYLES
+   ================================= */
+
+.card-loading-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: var(--color-primary-bg-alpha);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.card-loading-spinner {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-md);
+    align-items: center;
+    justify-content: center;
+}
+
+.card-loading-text {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+    -unity-font-style: bold;
+}
+
+/* =================================
+   CARD SIZE VARIATIONS
+   ================================= */
+
+.card-compact {
+    min-height: 80px;
+    margin: var(--spacing-xs) / 2;
+}
+
+.card-compact .card-header {
+    padding: var(--spacing-sm) var(--spacing-md) var(--spacing-xs) var(--spacing-md);
+}
+
+.card-compact .card-content {
+    padding: var(--spacing-xs) var(--spacing-md);
+}
+
+.card-compact .card-footer {
+    padding: var(--spacing-xs) var(--spacing-md) var(--spacing-sm) var(--spacing-md);
+}
+
+.card-expanded {
+    min-height: 200px;
+}
+
+.card-image-prominent .card-image-container {
+    height: 200px;
+}
+
+/* =================================
+   RESPONSIVE CARD STYLES
+   ================================= */
+
+.card-responsive {
+    width: 100%;
+    max-width: 400px;
+    min-width: 280px;
+}
+
+/* Card grid layout helpers */
+.card-grid-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.card-list-container {
+    flex-direction: column;
+    width: 100%;
+}
+
+/* =================================
+   CARD ACCESSIBILITY
+   ================================= */
+
+.base-card:focus {
+    border-color: var(--color-accent);
+    border-width: var(--border-width-medium);
+    outline: none;
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+    .base-card {
+        border-width: var(--border-width-medium);
+    }
+    
+    .card-primary-action {
+        -unity-font-style: bold;
+        border-width: var(--border-width-medium);
+    }
+}

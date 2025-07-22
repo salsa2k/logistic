@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+    <!-- AIDEV-NOTE: Base card UXML template for all card UI components -->
+    <!-- Root card container with interaction handling -->
+    <engine:VisualElement name="card-root" class="base-card">
+        
+        <!-- Optional badge/tag area for categorization -->
+        <engine:VisualElement name="card-badge-container" class="card-badge-container" style="display: none;">
+            <engine:Label name="card-badge" class="card-badge-text" text="Badge" />
+        </engine:VisualElement>
+        
+        <!-- Header section with title, subtitle, and icon -->
+        <engine:VisualElement name="card-header" class="card-header">
+            <engine:VisualElement name="card-header-content" class="card-header-content">
+                <!-- Icon area (optional) -->
+                <engine:VisualElement name="card-icon-container" class="card-icon-container" style="display: none;">
+                    <engine:Image name="card-icon" class="card-icon" />
+                </engine:VisualElement>
+                
+                <!-- Title and subtitle area -->
+                <engine:VisualElement name="card-title-container" class="card-title-container">
+                    <engine:Label name="card-title" class="card-title-text" text="Card Title" />
+                    <engine:Label name="card-subtitle" class="card-subtitle-text" text="Card Subtitle" style="display: none;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+        
+        <!-- Optional image section for visual content -->
+        <engine:VisualElement name="card-image-container" class="card-image-container" style="display: none;">
+            <engine:Image name="card-image" class="card-image" />
+        </engine:VisualElement>
+        
+        <!-- Main content section with flexible layout -->
+        <engine:VisualElement name="card-content" class="card-content">
+            <!-- Description text (optional) -->
+            <engine:Label name="card-description" class="card-description-text" text="" style="display: none;" />
+            
+            <!-- Dynamic content container for specific card types -->
+            <engine:VisualElement name="card-details-container" class="card-details-container">
+                <!-- Details will be populated dynamically -->
+            </engine:VisualElement>
+        </engine:VisualElement>
+        
+        <!-- Footer section for action buttons and status indicators -->
+        <engine:VisualElement name="card-footer" class="card-footer" style="display: none;">
+            <!-- Status indicators container -->
+            <engine:VisualElement name="card-status-container" class="card-status-container">
+                <!-- Status indicators will be added dynamically -->
+            </engine:VisualElement>
+            
+            <!-- Action buttons container -->
+            <engine:VisualElement name="card-actions-container" class="card-actions-container">
+                <engine:Button name="card-secondary-button" class="card-secondary-action" text="Details" style="display: none;" />
+                <engine:Button name="card-primary-button" class="card-primary-action" text="Action" style="display: none;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        
+        <!-- Loading overlay (only visible during loading state) -->
+        <engine:VisualElement name="card-loading-overlay" class="card-loading-overlay" style="display: none;">
+            <engine:VisualElement name="card-loading-spinner" class="card-loading-spinner">
+                <engine:Label class="card-loading-text" text="Loading..." />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        
+    </engine:VisualElement>
+</engine:UXML>
