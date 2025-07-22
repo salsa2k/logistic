@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+    <!-- AIDEV-NOTE: Base list UXML template for all list UI components -->
+    <!-- Root list container with keyboard navigation support -->
+    <engine:VisualElement name="list-root" class="base-list" tabindex="0">
+        
+        <!-- Optional header section with title and action buttons -->
+        <engine:VisualElement name="list-header" class="list-header" style="display: none;">
+            <engine:VisualElement name="list-title-container" class="list-title-container">
+                <engine:Label name="list-title" class="list-title-text" text="List Title" />
+                <engine:Label name="list-subtitle" class="list-subtitle-text" text="" style="display: none;" />
+            </engine:VisualElement>
+            
+            <!-- Header action buttons -->
+            <engine:VisualElement name="list-header-actions" class="list-header-actions">
+                <engine:Button name="list-refresh-button" class="list-action-button" text="⟳" tooltip="Refresh list" style="display: none;" />
+                <engine:Button name="list-settings-button" class="list-action-button" text="⚙" tooltip="List settings" style="display: none;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        
+        <!-- Search and filter controls -->
+        <engine:VisualElement name="list-search-container" class="list-search-container" style="display: none;">
+            <engine:VisualElement name="list-search-field-container" class="list-search-field-container">
+                <engine:TextField name="list-search-field" class="list-search-field" placeholder-text="Search..." />
+                <engine:Button name="list-clear-search-button" class="list-clear-search-button" text="✕" tooltip="Clear search" />
+            </engine:VisualElement>
+            
+            <!-- Filter and sort controls -->
+            <engine:VisualElement name="list-filter-controls" class="list-filter-controls" style="display: none;">
+                <engine:DropdownField name="list-sort-dropdown" class="list-sort-dropdown" tooltip="Sort by" />
+                <engine:Button name="list-sort-direction-button" class="list-sort-direction-button" text="↑" tooltip="Sort direction" />
+                <engine:Button name="list-filter-button" class="list-filter-button" text="Filter" tooltip="Advanced filters" style="display: none;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        
+        <!-- Item count and status information -->
+        <engine:VisualElement name="list-info-bar" class="list-info-bar" style="display: none;">
+            <engine:Label name="list-item-count" class="list-item-count-text" text="0 items" />
+            <engine:Label name="list-selection-info" class="list-selection-info-text" text="" style="display: none;" />
+            <engine:VisualElement name="list-status-indicators" class="list-status-indicators">
+                <!-- Status indicators will be added dynamically -->
+            </engine:VisualElement>
+        </engine:VisualElement>
+        
+        <!-- Main scrollable content area -->
+        <engine:VisualElement name="list-content-container" class="list-content-container">
+            <engine:ScrollView name="list-scroll-view" class="list-scroll-view" mode="Vertical" mouse-wheel-scroll-size="120">
+                <!-- Virtualization viewport for performance -->
+                <engine:VisualElement name="list-viewport" class="list-viewport">
+                    <!-- Virtualization spacer (top) -->
+                    <engine:VisualElement name="list-spacer-top" class="list-spacer" style="height: 0;" />
+                    
+                    <!-- Visible items container -->
+                    <engine:VisualElement name="list-items-container" class="list-items-container">
+                        <!-- List items will be added dynamically -->
+                    </engine:VisualElement>
+                    
+                    <!-- Virtualization spacer (bottom) -->
+                    <engine:VisualElement name="list-spacer-bottom" class="list-spacer" style="height: 0;" />
+                </engine:VisualElement>
+            </engine:ScrollView>
+        </engine:VisualElement>
+        
+        <!-- Empty state display -->
+        <engine:VisualElement name="list-empty-state" class="list-empty-state" style="display: none;">
+            <engine:VisualElement name="list-empty-icon" class="list-empty-icon">
+                <engine:Label class="list-empty-icon-text" text="📋" />
+            </engine:VisualElement>
+            <engine:Label name="list-empty-title" class="list-empty-title-text" text="No items found" />
+            <engine:Label name="list-empty-message" class="list-empty-message-text" text="There are no items to display." />
+            <engine:Button name="list-empty-action-button" class="list-empty-action-button" text="Refresh" style="display: none;" />
+        </engine:VisualElement>
+        
+        <!-- Loading state display -->
+        <engine:VisualElement name="list-loading-state" class="list-loading-state" style="display: none;">
+            <engine:VisualElement name="list-loading-spinner" class="list-loading-spinner">
+                <!-- Loading animation placeholder -->
+                <engine:VisualElement name="list-loading-dots" class="list-loading-dots">
+                    <engine:VisualElement class="list-loading-dot" />
+                    <engine:VisualElement class="list-loading-dot" />
+                    <engine:VisualElement class="list-loading-dot" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:Label name="list-loading-title" class="list-loading-title-text" text="Loading..." />
+            <engine:Label name="list-loading-message" class="list-loading-message-text" text="Please wait while data is being loaded." />
+        </engine:VisualElement>
+        
+        <!-- Footer section with pagination and additional controls -->
+        <engine:VisualElement name="list-footer" class="list-footer" style="display: none;">
+            <!-- Pagination controls -->
+            <engine:VisualElement name="list-pagination" class="list-pagination" style="display: none;">
+                <engine:Button name="list-first-page-button" class="list-pagination-button" text="⏮" tooltip="First page" />
+                <engine:Button name="list-prev-page-button" class="list-pagination-button" text="◀" tooltip="Previous page" />
+                <engine:Label name="list-page-info" class="list-page-info-text" text="Page 1 of 1" />
+                <engine:Button name="list-next-page-button" class="list-pagination-button" text="▶" tooltip="Next page" />
+                <engine:Button name="list-last-page-button" class="list-pagination-button" text="⏭" tooltip="Last page" />
+            </engine:VisualElement>
+            
+            <!-- Selection actions -->
+            <engine:VisualElement name="list-selection-actions" class="list-selection-actions" style="display: none;">
+                <engine:Button name="list-select-all-button" class="list-selection-button" text="Select All" />
+                <engine:Button name="list-select-none-button" class="list-selection-button" text="Select None" />
+                <engine:Button name="list-invert-selection-button" class="list-selection-button" text="Invert" style="display: none;" />
+            </engine:VisualElement>
+            
+            <!-- Additional footer actions -->
+            <engine:VisualElement name="list-footer-actions" class="list-footer-actions">
+                <!-- Custom action buttons will be added here -->
+            </engine:VisualElement>
+        </engine:VisualElement>
+        
+        <!-- Context menu overlay (hidden by default) -->
+        <engine:VisualElement name="list-context-menu" class="list-context-menu" style="display: none; position: absolute;">
+            <!-- Context menu items will be populated dynamically -->
+        </engine:VisualElement>
+        
+    </engine:VisualElement>
+</engine:UXML>

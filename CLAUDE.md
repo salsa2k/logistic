@@ -170,9 +170,9 @@ dotnet build --no-restore | grep -E "error CS|: error"
 
 ### Development Workflow
 1. **Before coding**: Query Context7 for Unity documentation and best practices
-2. **During development**: Use Unity MCP tools for testing and validation
+2. **During development**: Use unityMCP for testing and validation
 3. **For USS/UI Toolkit**: Always verify properties with Context7 Unity UI documentation
-4. **For debugging**: Use Unity MCP console tools instead of manual Unity editor checks
+4. **For debugging**: Use unityMCP console tools instead of manual Unity editor checks
 
 ## UI Toolkit Guidelines
 
