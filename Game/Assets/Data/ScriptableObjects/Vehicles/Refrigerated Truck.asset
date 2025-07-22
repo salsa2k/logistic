@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a761c519f1790c4d85debddc5fbde9f, type: 3}
+  m_Name: Refrigerated Truck
+  m_EditorClassIdentifier: 
+  _vehicleName: Refrigerated Truck
+  _description: 
+  _vehicleIcon: {fileID: 0}
+  _maxSpeed: 95
+  _fuelCapacity: 150
+  _fuelConsumption: 18
+  _weightCapacity: 12000
+  _cargoVolume: 40
+  _purchasePrice: 120000
+  _maintenanceCost: 500
+  _authorizedGoods: []
+  _requiresSpecialLicense: 0

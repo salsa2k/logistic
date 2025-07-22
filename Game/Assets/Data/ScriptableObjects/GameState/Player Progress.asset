@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea737c45c2529d42b22c9561b7b5671, type: 3}
+  m_Name: Player Progress
+  m_EditorClassIdentifier: 
+  _visitedCities: []
+  _totalDistanceTraveled: 0
+  _totalFuelConsumed: 0
+  _totalTrips: 0
+  _contractsCompleted: 0
+  _contractsFailed: 0
+  _totalRevenueEarned: 0
+  _largestContract: {fileID: 0}
+  _longestDistance: 0
+  _ownedVehicles: []
+  _favoriteVehicle: {fileID: 0}
+  _mostTransportedGood: {fileID: 0}
+  _mostProfitableGood: {fileID: 0}
+  _unlockedAchievements: []
+  _visitedAllCities: 0
+  _ownedAllVehicleTypes: 0
+  _unlockedAllLicenses: 0
+  _consecutiveSuccessfulContracts: 0
+  _maxConsecutiveSuccessfulContracts: 0

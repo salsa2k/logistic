@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4303fff7112a5fa4dad87aba329ad2b9, type: 3}
+  m_Name: Game State
+  m_EditorClassIdentifier: 
+  _saveName: 
+  _totalPlayTime: 0
+  _timeScale: 1
+  _isPaused: 0
+  _currentCredits: 0
+  _totalEarnings: 0
+  _totalExpenses: 0
+  _outstandingLoans: 0
+  _playerCompany: {fileID: 0}
+  _ownedVehicles: []
+  _ownedLicenses: 
+  _discoveredCities: []
+  _availableContracts: []
+  _activeContracts: []
+  _completedContracts: []
+  _gameSettings: {fileID: 0}

@@ -13,7 +13,10 @@
       "mcp__context7__resolve-library-id",
       "WebFetch(domain:docs.unity3d.com)",
       "Bash(dotnet build:*)",
-      "Bash(dotnet restore:*)"
+      "Bash(dotnet restore:*)",
+      "mcp__serena__initial_instructions",
+      "mcp__serena__list_memories",
+      "mcp__serena__list_dir"
     ]
   },
   "enableAllProjectMcpServers": true,

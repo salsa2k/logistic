@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a761c519f1790c4d85debddc5fbde9f, type: 3}
+  m_Name: Flatbed Truck
+  m_EditorClassIdentifier: 
+  _vehicleName: Flatbed Truck
+  _description: 
+  _vehicleIcon: {fileID: 0}
+  _maxSpeed: 85
+  _fuelCapacity: 200
+  _fuelConsumption: 20
+  _weightCapacity: 20000
+  _cargoVolume: 60
+  _purchasePrice: 95000
+  _maintenanceCost: 500
+  _authorizedGoods: []
+  _requiresSpecialLicense: 0

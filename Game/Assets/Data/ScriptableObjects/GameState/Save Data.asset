@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec216334f9848f4eaa1386079fa1477, type: 3}
+  m_Name: Save Data
+  m_EditorClassIdentifier: 
+  _saveName: 
+  _saveVersion: 1.0.0
+  _saveFileSize: 0
+  _saveFilePath: 
+  _gameState: {fileID: 0}
+  _playerProgress: {fileID: 0}
+  _settings: {fileID: 0}
+  _vehicleInstances: []
+  _contractInstances: []
+  _cityInstances: []
+  _checksum: 
+  _isCorrupted: 0
+  _requiresMigration: 0
