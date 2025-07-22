@@ -26,7 +26,9 @@
       "mcp__filesystem__edit_file",
       "mcp__unityMCP__execute_menu_item",
       "mcp__unityMCP__manage_editor",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "mcp__unityMCP__manage_scene",
+      "mcp__unityMCP__manage_gameobject"
     ]
   },
   "enableAllProjectMcpServers": true,

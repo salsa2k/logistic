@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <!-- AIDEV-NOTE: Simplified Main Menu UXML template for Unity UI Toolkit -->
+    
+    <!-- Main container -->
+    <engine:VisualElement class="main-menu-root">
+        
+        <!-- Background image -->
+        <engine:VisualElement class="main-menu-background">
+            <engine:VisualElement class="main-menu-overlay" />
+        </engine:VisualElement>
+        
+        <!-- Menu content -->
+        <engine:VisualElement class="main-menu-container">
+            
+            <!-- Title -->
+            <engine:Label class="main-menu-title" text="Logistics Game" />
+            
+            <!-- Button container -->
+            <engine:VisualElement class="main-menu-buttons">
+                <engine:Button name="new-game-button" class="main-menu-button" text="New Game" />
+                <engine:Button name="load-game-button" class="main-menu-button" text="Load Game" />
+                <engine:Button name="settings-button" class="main-menu-button" text="Settings" />
+                <engine:Button name="credits-button" class="main-menu-button" text="Credits" />
+                <engine:Button name="exit-button" class="main-menu-button" text="Exit" />
+            </engine:VisualElement>
+            
+            <!-- Version info -->
+            <engine:Label name="version-label" class="main-menu-version" text="Version 1.0.0" />
+            
+        </engine:VisualElement>
+        
+    </engine:VisualElement>
+</engine:UXML>
