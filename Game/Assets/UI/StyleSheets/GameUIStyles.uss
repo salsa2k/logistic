@@ -1,0 +1,474 @@
+/* AIDEV-NOTE: Game-specific UI styles for logistics game components */
+
+/* AIDEV-NOTE: Unity USS doesn't support @import. 
+   To use these styles, add both DarkGraphiteTheme.uss and GameUIStyles.uss 
+   to your UI Document in Unity Editor. */
+
+/* =================================
+   MAIN MENU STYLES
+   ================================= */
+
+.main-menu-container {
+    background-color: var(--color-primary-bg);
+    padding: var(--spacing-xl);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.main-menu-title {
+    font-size: var(--font-size-xxl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+}
+
+.main-menu-button {
+    width: 250px;
+    height: 50px;
+    margin: var(--spacing-sm);
+    background-color: var(--color-accent-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-large);
+    -unity-font-style: normal;
+}
+
+.main-menu-button:hover {
+    background-color: var(--color-hover);
+    border-color: var(--color-accent);
+}
+
+.main-menu-button:active {
+    background-color: var(--color-active);
+}
+
+/* =================================
+   HUD (HEADS-UP DISPLAY) STYLES
+   ================================= */
+
+.hud-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.hud-top-bar {
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 60px;
+    background-color: var(--color-secondary-bg-alpha);
+    border-color: var(--color-border-alpha);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-md);
+}
+
+.hud-bottom-bar {
+    position: absolute;
+    bottom: var(--spacing-md);
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    height: 80px;
+    background-color: var(--color-secondary-bg-alpha);
+    border-color: var(--color-border-alpha);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm);
+}
+
+/* =================================
+   VEHICLE STATUS STYLES
+   ================================= */
+
+.vehicle-status-container {
+    background-color: var(--color-panel-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-md);
+    min-width: 200px;
+    max-width: 300px;
+}
+
+.vehicle-status-title {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-large);
+    -unity-font-style: bold;
+    margin-bottom: var(--spacing-sm);
+    -unity-text-align: middle-center;
+}
+
+.vehicle-stat-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.vehicle-stat-label {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-medium);
+    flex-grow: 0;
+}
+
+.vehicle-stat-value {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+    -unity-font-style: bold;
+    flex-grow: 0;
+}
+
+.vehicle-stat-bar {
+    height: 8px;
+    background-color: var(--color-primary-bg);
+    border-radius: var(--border-radius-small);
+    margin: var(--spacing-xs) 0;
+    overflow: hidden;
+}
+
+.vehicle-stat-fill {
+    height: 100%;
+    background-color: var(--color-accent);
+}
+
+.vehicle-stat-fill.low-fuel {
+    background-color: #FF6B6B;
+}
+
+.vehicle-stat-fill.medium-fuel {
+    background-color: #FFD93D;
+}
+
+.vehicle-stat-fill.high-fuel {
+    background-color: #6BCF7F;
+}
+
+/* =================================
+   CONTRACT MANAGEMENT STYLES
+   ================================= */
+
+.contracts-panel {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-md);
+    min-width: 400px;
+    max-height: 500px;
+}
+
+.contracts-header {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    -unity-font-style: bold;
+    margin-bottom: var(--spacing-md);
+    -unity-text-align: middle-center;
+}
+
+.contract-item {
+    background-color: var(--color-accent-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.contract-item:hover {
+    background-color: var(--color-hover);
+    border-color: var(--color-accent);
+}
+
+.contract-item.selected {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.contract-title {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-large);
+    -unity-font-style: bold;
+    margin-bottom: var(--spacing-xs);
+}
+
+.contract-description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-medium);
+    margin-bottom: var(--spacing-xs);
+}
+
+.contract-details {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contract-reward {
+    color: var(--color-accent);
+    font-size: var(--font-size-medium);
+    -unity-font-style: bold;
+}
+
+.contract-distance {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-small);
+}
+
+/* =================================
+   SHOPPING INTERFACE STYLES
+   ================================= */
+
+.shop-container {
+    background-color: var(--color-primary-bg);
+    padding: var(--spacing-lg);
+    flex-direction: row;
+    min-height: 100%;
+}
+
+.shop-categories {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-md);
+    width: 200px;
+    margin-right: var(--spacing-md);
+}
+
+.shop-category-button {
+    width: 100%;
+    height: 40px;
+    margin-bottom: var(--spacing-xs);
+    background-color: var(--color-accent-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+}
+
+.shop-category-button:hover {
+    background-color: var(--color-hover);
+}
+
+.shop-category-button.active {
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
+}
+
+.shop-items-grid {
+    flex-grow: 1;
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-md);
+}
+
+.shop-item {
+    background-color: var(--color-accent-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    padding: var(--spacing-md);
+    margin: var(--spacing-xs);
+    width: 150px;
+    height: 200px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shop-item:hover {
+    background-color: var(--color-hover);
+    border-color: var(--color-accent);
+}
+
+.shop-item-image {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-primary-bg);
+    border-radius: var(--border-radius-small);
+}
+
+.shop-item-name {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.shop-item-price {
+    color: var(--color-accent);
+    font-size: var(--font-size-large);
+    -unity-font-style: bold;
+}
+
+.shop-buy-button {
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
+    border-width: 0;
+    border-radius: var(--border-radius-small);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-small);
+    -unity-font-style: bold;
+}
+
+.shop-buy-button:hover {
+    background-color: var(--color-text-primary);
+}
+
+/* =================================
+   GAME SETTINGS STYLES
+   ================================= */
+
+.settings-panel {
+    background-color: var(--color-primary-bg);
+    padding: var(--spacing-xl);
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.settings-title {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xxl);
+    -unity-font-style: bold;
+    margin-bottom: var(--spacing-lg);
+}
+
+.settings-section {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    width: 400px;
+}
+
+.settings-section-title {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-large);
+    -unity-font-style: bold;
+    margin-bottom: var(--spacing-sm);
+}
+
+.settings-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.settings-label {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+    flex-grow: 1;
+}
+
+.settings-control {
+    flex-grow: 0;
+    min-width: 100px;
+}
+
+/* =================================
+   NOTIFICATION STYLES
+   ================================= */
+
+.notification-container {
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 300px;
+    /* AIDEV-NOTE: pointer-events not supported in Unity USS */
+}
+
+.notification {
+    background-color: var(--color-secondary-bg-alpha);
+    border-color: var(--color-border-alpha);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.notification.success {
+    border-color: #6BCF7F;
+}
+
+.notification.warning {
+    border-color: #FFD93D;
+}
+
+.notification.error {
+    border-color: #FF6B6B;
+}
+
+.notification-title {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+    -unity-font-style: bold;
+    margin-bottom: var(--spacing-xs);
+}
+
+.notification-message {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-small);
+}
+
+/* =================================
+   RESPONSIVE UTILITIES
+   ================================= */
+
+.container-fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.container-centered {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-padded {
+    padding: var(--spacing-lg);
+}
+
+.fade-in {
+    /* AIDEV-NOTE: Unity USS doesn't support opacity or transitions */
+}
+
+.fade-out {
+    /* AIDEV-NOTE: Unity USS doesn't support opacity or transitions */
+    display: none;
+}
+
+/* AIDEV-NOTE: Animation states - Unity USS doesn't support translate or transitions */
+.slide-up {
+    /* Transform animations not supported in Unity USS */
+}
+
+.slide-up.active {
+    /* Transform animations not supported in Unity USS */
+}
