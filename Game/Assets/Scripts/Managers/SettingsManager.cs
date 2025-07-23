@@ -44,7 +44,7 @@ namespace LogisticGame.Managers
         
         // Settings file management
         private const string SETTINGS_FILE_NAME = "GameSettings";
-        private readonly string _settingsFilePath;
+        private string _settingsFilePath;
         
         // Events
         public static event Action<SettingsData> OnSettingsLoaded;
@@ -55,12 +55,6 @@ namespace LogisticGame.Managers
         // Properties
         public bool IsInitialized { get; private set; }
         public bool HasUnsavedChanges { get; private set; }
-        
-        // Constructor for file path initialization
-        public SettingsManager()
-        {
-            _settingsFilePath = Path.Combine(Application.persistentDataPath, $"{SETTINGS_FILE_NAME}.json");
-        }
         
         private void Awake()
         {
@@ -73,6 +67,9 @@ namespace LogisticGame.Managers
             
             _instance = this;
             DontDestroyOnLoad(gameObject);
+            
+            // Initialize settings file path
+            _settingsFilePath = Path.Combine(Application.persistentDataPath, $"{SETTINGS_FILE_NAME}.json");
             
             InitializeSettings();
         }
@@ -102,14 +99,15 @@ namespace LogisticGame.Managers
         {
             try
             {
-                if (_debugLogging)
-                    Debug.Log("SettingsManager: Initializing settings system...");
+                Debug.Log("SettingsManager: Initializing settings system...");
                 
                 // Try to load existing settings
                 bool settingsLoaded = await LoadSettingsAsync();
+                Debug.Log($"SettingsManager: LoadSettingsAsync returned: {settingsLoaded}");
                 
                 if (!settingsLoaded)
                 {
+                    Debug.LogWarning("SettingsManager: Loading failed, creating default settings");
                     // Create default settings if loading failed
                     CreateDefaultSettings();
                 }
@@ -120,8 +118,10 @@ namespace LogisticGame.Managers
                 IsInitialized = true;
                 OnSettingsLoaded?.Invoke(_currentSettings);
                 
-                if (_debugLogging)
-                    Debug.Log("SettingsManager: Settings system initialized successfully");
+                // AIDEV-NOTE: Notify LocalizationManager that settings are now available
+                NotifyLocalizationManagerReady();
+                
+                Debug.Log($"SettingsManager: Settings system initialized successfully. Final language: {_currentSettings?.LocaleCode}");
             }
             catch (Exception ex)
             {
@@ -129,6 +129,7 @@ namespace LogisticGame.Managers
                 OnSettingsError?.Invoke($"Settings initialization failed: {ex.Message}");
                 
                 // Fall back to default settings
+                Debug.LogWarning("SettingsManager: Exception occurred, falling back to default settings");
                 CreateDefaultSettings();
                 IsInitialized = true;
             }
@@ -140,23 +141,26 @@ namespace LogisticGame.Managers
         /// </summary>
         private void CreateDefaultSettings()
         {
+            Debug.LogWarning("SettingsManager: CreateDefaultSettings() called - this will reset language to default!");
+            
             if (_defaultSettings != null)
             {
                 // Create a copy of the default settings
                 _currentSettings = Instantiate(_defaultSettings);
+                Debug.Log($"SettingsManager: Created settings from asset. Default language: {_currentSettings.LocaleCode}");
             }
             else
             {
                 // Create a new settings instance with defaults
                 _currentSettings = ScriptableObject.CreateInstance<SettingsData>();
                 _currentSettings.LoadDefaults();
+                Debug.Log($"SettingsManager: Created settings from LoadDefaults(). Default language: {_currentSettings.LocaleCode}");
             }
             
             _currentSettings.name = "CurrentSettings";
             HasUnsavedChanges = true;
             
-            if (_debugLogging)
-                Debug.Log("SettingsManager: Created default settings");
+            Debug.Log("SettingsManager: Created default settings");
         }
         
         /// <summary>
@@ -168,10 +172,11 @@ namespace LogisticGame.Managers
         {
             try
             {
+                Debug.Log($"SettingsManager: Attempting to load settings from: {_settingsFilePath}");
+                
                 if (!File.Exists(_settingsFilePath))
                 {
-                    if (_debugLogging)
-                        Debug.Log("SettingsManager: No settings file found, will create default settings");
+                    Debug.Log("SettingsManager: No settings file found, will create default settings");
                     return false;
                 }
                 
@@ -184,6 +189,8 @@ namespace LogisticGame.Managers
                     return false;
                 }
                 
+                Debug.Log($"SettingsManager: Loaded settings JSON: {settingsJson}");
+                
                 // Create new settings instance
                 _currentSettings = ScriptableObject.CreateInstance<SettingsData>();
                 
@@ -194,8 +201,7 @@ namespace LogisticGame.Managers
                     ApplyLoadedSettings(settingsWrapper);
                     HasUnsavedChanges = false;
                     
-                    if (_debugLogging)
-                        Debug.Log("SettingsManager: Settings loaded successfully");
+                    Debug.Log($"SettingsManager: Settings loaded successfully. Language: {_currentSettings.LocaleCode}");
                     
                     return true;
                 }
@@ -232,14 +238,17 @@ namespace LogisticGame.Managers
                 var settingsWrapper = CreateSettingsWrapper(_currentSettings);
                 string settingsJson = JsonUtility.ToJson(settingsWrapper, true);
                 
+                Debug.Log($"SettingsManager: Saving settings to: {_settingsFilePath}");
+                Debug.Log($"SettingsManager: Settings JSON: {settingsJson}");
+                Debug.Log($"SettingsManager: Language being saved: {_currentSettings.LocaleCode}");
+                
                 // Write to file atomically
                 await File.WriteAllTextAsync(_settingsFilePath, settingsJson);
                 
                 HasUnsavedChanges = false;
                 OnSettingsSaved?.Invoke(_currentSettings);
                 
-                if (_debugLogging)
-                    Debug.Log("SettingsManager: Settings saved successfully");
+                Debug.Log("SettingsManager: Settings saved successfully");
                 
                 return true;
             }
@@ -491,6 +500,19 @@ namespace LogisticGame.Managers
             }
             
             return _currentSettings;
+        }
+
+        /// <summary>
+        /// AIDEV-NOTE: Notifies LocalizationManager that SettingsManager is ready and language should be refreshed
+        /// </summary>
+        private void NotifyLocalizationManagerReady()
+        {
+            if (LocalizationManager.Instance != null && LocalizationManager.Instance.IsInitialized)
+            {
+                LocalizationManager.Instance.RefreshLanguageFromSettings();
+                if (_debugLogging)
+                    Debug.Log("SettingsManager: Notified LocalizationManager to refresh language from settings");
+            }
         }
         
         /// <summary>

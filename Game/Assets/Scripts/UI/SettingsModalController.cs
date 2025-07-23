@@ -733,7 +733,7 @@ namespace LogisticGame.UI
         
         /// <summary>
         /// Applies language change immediately for instant feedback.
-        /// AIDEV-NOTE: Updates localization system immediately when language is changed.
+        /// AIDEV-NOTE: Updates localization system immediately when language is changed and persists through SettingsManager.
         /// </summary>
         private void ApplyLanguageChange(string localeCode)
         {
@@ -747,10 +747,16 @@ namespace LogisticGame.UI
                     if (_settingsData != null)
                     {
                         _settingsData.SetLocaleCode(localeCode);
+                        
+                        // AIDEV-NOTE: Save the language change immediately through SettingsManager for persistence
+                        if (SettingsManager.Instance != null && SettingsManager.Instance.IsInitialized)
+                        {
+                            _ = SettingsManager.Instance.UpdateSettingsAsync(_settingsData, true);
+                        }
                     }
                     
                     if (_debugMode)
-                        Debug.Log($"SettingsModalController: Language changed to {localeCode}");
+                        Debug.Log($"SettingsModalController: Language changed to {localeCode} and saved through SettingsManager");
                 }
                 else
                 {

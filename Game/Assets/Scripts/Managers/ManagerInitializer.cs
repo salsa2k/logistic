@@ -32,7 +32,11 @@ namespace LogisticGame.Managers
             var assetManager = AssetManager.Instance;
             LogInitialization("AssetManager", assetManager != null);
 
-            // LocalizationManager for language support - early init for UI systems
+            // AIDEV-NOTE: SettingsManager must initialize before LocalizationManager to provide language settings
+            var settingsManager = SettingsManager.Instance;
+            LogInitialization("SettingsManager", settingsManager != null);
+
+            // LocalizationManager for language support - early init for UI systems (depends on SettingsManager)
             var localizationManager = LocalizationManager.Instance;
             LogInitialization("LocalizationManager", localizationManager != null);
 
@@ -74,6 +78,12 @@ namespace LogisticGame.Managers
             if (AssetManager.Instance == null)
             {
                 Debug.LogError("AssetManager not initialized!");
+                allManagersReady = false;
+            }
+
+            if (SettingsManager.Instance == null)
+            {
+                Debug.LogError("SettingsManager not initialized!");
                 allManagersReady = false;
             }
 
