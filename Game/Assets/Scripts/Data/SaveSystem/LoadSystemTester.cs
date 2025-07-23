@@ -12,7 +12,9 @@ namespace LogisticGame.SaveSystem
     public class LoadSystemTester : MonoBehaviour
     {
         [Header("Test Configuration")]
+        #pragma warning disable 0414 // Field assigned but never used - planned for future automated testing
         [SerializeField] private bool _enableAutomaticTesting = false;
+        #pragma warning restore 0414
         [SerializeField] private bool _runTestsOnStart = false;
         [SerializeField] private bool _enablePerformanceTesting = true;
         [SerializeField] private bool _enableStressTesting = false;

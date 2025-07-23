@@ -1,53 +1,58 @@
-/* AIDEV-NOTE: Button animation and transition styles for smooth interactions
-   NOTE: Unity UI Toolkit has limited CSS transition support
-   Most animations will require C# implementation */
+/* AIDEV-NOTE: Button styles for Unity UI Toolkit compatibility
+   NOTE: Unity UI Toolkit does NOT support:
+   - CSS animations (@keyframes)
+   - CSS transitions
+   - transform properties
+   - box-shadow
+   - pseudo-elements (::before, ::after)
+   
+   All animations must be implemented via C# scripting */
 
 /* =================================
-   BASE BUTTON TRANSITIONS (LIMITED SUPPORT)
+   BASIC BUTTON STATES (UNITY COMPATIBLE)
    ================================= */
 
 .btn {
-    /* Basic color transitions may work */
-    transition-property: background-color, border-color, color;
-    transition-duration: var(--transition-normal);
-    transition-timing-function: ease;
+    /* Basic styling only - no transitions */
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    color: var(--color-text-primary);
 }
 
-.btn .btn-icon {
-    /* Icon color transitions */
-    transition-property: -unity-background-image-tint-color;
-    transition-duration: var(--transition-normal);
-    transition-timing-function: ease;
+.btn:hover {
+    background-color: var(--color-hover);
+    border-color: var(--color-accent);
 }
-
-/* =================================
-   FAST TRANSITIONS (for active states)
-   ================================= */
 
 .btn:active {
-    transition-duration: var(--transition-fast);
-    transition-timing-function: ease-out;
+    background-color: var(--color-active);
 }
 
 /* =================================
-   LOADING SPINNER ANIMATION
+   BUTTON STATE INDICATORS (NO ANIMATIONS)
    ================================= */
 
+.btn-loading {
+    /* Loading state styling */
+    opacity: 0.7;
+    /* Note: Spinner animation must be implemented in C# */
+}
+
+.btn-loading .btn-text {
+    opacity: 0.6;
+}
+
 .btn-spinner {
+    /* Static spinner styling - rotation via C# */
     width: var(--icon-size-medium);
     height: var(--icon-size-medium);
     border: 2px solid var(--color-border);
-    border-top: 2px solid var(--color-accent);
+    border-top-color: var(--color-accent);
     border-radius: 50%;
-    animation: btn-spin 1s linear infinite;
 }
 
-@keyframes btn-spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Size-specific spinners */
 .btn-small .btn-spinner {
     width: var(--icon-size-small);
     height: var(--icon-size-small);
@@ -60,266 +65,97 @@
     border-width: 3px;
 }
 
-.btn-xl .btn-spinner {
-    width: 28px;
-    height: 28px;
-    border-width: 3px;
-}
-
 /* =================================
-   LOADING STATE ANIMATIONS
-   ================================= */
-
-.btn-loading {
-    transition-property: opacity;
-    transition-duration: var(--transition-normal);
-}
-
-.btn-loading .btn-text {
-    opacity: 0.6;
-    transition-property: opacity;
-    transition-duration: var(--transition-normal);
-}
-
-/* Fade in spinner */
-.btn-loading .btn-spinner {
-    opacity: 1;
-    transition-property: opacity;
-    transition-duration: var(--transition-normal);
-}
-
-/* =================================
-   PULSE ANIMATION (for primary actions)
+   VISUAL FEEDBACK CLASSES (STATIC)
    ================================= */
 
 .btn-pulse {
-    animation: btn-pulse 2s infinite;
+    /* Highlight state - pulse effect via C# */
+    border-color: var(--color-accent);
+    border-width: var(--border-width-medium);
 }
-
-@keyframes btn-pulse {
-    0% {
-        box-shadow: 0 0 0 0 var(--color-accent);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(122, 156, 198, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(122, 156, 198, 0);
-    }
-}
-
-/* =================================
-   BOUNCE ANIMATION (for success states)
-   ================================= */
 
 .btn-bounce {
-    animation: btn-bounce 0.6s ease-in-out;
+    /* Success feedback - bounce effect via C# */
+    background-color: var(--color-accent);
+    color: var(--color-primary-bg);
 }
-
-@keyframes btn-bounce {
-    0%, 20%, 53%, 80%, 100% {
-        transform: translate3d(0, 0, 0);
-    }
-    40%, 43% {
-        transform: translate3d(0, -10px, 0);
-    }
-    70% {
-        transform: translate3d(0, -5px, 0);
-    }
-    90% {
-        transform: translate3d(0, -2px, 0);
-    }
-}
-
-/* =================================
-   SHAKE ANIMATION (for error states)
-   ================================= */
 
 .btn-shake {
-    animation: btn-shake 0.5s ease-in-out;
+    /* Error feedback - shake effect via C# */
+    border-color: var(--color-destructive);
+    background-color: var(--color-destructive);
+    color: var(--color-text-primary);
 }
-
-@keyframes btn-shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
-    20%, 40%, 60%, 80% { transform: translateX(3px); }
-}
-
-/* =================================
-   FLIP ANIMATION (for toggle states)
-   ================================= */
-
-.btn-flip {
-    animation: btn-flip 0.6s ease-in-out;
-}
-
-@keyframes btn-flip {
-    0% { transform: rotateY(0); }
-    50% { transform: rotateY(-90deg); }
-    100% { transform: rotateY(0); }
-}
-
-/* =================================
-   SCALE ANIMATIONS
-   ================================= */
-
-.btn-scale-in {
-    animation: btn-scale-in 0.3s ease-out;
-}
-
-@keyframes btn-scale-in {
-    0% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.btn-scale-out {
-    animation: btn-scale-out 0.3s ease-in;
-}
-
-@keyframes btn-scale-out {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-}
-
-/* =================================
-   SLIDE ANIMATIONS
-   ================================= */
-
-.btn-slide-in-left {
-    animation: btn-slide-in-left 0.3s ease-out;
-}
-
-@keyframes btn-slide-in-left {
-    0% {
-        transform: translateX(-20px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-.btn-slide-in-right {
-    animation: btn-slide-in-right 0.3s ease-out;
-}
-
-@keyframes btn-slide-in-right {
-    0% {
-        transform: translateX(20px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* =================================
-   GLOW ANIMATION (for highlighted buttons)
-   ================================= */
 
 .btn-glow {
-    animation: btn-glow 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes btn-glow {
-    from {
-        box-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-accent), 0 0 15px var(--color-accent);
-    }
-    to {
-        box-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-accent), 0 0 30px var(--color-accent);
-    }
+    /* Highlighted state - glow effect via C# */
+    border-color: var(--color-focus);
+    border-width: var(--border-width-medium);
+    background-color: var(--color-accent-bg);
 }
 
 /* =================================
-   FADE TRANSITIONS
+   ACCESSIBILITY CLASSES
    ================================= */
 
-.btn-fade-in {
-    animation: btn-fade-in 0.3s ease-in-out;
-}
-
-@keyframes btn-fade-in {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-.btn-fade-out {
-    animation: btn-fade-out 0.3s ease-in-out;
-}
-
-@keyframes btn-fade-out {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+.btn-no-animation {
+    /* Placeholder for reduced motion preference */
+    /* All animation handling should be in C# anyway */
 }
 
 /* =================================
-   HOVER LIFT ANIMATION
+   UTILITY CLASSES
    ================================= */
 
-.btn-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition-property: transform, box-shadow;
-    transition-duration: var(--transition-normal);
-    transition-timing-function: ease;
+.btn-lift {
+    /* Hover lift effect - implement via C# if needed */
+    /* Unity UI Toolkit doesn't support transform */
 }
-
-.btn-lift:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition-duration: var(--transition-fast);
-}
-
-/* =================================
-   RIPPLE EFFECT (click feedback)
-   NOTE: Unity UI Toolkit doesn't support ::before pseudo-elements
-   This effect would need to be implemented via C# scripting
-   ================================= */
 
 .btn-ripple {
-    /* Ripple effect requires C# implementation in Unity */
-    /* Use btn-lift or btn-bounce for click feedback instead */
+    /* Click ripple effect - implement via C# */
+    /* Unity UI Toolkit doesn't support pseudo-elements */
+}
+
+.btn-fade-in,
+.btn-fade-out,
+.btn-scale-in,
+.btn-scale-out,
+.btn-slide-in-left,
+.btn-slide-in-right {
+    /* Animation classes - implement via C# */
+    /* Unity UI Toolkit doesn't support CSS animations */
 }
 
 /* =================================
-   ACCESSIBILITY: REDUCED MOTION
-   NOTE: Unity doesn't support @media queries
-   These classes can be applied conditionally via C#
+   NOTES FOR DEVELOPERS
    ================================= */
 
-.btn-no-animation,
-.btn-no-animation .btn-icon,
-.btn-no-animation.btn-spinner,
-.btn-no-animation.btn-loading,
-.btn-no-animation.btn-loading .btn-text,
-.btn-no-animation.btn-loading .btn-spinner {
-    /* Remove animations for accessibility */
-    animation: none;
-    transition: none;
-}
+/* 
+IMPORTANT: Unity UI Toolkit Limitations
 
-.btn-no-animation.btn-pulse,
-.btn-no-animation.btn-bounce,
-.btn-no-animation.btn-shake,
-.btn-no-animation.btn-flip,
-.btn-no-animation.btn-glow {
-    animation: none;
-}
+1. NO CSS Animations:
+   - @keyframes not supported
+   - animation property not supported
+   - Use C# Tweening libraries (DOTween, LeanTween) or Unity's UIElements animation system
 
-.btn-no-animation.btn-lift:hover {
-    /* Keep basic functionality without transforms */
-}
+2. NO CSS Transitions:
+   - transition property not supported
+   - Use C# for smooth state changes
+
+3. NO Transform Properties:
+   - transform: rotate(), scale(), translate() not supported
+   - Use Unity's transform system via C#
+
+4. NO Advanced CSS:
+   - box-shadow not supported
+   - backdrop-filter not supported
+   - cursor property not supported
+   - pseudo-elements (::before, ::after) not supported
+
+5. Recommended Approach:
+   - Use USS for static styling only
+   - Implement all animations and transitions in C#
+   - Use Unity's UIElements animation API or third-party tweening libraries
+*/

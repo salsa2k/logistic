@@ -42,6 +42,102 @@ MonoBehaviour:
     m_Localized: Salvar
     m_Metadata:
       m_Items: []
+  - m_Id: 950000000000
+    m_Localized: "Configura\xE7\xF5es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000001
+    m_Localized: "Restaurar Padr\xF5es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000002
+    m_Localized: Idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000003
+    m_Localized: Unidades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000004
+    m_Localized: "\xC1udio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000005
+    m_Localized: Jogabilidade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000006
+    m_Localized: Interface
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000007
+    m_Localized: 'Idioma:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000008
+    m_Localized: "Unidades de Dist\xE2ncia:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000009
+    m_Localized: "Usar M\xE9trico (km)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000010
+    m_Localized: "Formato de Hor\xE1rio:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000011
+    m_Localized: "Formato de 24 horas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000012
+    m_Localized: "Volume Principal:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000013
+    m_Localized: "Volume da M\xFAsica:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000014
+    m_Localized: "Volume dos Efeitos:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000015
+    m_Localized: "Habilitar \xC1udio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000016
+    m_Localized: "Velocidade do Jogo:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000017
+    m_Localized: "Pausar automaticamente com combustível baixo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000018
+    m_Localized: "Pausar automaticamente no vencimento do contrato"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000019
+    m_Localized: "Confirmar a\xE7\xF5es perigosas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000020
+    m_Localized: "Escala da Interface:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000021
+    m_Localized: "Mostrar dicas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000022
+    m_Localized: "Mostrar notifica\xE7\xF5es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000023
+    m_Localized: "Atraso das Dicas (segundos):"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

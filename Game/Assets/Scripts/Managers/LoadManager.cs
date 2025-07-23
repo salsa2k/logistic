@@ -35,7 +35,9 @@ namespace LogisticGame.Managers
         [SerializeField] private bool _enableProgressReporting = true;
         [SerializeField] private bool _enableErrorRecovery = true;
         [SerializeField] private bool _autoValidateBeforeLoad = true;
+        #pragma warning disable 0414 // Field assigned but never used - planned for future progress updates
         [SerializeField] private float _progressUpdateInterval = 0.1f;
+        #pragma warning restore 0414
         [SerializeField] private int _maxLoadRetries = 3;
 
         [Header("Load State")]

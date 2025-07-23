@@ -14,8 +14,10 @@ public class ModalManager : MonoBehaviour
     [Header("Modal Management Settings")]
     [SerializeField] private int _maxModalStack = 5;
     [SerializeField] private bool _enableGlobalEscapeKey = true;
+    #pragma warning disable 0414 // Field assigned but never used - planned for future implementation
     [SerializeField] private bool _enableGlobalBackdropClose = true;
     [SerializeField] private float _stackZIndexIncrement = 100f;
+    #pragma warning restore 0414
     
     [Header("Focus Management")]
     [SerializeField] private bool _manageFocusAutomatically = true;

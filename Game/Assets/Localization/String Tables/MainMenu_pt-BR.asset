@@ -38,6 +38,10 @@ MonoBehaviour:
     m_Localized: "Gerenciador de Log\xEDstica"
     m_Metadata:
       m_Items: []
+  - m_Id: 2864845131264
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

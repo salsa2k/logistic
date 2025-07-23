@@ -42,6 +42,102 @@ MonoBehaviour:
     m_Localized: Save
     m_Metadata:
       m_Items: []
+  - m_Id: 950000000000
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000001
+    m_Localized: Reset to Defaults
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000002
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000003
+    m_Localized: Units
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000004
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000005
+    m_Localized: Gameplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000006
+    m_Localized: Interface
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000007
+    m_Localized: 'Language:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000008
+    m_Localized: 'Distance Units:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000009
+    m_Localized: Use Metric (km)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000010
+    m_Localized: 'Time Format:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000011
+    m_Localized: 24-hour format
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000012
+    m_Localized: 'Master Volume:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000013
+    m_Localized: 'Music Volume:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000014
+    m_Localized: 'SFX Volume:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000015
+    m_Localized: Enable Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000016
+    m_Localized: 'Game Speed:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000017
+    m_Localized: Auto-pause on low fuel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000018
+    m_Localized: Auto-pause on contract expiry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000019
+    m_Localized: Confirm dangerous actions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000020
+    m_Localized: 'UI Scale:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000021
+    m_Localized: Show tooltips
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000022
+    m_Localized: Show notifications
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000023
+    m_Localized: 'Tooltip Delay (seconds):'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

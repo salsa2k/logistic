@@ -12,12 +12,16 @@ public class BaseModal : BaseWindow
     [Header("Modal Configuration")]
     [SerializeField] private bool _closeOnBackdropClick = true;
     [SerializeField] private bool _closeOnEscapeKey = true;
+    #pragma warning disable 0414 // Field assigned but never used - planned for future implementation
     [SerializeField] private bool _blockInteractionBehind = true;
+    #pragma warning restore 0414
     [SerializeField] private ModalSize _modalSize = ModalSize.Medium;
     
     [Header("Modal Animation")]
+    #pragma warning disable 0414 // Field assigned but never used - planned for future implementation  
     [SerializeField] private ModalAnimationType _animationType = ModalAnimationType.FadeScale;
     [SerializeField] private float _backdropFadeDuration = 0.2f;
+    #pragma warning restore 0414
     
     // Modal-specific UI elements
     private VisualElement _modalBackdrop;
@@ -105,6 +109,14 @@ public class BaseModal : BaseWindow
             _modalBackdrop.name = "modal-backdrop";
             _modalBackdrop.AddToClassList("modal-backdrop");
             _rootContainer.Insert(0, _modalBackdrop); // Insert as first child (behind window)
+            
+            if (_debugMode)
+                Debug.Log($"BaseModal ({name}): Created modal backdrop element");
+        }
+        else
+        {
+            if (_debugMode)
+                Debug.Log($"BaseModal ({name}): Found existing modal backdrop element");
         }
         
         SetupModalEventListeners();
@@ -114,7 +126,13 @@ public class BaseModal : BaseWindow
         if (_windowContainer != null)
         {
             _windowContainer.AddToClassList("modal-window");
+            
+            if (_debugMode)
+                Debug.Log($"BaseModal ({name}): Applied modal styling classes to containers");
         }
+        
+        if (_debugMode)
+            Debug.Log($"BaseModal ({name}): Modal initialization complete");
     }
     
     /// <summary>
@@ -171,6 +189,13 @@ public class BaseModal : BaseWindow
         if (_modalBackdrop != null)
         {
             _modalBackdrop.style.display = DisplayStyle.Flex;
+            
+            if (_debugMode)
+                Debug.Log($"BaseModal ({name}): Modal backdrop display set to Flex");
+        }
+        else if (_debugMode)
+        {
+            Debug.LogWarning($"BaseModal ({name}): Modal backdrop is null, cannot show backdrop");
         }
         
         // Call base implementation
@@ -183,6 +208,9 @@ public class BaseModal : BaseWindow
         
         // Publish modal-specific event
         EventBus.Publish(new ModalOpenedEvent(name, _modalSize));
+        
+        if (_debugMode)
+            Debug.Log($"BaseModal ({name}): Modal shown successfully");
     }
     
     /// <summary>
@@ -204,6 +232,13 @@ public class BaseModal : BaseWindow
         if (_modalBackdrop != null)
         {
             _modalBackdrop.style.display = DisplayStyle.None;
+            
+            if (_debugMode)
+                Debug.Log($"BaseModal ({name}): Modal backdrop display set to None");
+        }
+        else if (_debugMode)
+        {
+            Debug.LogWarning($"BaseModal ({name}): Modal backdrop is null, cannot hide backdrop");
         }
         
         // Call base implementation
@@ -213,6 +248,9 @@ public class BaseModal : BaseWindow
         
         // Publish modal-specific event
         EventBus.Publish(new ModalClosedEvent(name, _modalSize));
+        
+        if (_debugMode)
+            Debug.Log($"BaseModal ({name}): Modal hidden successfully");
     }
     
     /// <summary>

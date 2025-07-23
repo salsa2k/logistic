@@ -79,14 +79,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--spacing-sm);
+    /* gap: var(--spacing-sm); - gap not supported in Unity UI Toolkit */
 }
 
 .btn-group-vertical {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: var(--spacing-sm);
+    /* gap: var(--spacing-sm); - gap not supported in Unity UI Toolkit */
 }
 
 /* =================================
@@ -94,8 +94,7 @@
    ================================= */
 
 .btn-loading {
-    cursor: default;
-    pointer-events: none;
+    /* Note: cursor and pointer-events not supported by Unity UI Toolkit */
 }
 
 .btn-loading .btn-text {
@@ -113,8 +112,9 @@
    ================================= */
 
 .btn:focus {
-    outline: var(--focus-outline-width) solid var(--color-focus);
-    outline-offset: var(--focus-outline-offset);
+    /* Note: outline not supported by Unity UI Toolkit */
+    border-color: var(--color-focus);
+    border-width: var(--focus-outline-width);
 }
 
 /* High contrast mode support */

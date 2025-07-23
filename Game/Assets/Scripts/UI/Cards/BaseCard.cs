@@ -23,7 +23,9 @@ public class BaseCard : MonoBehaviour
     [Header("Animation Settings")]
     // AIDEV-NOTE: Animation duration for future implementation of card transitions
     // Currently not used but reserved for animation system integration
+    #pragma warning disable 0414 // Field assigned but never used - reserved for animation system integration
     [SerializeField] private float _animationDuration = 0.2f;
+    #pragma warning restore 0414
     
     // UI Elements
     private VisualElement _cardRoot;

@@ -28,7 +28,21 @@
       "mcp__unityMCP__manage_editor",
       "Bash(mv:*)",
       "mcp__unityMCP__manage_scene",
-      "mcp__unityMCP__manage_gameobject"
+      "mcp__unityMCP__manage_gameobject",
+      "Bash(wc:*)",
+      "Bash(grep:*)",
+      "mcp__unityMCP__manage_asset",
+      "mcp__serena__read_file",
+      "mcp__serena__search_for_pattern",
+      "Bash(dotnet clean:*)",
+      "Bash(csc:*)",
+      "mcp__serena__check_onboarding_performed",
+      "mcp__serena__onboarding",
+      "mcp__serena__find_file",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__write_memory",
+      "mcp__serena__find_symbol",
+      "mcp__serena__replace_regex"
     ]
   },
   "enableAllProjectMcpServers": true,

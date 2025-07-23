@@ -251,6 +251,29 @@ public class SettingsData : ScriptableObject
         OnLanguageChanged?.Invoke(_language);
     }
     
+    public void SetLocaleCode(string localeCode)
+    {
+        _localeCode = string.IsNullOrEmpty(localeCode) ? "en" : localeCode;
+        
+        // Update language enum based on locale code for consistency
+        _language = localeCode switch
+        {
+            "en" => SystemLanguage.English,
+            "pt-BR" => SystemLanguage.Portuguese,
+            "es" => SystemLanguage.Spanish,
+            "fr" => SystemLanguage.French,
+            "de" => SystemLanguage.German,
+            "it" => SystemLanguage.Italian,
+            "ru" => SystemLanguage.Russian,
+            "ja" => SystemLanguage.Japanese,
+            "ko" => SystemLanguage.Korean,
+            "zh-CN" => SystemLanguage.Chinese,
+            _ => SystemLanguage.English
+        };
+        
+        OnLanguageChanged?.Invoke(_language);
+    }
+    
     public void SetCurrencySymbol(string symbol)
     {
         _currencySymbol = string.IsNullOrEmpty(symbol) ? "$" : symbol;

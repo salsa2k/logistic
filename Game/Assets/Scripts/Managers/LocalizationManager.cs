@@ -38,7 +38,7 @@ namespace LogisticGame.Managers
         public bool IsInitialized { get; private set; }
 
         // Common locale identifiers
-        public const string LOCALE_ENGLISH = "en-US";
+        public const string LOCALE_ENGLISH = "en";
         public const string LOCALE_PORTUGUESE = "pt-BR";
 
         private void Awake()
@@ -241,7 +241,16 @@ namespace LogisticGame.Managers
 
         private string GetSavedLanguage()
         {
-            return PlayerPrefs.GetString("SelectedLanguage", "");
+            string savedLanguage = PlayerPrefs.GetString("SelectedLanguage", "");
+            
+            // Handle legacy locale codes that might be saved from previous versions
+            if (savedLanguage == "en-US")
+            {
+                savedLanguage = LOCALE_ENGLISH;
+                SaveLanguage(savedLanguage); // Update the saved preference
+            }
+            
+            return savedLanguage;
         }
 
         // Utility method for getting localized strings programmatically

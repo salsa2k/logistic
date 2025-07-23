@@ -15,9 +15,9 @@
     margin-bottom: var(--spacing-md);
     opacity: 0;
     scale: 0.8 0.8;
-    transition-property: opacity, scale, translate;
-    transition-duration: var(--transition-slow);
-    transition-timing-function: ease-out;
+    /* transition-property: opacity, scale, translate; - transition properties not fully supported in Unity UI Toolkit */
+    /* transition-duration: var(--transition-slow); - transition properties not fully supported in Unity UI Toolkit */
+    /* transition-timing-function: ease-out; - transition properties not fully supported in Unity UI Toolkit */
 }
 
 .notification.visible {
@@ -28,7 +28,7 @@
 .notification.dismissing {
     opacity: 0;
     scale: 0.8 0.8;
-    transition-timing-function: ease-in;
+    /* transition-timing-function: ease-in; - transition properties not fully supported in Unity UI Toolkit */
 }
 
 /* =================================
@@ -41,7 +41,7 @@
     border-width: var(--border-width-thin);
     border-radius: var(--border-radius-medium);
     padding: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); - box-shadow not supported in Unity UI Toolkit */
     overflow: hidden;
 }
 
@@ -90,8 +90,8 @@
 .notification-message {
     color: var(--color-text-primary);
     font-size: var(--font-size-medium);
-    white-space: normal;
-    text-overflow: ellipsis;
+    -unity-word-wrap: true;
+    /* Note: text-overflow not supported by Unity UI Toolkit */
     -unity-text-align: middle-left;
     margin: 0;
     padding: 0;
@@ -117,8 +117,8 @@
     border-radius: 50%;
     padding: 0;
     margin: 0;
-    transition-property: background-color;
-    transition-duration: var(--transition-fast);
+    /* transition-property: background-color; - transition properties not fully supported in Unity UI Toolkit */
+    /* transition-duration: var(--transition-fast); - transition properties not fully supported in Unity UI Toolkit */
 }
 
 .notification-close-button:hover {
@@ -167,8 +167,8 @@
     margin-left: var(--spacing-sm);
     min-width: 60px;
     height: 28px;
-    transition-property: background-color, color;
-    transition-duration: var(--transition-fast);
+    /* transition-property: background-color, color; - transition properties not fully supported in Unity UI Toolkit */
+    /* transition-duration: var(--transition-fast); - transition properties not fully supported in Unity UI Toolkit */
 }
 
 .notification-action-button:hover {
@@ -199,9 +199,9 @@
     height: 100%;
     background-color: var(--color-accent);
     width: 100%;
-    transition-property: width;
-    transition-duration: 0.1s;
-    transition-timing-function: linear;
+    /* transition-property: width; - transition properties not fully supported in Unity UI Toolkit */
+    /* transition-duration: 0.1s; - transition properties not fully supported in Unity UI Toolkit */
+    /* transition-timing-function: linear; - transition properties not fully supported in Unity UI Toolkit */
 }
 
 /* =================================
@@ -258,18 +258,18 @@
    ================================= */
 
 .notification.stacked-1 {
-    translate: -50% -60px;
-    z-index: 999;
+    /* Note: translate and z-index not supported by Unity UI Toolkit */
+    /* Notification stacking must be handled in C# */
 }
 
 .notification.stacked-2 {
-    translate: -50% -120px;
-    z-index: 998;
+    /* Note: translate and z-index not supported by Unity UI Toolkit */
+    /* Notification stacking must be handled in C# */
 }
 
 .notification.stacked-3 {
-    translate: -50% -180px;
-    z-index: 997;
+    /* Note: translate and z-index not supported by Unity UI Toolkit */
+    /* Notification stacking must be handled in C# */
 }
 
 /* =================================
@@ -290,22 +290,22 @@
     
     .notification-message {
         color: var(--color-text-primary);
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+        /* text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); - text-shadow not supported in Unity UI Toolkit */
     }
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
     .notification {
-        transition-duration: 0.1s;
+        /* transition-duration: 0.1s; - transition properties not fully supported in Unity UI Toolkit */
     }
     
     .notification-close-button {
-        transition-duration: 0s;
+        /* transition-duration: 0s; - transition properties not fully supported in Unity UI Toolkit */
     }
     
     .notification-action-button {
-        transition-duration: 0s;
+        /* transition-duration: 0s; - transition properties not fully supported in Unity UI Toolkit */
     }
 }
 

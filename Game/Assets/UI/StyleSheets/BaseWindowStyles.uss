@@ -246,7 +246,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.3);
-    z-index: -1; /* Behind the window but above everything else */
+    /* Note: z-index not supported by Unity UI Toolkit */
 }
 
 /* =================================
@@ -369,7 +369,8 @@
    FOCUS AND INTERACTION STATES
    ================================= */
 
-.base-window:focus-within .base-window-container {
+/* Unity UI Toolkit doesn't support :focus-within, use .focused class instead */
+.base-window.focused .base-window-container {
     border-color: var(--color-accent);
 }
 
@@ -415,7 +416,7 @@
     bottom: 0;
     align-items: center;
     justify-content: center;
-    z-index: 1000; /* High z-index for modal layering */
+    /* Note: z-index not supported by Unity UI Toolkit */
 }
 
 /* Enhanced modal backdrop */
@@ -428,12 +429,11 @@
     background-color: rgba(0, 0, 0, 0.6); /* Darker backdrop for modals */
     align-items: center;
     justify-content: center;
-    /* Backdrop blur effect simulation */
-    backdrop-filter: blur(2px);
+    /* Note: backdrop-filter not supported by Unity UI Toolkit */
 }
 
 .modal-backdrop:hover {
-    cursor: pointer; /* Indicate backdrop is clickable */
+    /* Note: cursor property not supported by Unity UI Toolkit */
 }
 
 /* Modal window container */
@@ -449,12 +449,11 @@
     border-top-color: var(--color-accent-alpha);
     border-right-color: var(--color-accent);
     border-bottom-color: var(--color-accent);
-    /* Prevent backdrop clicks from reaching the window */
-    pointer-events: auto;
+    /* Note: pointer-events not supported by Unity UI Toolkit */
 }
 
 .modal-window:hover {
-    cursor: default; /* Reset cursor for window content */
+    /* Note: cursor property not supported by Unity UI Toolkit */
 }
 
 /* =================================
@@ -579,7 +578,7 @@
     color: var(--color-text-primary);
     font-size: var(--font-size-medium);
     -unity-text-align: middle-left;
-    white-space: normal;
+    -unity-word-wrap: true;
     padding-bottom: var(--spacing-md);
 }
 
@@ -597,7 +596,7 @@
     align-items: center;
     min-height: 60px;
     flex-shrink: 0;
-    gap: var(--spacing-sm);
+    /* /* gap: var(--spacing-sm); - gap not supported in Unity UI Toolkit */ - gap not supported in Unity UI Toolkit, use margin/padding instead */
 }
 
 .modal-footer.center {
@@ -726,7 +725,8 @@
     border-width: var(--border-width-thick);
 }
 
-.modal-window:focus-within {
+/* Unity UI Toolkit doesn't support :focus-within, use .focused class instead */
+.modal-window.focused {
     border-color: var(--color-accent);
 }
 
@@ -778,7 +778,7 @@
 
 .modal-mobile .modal-footer {
     flex-direction: column;
-    gap: var(--spacing-xs);
+    /* /* gap: var(--spacing-xs); - gap not supported in Unity UI Toolkit */ - gap not supported in Unity UI Toolkit */
 }
 
 .modal-mobile .modal-button {
@@ -790,25 +790,14 @@
    MODAL STACK LAYERING
    ================================= */
 
-/* AIDEV-NOTE: Z-index management for stacked modals */
-.modal-stack-1 {
-    z-index: 1000;
-}
-
-.modal-stack-2 {
-    z-index: 1100;
-}
-
-.modal-stack-3 {
-    z-index: 1200;
-}
-
-.modal-stack-4 {
-    z-index: 1300;
-}
-
+/* AIDEV-NOTE: Modal stacking managed by Unity UI hierarchy order, not z-index */
+.modal-stack-1,
+.modal-stack-2,
+.modal-stack-3,
+.modal-stack-4,
 .modal-stack-5 {
-    z-index: 1400;
+    /* Note: z-index not supported by Unity UI Toolkit */
+    /* Modal stacking handled by Unity's VisualElement hierarchy */
 }
 
 /* =================================
@@ -827,12 +816,10 @@
     display: none;
 }
 
-.modal-no-backdrop-close .modal-backdrop {
-    pointer-events: none;
-}
-
+.modal-no-backdrop-close .modal-backdrop,
 .modal-no-backdrop-close .modal-window {
-    pointer-events: auto;
+    /* Note: pointer-events not supported by Unity UI Toolkit */
+    /* Backdrop interaction handling must be done in C# */
 }
 
 .modal-transparent-backdrop .modal-backdrop {
@@ -844,5 +831,6 @@
 }
 
 .modal-blurred-backdrop .modal-backdrop {
-    backdrop-filter: blur(4px);
+    /* Note: backdrop-filter not supported by Unity UI Toolkit */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background instead of blur */
 }

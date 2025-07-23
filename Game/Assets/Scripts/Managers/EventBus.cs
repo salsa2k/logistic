@@ -153,6 +153,49 @@ namespace LogisticGame.Events
     }
 
     public struct AllModalsClosedEvent : IGameEvent { }
+    
+    // AIDEV-NOTE: Settings system events
+    public struct SettingsLoadedEvent : IGameEvent
+    {
+        public bool Success { get; }
+        public SettingsLoadedEvent(bool success) => Success = success;
+    }
+    
+    public struct SettingsSavedEvent : IGameEvent
+    {
+        public bool Success { get; }
+        public SettingsSavedEvent(bool success) => Success = success;
+    }
+    
+    public struct SettingsChangedEvent : IGameEvent
+    {
+        public string SettingName { get; }
+        public object OldValue { get; }
+        public object NewValue { get; }
+        public SettingsChangedEvent(string settingName, object oldValue, object newValue)
+        {
+            SettingName = settingName;
+            OldValue = oldValue;
+            NewValue = newValue;
+        }
+    }
+    
+    public struct LanguageChangedEvent : IGameEvent
+    {
+        public string OldLanguage { get; }
+        public string NewLanguage { get; }
+        public LanguageChangedEvent(string oldLanguage, string newLanguage)
+        {
+            OldLanguage = oldLanguage;
+            NewLanguage = newLanguage;
+        }
+    }
+    
+    public struct UnitSystemChangedEvent : IGameEvent
+    {
+        public bool IsMetric { get; }
+        public UnitSystemChangedEvent(bool isMetric) => IsMetric = isMetric;
+    }
 
     // AIDEV-NOTE: Notification system events
     public enum NotificationType

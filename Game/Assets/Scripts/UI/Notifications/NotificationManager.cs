@@ -19,7 +19,9 @@ namespace LogisticGame.UI.Notifications
 
         [Header("Audio Settings")]
         [SerializeField] private bool _playAudioCues = true;
+        #pragma warning disable 0414 // Field assigned but never used - will be used when audio system is implemented
         [SerializeField] private float _audioVolume = 0.7f;
+        #pragma warning restore 0414
 
         private readonly Queue<Notification> _notificationQueue = new Queue<Notification>();
         private readonly List<Notification> _visibleNotifications = new List<Notification>();

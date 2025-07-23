@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <!-- AIDEV-NOTE: Settings modal dialog with organized sections for game preferences -->
+    <!-- Root modal container -->
+    <engine:VisualElement name="base-window-root" class="modal-root container-fullscreen settings-modal">
+        
+        <!-- Modal backdrop -->
+        <engine:VisualElement name="modal-backdrop" class="modal-backdrop">
+            
+            <!-- Settings modal window -->
+            <engine:VisualElement name="window-container" class="modal-window modal-large">
+                
+                <!-- Modal header -->
+                <engine:VisualElement name="title-bar" class="modal-header">
+                    <engine:Label name="window-title" class="modal-title" text="Settings" />
+                    <engine:Button name="close-button" class="modal-close-button" text="×" />
+                </engine:VisualElement>
+                
+                <!-- Settings content with scrolling -->
+                <engine:ScrollView name="content-scroll" class="modal-content-scroll settings-content-scroll" 
+                                   vertical-scroller-visibility="Auto" 
+                                   horizontal-scroller-visibility="Hidden">
+                    <engine:VisualElement name="content-container" class="modal-content settings-content">
+                        
+                        <!-- Language Settings Section -->
+                        <engine:VisualElement name="language-section" class="settings-section">
+                            <engine:Label class="settings-header" text="Language" />
+                            <engine:VisualElement class="settings-control">
+                                <engine:Label class="settings-label" text="Language:" />
+                                <engine:DropdownField name="language-dropdown" class="settings-dropdown" 
+                                                     label="" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        
+                        <!-- Unit System Settings Section -->
+                        <engine:VisualElement name="units-section" class="settings-section">
+                            <engine:Label class="settings-header" text="Units" />
+                            <engine:VisualElement class="settings-control">
+                                <engine:Label class="settings-label" text="Distance Units:" />
+                                <engine:Toggle name="metric-toggle" class="settings-toggle" 
+                                              label="Use Metric (km)" />
+                            </engine:VisualElement>
+                            <engine:VisualElement class="settings-control">
+                                <engine:Label class="settings-label" text="Time Format:" />
+                                <engine:Toggle name="time-format-toggle" class="settings-toggle" 
+                                              label="24-hour format" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        
+                        <!-- Audio Settings Section -->
+                        <engine:VisualElement name="audio-section" class="settings-section">
+                            <engine:Label class="settings-header" text="Audio" />
+                            <engine:VisualElement class="settings-control">
+                                <engine:Label class="settings-label" text="Master Volume:" />
+                                <engine:Slider name="master-volume-slider" class="settings-slider" 
+                                              low-value="0" high-value="1" show-input-field="true" />
+                            </engine:VisualElement>
+                            <engine:VisualElement class="settings-control">
+                                <engine:Label class="settings-label" text="Music Volume:" />
+                                <engine:Slider name="music-volume-slider" class="settings-slider" 
+                                              low-value="0" high-value="1" show-input-field="true" />
+                            </engine:VisualElement>
+                            <engine:VisualElement class="settings-control">
+                                <engine:Label class="settings-label" text="SFX Volume:" />
+                                <engine:Slider name="sfx-volume-slider" class="settings-slider" 
+                                              low-value="0" high-value="1" show-input-field="true" />
+                            </engine:VisualElement>
+                            <engine:VisualElement class="settings-control">
+                                <engine:Toggle name="audio-enabled-toggle" class="settings-toggle" 
+                                              label="Enable Audio" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        
+                        <!-- Gameplay Settings Section -->
+                        <engine:VisualElement name="gameplay-section" class="settings-section">
+                            <engine:Label class="settings-header" text="Gameplay" />
+                            <engine:VisualElement class="settings-control">
+                                <engine:Label class="settings-label" text="Game Speed:" />
+                                <engine:Slider name="game-speed-slider" class="settings-slider" 
+                                              low-value="0.1" high-value="5" show-input-field="true" />
+                            </engine:VisualElement>
+                            <engine:VisualElement class="settings-control">
+                                <engine:Toggle name="autopause-fuel-toggle" class="settings-toggle" 
+                                              label="Auto-pause on low fuel" />
+                            </engine:VisualElement>
+                            <engine:VisualElement class="settings-control">
+                                <engine:Toggle name="autopause-contract-toggle" class="settings-toggle" 
+                                              label="Auto-pause on contract expiry" />
+                            </engine:VisualElement>
+                            <engine:VisualElement class="settings-control">
+                                <engine:Toggle name="confirm-dangerous-toggle" class="settings-toggle" 
+                                              label="Confirm dangerous actions" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        
+                        <!-- UI Settings Section -->
+                        <engine:VisualElement name="ui-section" class="settings-section">
+                            <engine:Label class="settings-header" text="Interface" />
+                            <engine:VisualElement class="settings-control">
+                                <engine:Label class="settings-label" text="UI Scale:" />
+                                <engine:Slider name="ui-scale-slider" class="settings-slider" 
+                                              low-value="0.5" high-value="2" show-input-field="true" />
+                            </engine:VisualElement>
+                            <engine:VisualElement class="settings-control">
+                                <engine:Toggle name="show-tooltips-toggle" class="settings-toggle" 
+                                              label="Show tooltips" />
+                            </engine:VisualElement>
+                            <engine:VisualElement class="settings-control">
+                                <engine:Toggle name="show-notifications-toggle" class="settings-toggle" 
+                                              label="Show notifications" />
+                            </engine:VisualElement>
+                            <engine:VisualElement class="settings-control">
+                                <engine:Label class="settings-label" text="Tooltip Delay (seconds):" />
+                                <engine:Slider name="tooltip-delay-slider" class="settings-slider" 
+                                              low-value="0" high-value="5" show-input-field="true" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        
+                    </engine:VisualElement>
+                </engine:ScrollView>
+                
+                <!-- Modal footer with action buttons -->
+                <engine:VisualElement name="footer-container" class="modal-footer settings-footer">
+                    <engine:Button name="reset-defaults-button" class="modal-button modal-button-secondary" text="Reset to Defaults" />
+                    <engine:VisualElement class="footer-spacer" />
+                    <engine:Button name="cancel-button" class="modal-button modal-button-cancel" text="Cancel" />
+                    <engine:Button name="apply-button" class="modal-button modal-button-primary" text="Apply" />
+                </engine:VisualElement>
+                
+            </engine:VisualElement>
+            
+        </engine:VisualElement>
+        
+    </engine:VisualElement>
+</engine:UXML>

@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Key: Title_Text
     m_Metadata:
       m_Items: []
+  - m_Id: 2864845131264
+    m_Key: Credits_Button
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,0 +1,549 @@
+/* AIDEV-NOTE: Settings modal specific styles with dark graphite theme */
+
+/* =================================
+   SETTINGS MODAL CONTAINER STYLES
+   ================================= */
+
+.settings-modal {
+    /* Inherits base modal styles and adds settings-specific styles */
+    /* Ensure the modal root is positioned and visible */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Ensure the modal backdrop is visible and covers everything */
+.settings-modal .modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker backdrop for better visibility */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.settings-window {
+    /* Specific styling for settings modal window container */
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-accent);
+    border-width: var(--border-width-medium);
+    border-radius: var(--border-radius-large);
+    /* Ensure the window is visible and properly sized */
+    width: 800px;
+    height: 600px;
+    max-width: 90%;
+    max-height: 80%;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Override modal-window class to ensure proper sizing */
+.settings-modal .modal-window {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-accent);
+    border-width: var(--border-width-medium);
+    border-radius: var(--border-radius-large);
+    width: 800px;
+    height: 600px;
+    max-width: 90%;
+    max-height: 80%;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.settings-content-scroll {
+    /* Enhanced scrolling for settings with many options */
+    background-color: var(--color-secondary-bg);
+}
+
+.settings-content {
+    /* Settings content area with organized sections */
+    background-color: var(--color-secondary-bg);
+    padding: var(--spacing-lg);
+}
+
+/* =================================
+   SETTINGS SECTION STYLES
+   ================================= */
+
+.settings-section {
+    background-color: var(--color-primary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    flex-direction: column;
+}
+
+/* Unity UI Toolkit doesn't support :last-child, use specific class instead */
+.settings-section.last-section {
+    margin-bottom: 0;
+}
+
+.settings-header {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-large);
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+    padding-bottom: var(--spacing-xs);
+    border-bottom-color: var(--color-border);
+    border-bottom-width: var(--border-width-thin);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* =================================
+   SETTINGS CONTROL STYLES
+   ================================= */
+
+.settings-control {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 36px;
+    padding: var(--spacing-xs) 0;
+}
+
+.settings-label {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+    -unity-text-align: middle-left;
+    flex-grow: 1;
+    min-width: 120px;
+    padding-right: var(--spacing-sm);
+}
+
+/* =================================
+   SETTINGS DROPDOWN STYLES
+   ================================= */
+
+.settings-dropdown {
+    background-color: var(--color-accent-bg);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    min-width: 200px;
+    height: 32px;
+    font-size: var(--font-size-medium);
+    padding: 0 var(--spacing-sm);
+}
+
+.settings-dropdown:hover {
+    border-color: var(--color-accent);
+    background-color: var(--color-hover);
+}
+
+.settings-dropdown:focus {
+    border-color: var(--color-focus);
+    border-width: var(--border-width-medium);
+}
+
+/* Dropdown arrow styling */
+.settings-dropdown > .unity-base-field__input {
+    background-color: transparent;
+    border-width: 0;
+    color: var(--color-text-primary);
+    padding-right: 20px;
+}
+
+.settings-dropdown > .unity-base-field__input:hover {
+    background-color: transparent;
+}
+
+/* =================================
+   SETTINGS TOGGLE STYLES
+   ================================= */
+
+.settings-toggle {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    min-width: 200px;
+    font-size: var(--font-size-medium);
+    color: var(--color-text-primary);
+}
+
+.settings-toggle > .unity-toggle__input {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    width: 44px;
+    height: 24px;
+    margin-right: var(--spacing-sm);
+    margin-left: 0;
+}
+
+.settings-toggle > .unity-toggle__input:hover {
+    border-color: var(--color-accent);
+}
+
+.settings-toggle > .unity-toggle__input:focus {
+    border-color: var(--color-focus);
+    border-width: var(--border-width-medium);
+}
+
+.settings-toggle > .unity-toggle__input:checked {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.settings-toggle > .unity-toggle__input:checked:hover {
+    background-color: var(--color-focus);
+    border-color: var(--color-focus);
+}
+
+/* Toggle checkmark styling */
+.settings-toggle > .unity-toggle__input > .unity-toggle__checkmark {
+    background-color: var(--color-text-primary);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    margin: 2px;
+    /* Note: transition not supported by Unity UI Toolkit */
+}
+
+.settings-toggle > .unity-toggle__input:checked > .unity-toggle__checkmark {
+    /* Note: transform translateX may not be supported - using margin instead */
+    margin-left: 18px;
+}
+
+/* Toggle label styling */
+.settings-toggle > .unity-toggle__label {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-medium);
+    -unity-text-align: middle-left;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/* =================================
+   SETTINGS SLIDER STYLES
+   ================================= */
+
+.settings-slider {
+    min-width: 200px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.settings-slider > .unity-base-slider__tracker {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    height: 6px;
+    margin: 0 var(--spacing-xs);
+}
+
+.settings-slider > .unity-base-slider__dragger-border {
+    background-color: var(--color-accent);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+}
+
+.settings-slider > .unity-base-slider__dragger {
+    background-color: var(--color-text-primary);
+    border-width: 0;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    margin: 2px;
+}
+
+.settings-slider:hover > .unity-base-slider__dragger-border {
+    background-color: var(--color-hover);
+    border-color: var(--color-accent);
+}
+
+.settings-slider:active > .unity-base-slider__dragger-border {
+    background-color: var(--color-active);
+}
+
+.settings-slider:focus > .unity-base-slider__dragger-border {
+    border-color: var(--color-focus);
+    border-width: var(--border-width-medium);
+}
+
+/* Slider input field styling */
+.settings-slider .unity-base-slider__text-field {
+    background-color: var(--color-accent-bg);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    width: 60px;
+    height: 24px;
+    font-size: var(--font-size-small);
+    margin-left: var(--spacing-sm);
+    padding: 0 var(--spacing-xs);
+    -unity-text-align: middle-center;
+}
+
+.settings-slider .unity-base-slider__text-field:hover {
+    border-color: var(--color-accent);
+}
+
+.settings-slider .unity-base-slider__text-field:focus {
+    border-color: var(--color-focus);
+    border-width: var(--border-width-medium);
+}
+
+/* =================================
+   SETTINGS FOOTER STYLES
+   ================================= */
+
+.settings-footer {
+    background-color: var(--color-primary-bg);
+    border-top-color: var(--color-accent);
+    border-top-width: var(--border-width-medium);
+    padding: var(--spacing-md) var(--spacing-lg);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+}
+
+.footer-spacer {
+    flex-grow: 1;
+}
+
+/* =================================
+   SETTINGS BUTTON VARIANTS
+   ================================= */
+
+.modal-button-secondary {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-text-secondary);
+    border-color: var(--color-border);
+}
+
+.modal-button-secondary:hover {
+    background-color: var(--color-hover);
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+}
+
+.modal-button-secondary:active {
+    background-color: var(--color-active);
+}
+
+/* Reset button specific styling */
+.modal-button-secondary.reset-button {
+    color: var(--color-destructive);
+    border-color: var(--color-destructive);
+}
+
+.modal-button-secondary.reset-button:hover {
+    background-color: var(--color-destructive);
+    color: var(--color-text-primary);
+    border-color: var(--color-destructive);
+}
+
+.modal-button-secondary.reset-button:active {
+    background-color: var(--color-destructive-active);
+    border-color: var(--color-destructive-active);
+}
+
+/* =================================
+   SETTINGS ACCESSIBILITY FEATURES
+   ================================= */
+
+/* High contrast mode for settings */
+.settings-high-contrast .settings-section {
+    border-width: var(--border-width-medium);
+    border-color: var(--color-accent);
+}
+
+.settings-high-contrast .settings-header {
+    border-bottom-width: var(--border-width-medium);
+    border-bottom-color: var(--color-accent);
+}
+
+.settings-high-contrast .settings-dropdown {
+    border-width: var(--border-width-medium);
+}
+
+.settings-high-contrast .settings-toggle > .unity-toggle__input {
+    border-width: var(--border-width-medium);
+}
+
+.settings-high-contrast .settings-slider > .unity-base-slider__dragger-border {
+    border-width: var(--border-width-medium);
+}
+
+/* Focus indicators for keyboard navigation */
+/* Unity UI Toolkit doesn't support :focus-within, use .focused class instead */
+.settings-control.focused {
+    background-color: var(--color-primary-bg-alpha);
+    border-radius: var(--border-radius-small);
+    outline: var(--focus-outline-width) solid var(--color-focus);
+    outline-offset: var(--focus-outline-offset);
+}
+
+/* =================================
+   SETTINGS RESPONSIVE DESIGN
+   ================================= */
+
+/* Compact layout for smaller modal sizes */
+.settings-compact .settings-control {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: auto;
+}
+
+.settings-compact .settings-label {
+    min-width: auto;
+    padding-right: 0;
+    padding-bottom: var(--spacing-xs);
+}
+
+.settings-compact .settings-dropdown,
+.settings-compact .settings-toggle,
+.settings-compact .settings-slider {
+    width: 100%;
+    min-width: auto;
+}
+
+/* Mobile-friendly settings layout */
+.settings-mobile .settings-section {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.settings-mobile .settings-content {
+    padding: var(--spacing-md);
+}
+
+.settings-mobile .settings-control {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.settings-mobile .settings-label {
+    -unity-text-align: middle-left;
+    padding-bottom: var(--spacing-xs);
+}
+
+.settings-mobile .settings-footer {
+    flex-direction: column;
+    padding: var(--spacing-md);
+}
+
+.settings-mobile .modal-button {
+    width: 100%;
+    margin: 0;
+}
+
+/* =================================
+   SETTINGS VALIDATION STYLES
+   ================================= */
+
+/* Error states for invalid settings */
+.settings-control.error .settings-dropdown {
+    border-color: var(--color-destructive);
+    border-width: var(--border-width-medium);
+}
+
+.settings-control.error .settings-toggle > .unity-toggle__input {
+    border-color: var(--color-destructive);
+    border-width: var(--border-width-medium);
+}
+
+.settings-control.error .settings-slider > .unity-base-slider__tracker {
+    border-color: var(--color-destructive);
+    border-width: var(--border-width-medium);
+}
+
+.settings-control.error .settings-label {
+    color: var(--color-destructive);
+}
+
+/* Warning states for settings that need attention */
+.settings-control.warning .settings-dropdown {
+    border-color: #ff9800; /* Orange for warnings */
+    border-width: var(--border-width-medium);
+}
+
+.settings-control.warning .settings-label {
+    color: #ff9800;
+}
+
+/* Success states for confirmed settings */
+.settings-control.success .settings-dropdown {
+    border-color: #4caf50; /* Green for success */
+    border-width: var(--border-width-thin);
+}
+
+.settings-control.success .settings-label {
+    color: #4caf50;
+}
+
+/* =================================
+   SETTINGS ANIMATION PLACEHOLDERS
+   ================================= */
+
+/* AIDEV-NOTE: Animation placeholders for future enhancement */
+.settings-section.expand {
+    /* Placeholder for section expand animation */
+}
+
+.settings-section.collapse {
+    /* Placeholder for section collapse animation */
+}
+
+.settings-control.highlight {
+    /* Placeholder for control highlight animation when value changes */
+    background-color: var(--color-accent-bg);
+    border-radius: var(--border-radius-small);
+}
+
+/* =================================
+   SETTINGS UTILITY CLASSES
+   ================================= */
+
+.settings-section.disabled {
+    opacity: 0.5;
+    /* Note: pointer-events not supported by Unity UI Toolkit */
+}
+
+.settings-control.disabled {
+    opacity: 0.5;
+    /* Note: pointer-events not supported by Unity UI Toolkit */
+}
+
+.settings-description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-small);
+    -unity-text-align: middle-left;
+    padding-top: var(--spacing-xs);
+    margin-left: var(--spacing-sm);
+    font-style: italic;
+}
+
+.settings-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin: var(--spacing-md) 0;
+    border-width: 0;
+}
+
+.settings-preview {
+    background-color: var(--color-accent-bg);
+    border-color: var(--color-border);
+    border-width: var(--border-width-thin);
+    border-radius: var(--border-radius-small);
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-small);
+    -unity-text-align: middle-center;
+}

@@ -13,7 +13,7 @@
 .btn-primary:active {
     background-color: var(--color-active);
     border-color: var(--color-accent);
-    transform: translateY(0);
+    /* transform: translateY(0); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-primary:disabled {
@@ -21,7 +21,7 @@
     color: var(--color-text-disabled);
     border-color: var(--color-border-alpha);
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }
 
 .btn-primary:disabled .btn-icon {
@@ -35,13 +35,13 @@
 .btn-secondary:hover {
     background-color: var(--color-accent-bg);
     border-color: var(--color-accent);
-    transform: translateY(-1px);
+    /* transform: translateY(-1px); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-secondary:active {
     background-color: var(--color-active);
     border-color: var(--color-accent);
-    transform: translateY(0);
+    /* transform: translateY(0); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-secondary:disabled {
@@ -49,7 +49,7 @@
     color: var(--color-text-disabled);
     border-color: var(--color-border-alpha);
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }
 
 .btn-secondary:disabled .btn-icon {
@@ -63,13 +63,13 @@
 .btn-destructive:hover {
     background-color: var(--color-destructive-hover);
     border-color: var(--color-destructive-hover);
-    transform: translateY(-1px);
+    /* transform: translateY(-1px); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-destructive:active {
     background-color: var(--color-destructive-active);
     border-color: var(--color-destructive-active);
-    transform: translateY(0);
+    /* transform: translateY(0); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-destructive:disabled {
@@ -77,7 +77,7 @@
     color: var(--color-text-disabled);
     border-color: var(--color-border-alpha);
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }
 
 .btn-destructive:disabled .btn-icon {
@@ -100,7 +100,7 @@
 .btn-icon-only:active {
     background-color: var(--color-active);
     color: var(--color-text-primary);
-    transform: scale(0.95);
+    /* transform: scale(0.95); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-icon-only:active .btn-icon {
@@ -111,7 +111,7 @@
     background-color: transparent;
     color: var(--color-text-disabled);
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }
 
 .btn-icon-only:disabled .btn-icon {
@@ -134,7 +134,7 @@
 .btn-text:active {
     color: var(--color-accent);
     background-color: var(--color-active);
-    transform: scale(0.98);
+    /* transform: scale(0.98); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-text:active .btn-icon {
@@ -145,7 +145,7 @@
     color: var(--color-text-disabled);
     background-color: transparent;
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }
 
 .btn-text:disabled .btn-icon {
@@ -160,7 +160,7 @@
     background-color: var(--color-accent);
     color: var(--color-text-primary);
     border-color: var(--color-accent);
-    transform: translateY(-1px);
+    /* transform: translateY(-1px); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-outlined:hover .btn-icon {
@@ -171,7 +171,7 @@
     background-color: var(--color-active);
     color: var(--color-text-primary);
     border-color: var(--color-accent);
-    transform: translateY(0);
+    /* transform: translateY(0); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-outlined:active .btn-icon {
@@ -183,7 +183,7 @@
     color: var(--color-text-disabled);
     border-color: var(--color-border-alpha);
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }
 
 .btn-outlined:disabled .btn-icon {
@@ -206,7 +206,7 @@
 
 .btn-toggle:active {
     background-color: var(--color-active);
-    transform: scale(0.98);
+    /* transform: scale(0.98); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-toggle.btn-toggle-selected:hover {
@@ -216,7 +216,7 @@
 
 .btn-toggle.btn-toggle-selected:active {
     background-color: var(--color-active);
-    transform: scale(0.98);
+    /* transform: scale(0.98); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-toggle:disabled {
@@ -224,7 +224,7 @@
     color: var(--color-text-disabled);
     border-color: var(--color-border-alpha);
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }
 
 .btn-toggle:disabled .btn-icon {
@@ -247,7 +247,7 @@
 .btn-ghost:active {
     background-color: var(--color-active);
     color: var(--color-text-primary);
-    transform: scale(0.95);
+    /* transform: scale(0.95); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-ghost:active .btn-icon {
@@ -258,7 +258,7 @@
     background-color: transparent;
     color: var(--color-text-disabled);
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }
 
 .btn-ghost:disabled .btn-icon {
@@ -280,14 +280,14 @@
 
 .btn-toolbar:active {
     background-color: var(--color-active);
-    transform: scale(0.95);
+    /* transform: scale(0.95); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-toolbar:disabled {
     background-color: transparent;
     color: var(--color-text-disabled);
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }
 
 .btn-toolbar:disabled .btn-icon {
@@ -301,14 +301,14 @@
 .btn-fab:hover {
     background-color: var(--color-focus);
     border-color: var(--color-focus);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    /* transform: translateY(-2px); - transform not supported in Unity UI Toolkit */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); - box-shadow not supported in Unity UI Toolkit */
 }
 
 .btn-fab:active {
     background-color: var(--color-active);
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    /* transform: translateY(0); - transform not supported in Unity UI Toolkit */
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); - box-shadow not supported in Unity UI Toolkit */
 }
 
 .btn-fab:disabled {
@@ -316,8 +316,8 @@
     color: var(--color-text-disabled);
     border-color: var(--color-border-alpha);
     cursor: default;
-    transform: none;
-    box-shadow: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
+    /* box-shadow: none; - box-shadow not supported in Unity UI Toolkit */
 }
 
 .btn-fab:disabled .btn-icon {
@@ -329,8 +329,7 @@
    ================================= */
 
 .btn-loading {
-    cursor: default;
-    pointer-events: none;
+    /* Note: cursor and pointer-events not supported by Unity UI Toolkit */
 }
 
 .btn-loading .btn-text {
@@ -355,13 +354,13 @@
 .btn-success:hover {
     background-color: #45a049;
     border-color: #45a049;
-    transform: translateY(-1px);
+    /* transform: translateY(-1px); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-success:active {
     background-color: #3d8b40;
     border-color: #3d8b40;
-    transform: translateY(0);
+    /* transform: translateY(0); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-success:disabled {
@@ -369,19 +368,19 @@
     color: var(--color-text-disabled);
     border-color: var(--color-border-alpha);
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }
 
 .btn-warning:hover {
     background-color: #f57c00;
     border-color: #f57c00;
-    transform: translateY(-1px);
+    /* transform: translateY(-1px); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-warning:active {
     background-color: #ef6c00;
     border-color: #ef6c00;
-    transform: translateY(0);
+    /* transform: translateY(0); - transform not supported in Unity UI Toolkit */
 }
 
 .btn-warning:disabled {
@@ -389,5 +388,5 @@
     color: var(--color-text-disabled);
     border-color: var(--color-border-alpha);
     cursor: default;
-    transform: none;
+    /* transform: none; - transform not supported in Unity UI Toolkit */
 }

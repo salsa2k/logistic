@@ -30,7 +30,9 @@ namespace LogisticGame.Managers
         }
 
         [Header("Save Configuration")]
+        #pragma warning disable 0414 // Field assigned but never used - planned for future save slot management
         [SerializeField] private int _maxSaveSlots = 10;
+        #pragma warning restore 0414
         [SerializeField] private bool _autoSaveEnabled = true;
         [SerializeField] private float _autoSaveInterval = 300f; // 5 minutes
         [SerializeField] private bool _createBackups = true;

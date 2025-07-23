@@ -195,7 +195,7 @@
     height: var(--button-height-large);
     min-width: var(--button-height-large);
     padding: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); - box-shadow not supported in Unity UI Toolkit */
 }
 
 .btn-fab .btn-icon {

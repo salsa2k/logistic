@@ -394,7 +394,7 @@ public class BaseWindow : MonoBehaviour
     
     #if UNITY_EDITOR
     [Header("Debug")]
-    [SerializeField] private bool _debugMode = false;
+    [SerializeField] protected bool _debugMode = false;
     
     /// <summary>
     /// AIDEV-NOTE: Debug method for testing window show/hide in editor.

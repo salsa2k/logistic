@@ -4,11 +4,13 @@ using LogisticGame.Events;
 using LogisticGame.Managers;
 using LogisticGame.SaveSystem;
 
-/// <summary>
-/// AIDEV-NOTE: Main Menu controller extending BaseWindow for consistent window behavior.
-/// Handles navigation buttons and scene transitions for the logistics game main menu.
-/// </summary>
-public class MainMenuController : BaseWindow
+namespace LogisticGame.UI
+{
+    /// <summary>
+    /// AIDEV-NOTE: Main Menu controller extending BaseWindow for consistent window behavior.
+    /// Handles navigation buttons and scene transitions for the logistics game main menu.
+    /// </summary>
+    public class MainMenuController : BaseWindow
 {
     [Header("Main Menu Configuration")]
     [SerializeField] private string _gameSceneName = "Game";
@@ -18,6 +20,10 @@ public class MainMenuController : BaseWindow
     [Header("Menu Styling")]
     [SerializeField] private StyleSheet _darkGraphiteTheme;
     [SerializeField] private StyleSheet _mainMenuStyles;
+    
+    [Header("Settings Integration")]
+    [SerializeField] private SettingsModalController _settingsModalPrefab;
+    [SerializeField] private SettingsData _settingsData;
     
     // Menu button references
     private Button _newGameButton;
@@ -32,6 +38,7 @@ public class MainMenuController : BaseWindow
     
     // State management
     private bool _hasSaveGames = false;
+    private SettingsModalController _settingsModalInstance;
     
     protected override void Awake()
     {
@@ -57,6 +64,13 @@ public class MainMenuController : BaseWindow
         // Initialize menu state
         InitializeMenuState();
         
+        // Initialize settings modal
+        InitializeSettingsModal();
+        
+        // Subscribe to localization events and load initial text
+        SubscribeToLocalizationEvents();
+        RefreshLocalizedText(); // Load initial localized text
+        
         // Show the main menu immediately
         ShowWindow(false);
         
@@ -68,6 +82,8 @@ public class MainMenuController : BaseWindow
     {
         // AIDEV-NOTE: Clean up event subscriptions to prevent memory leaks
         RemoveMenuEventListeners();
+        CleanupSettingsModal();
+        UnsubscribeFromLocalizationEvents();
         EventBus.Unsubscribe<GameSavedEvent>(OnGameSaved);
         
         base.OnDestroy();
@@ -192,6 +208,49 @@ public class MainMenuController : BaseWindow
     }
     
     /// <summary>
+    /// Initialize the settings modal instance.
+    /// AIDEV-NOTE: Creates settings modal instance if prefab is assigned.
+    /// </summary>
+    private void InitializeSettingsModal()
+    {
+        if (_settingsModalPrefab != null)
+        {
+            try
+            {
+                Debug.Log($"MainMenuController: Instantiating settings modal from prefab: {_settingsModalPrefab.name}");
+                
+                // Instantiate settings modal
+                _settingsModalInstance = Instantiate(_settingsModalPrefab);
+                _settingsModalInstance.name = "SettingsModal";
+                
+                // Ensure the modal instance is active and properly configured
+                _settingsModalInstance.gameObject.SetActive(true);
+                
+                Debug.Log($"MainMenuController: Settings modal instantiated. GameObject: {_settingsModalInstance.gameObject.name}, Active: {_settingsModalInstance.gameObject.activeInHierarchy}");
+                
+                // Subscribe to settings events
+                SettingsModalController.OnSettingsApplied += OnSettingsApplied;
+                SettingsModalController.OnSettingsCancelled += OnSettingsCancelled;
+                SettingsModalController.OnSettingsReset += OnSettingsReset;
+                
+                // Subscribe to modal open/close events for hiding/showing main menu
+                _settingsModalInstance.OnModalOpened += OnSettingsModalOpened;
+                _settingsModalInstance.OnModalClosed += OnSettingsModalClosed;
+                
+                Debug.Log("Settings modal initialized successfully");
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Failed to initialize settings modal: {ex.Message}\nStackTrace: {ex.StackTrace}");
+            }
+        }
+        else
+        {
+            Debug.LogError("Settings modal prefab not assigned in MainMenuController! Please assign the SettingsModal prefab in the inspector.");
+        }
+    }
+    
+    /// <summary>
     /// Check if save games exist and update internal state.
     /// AIDEV-NOTE: Uses SaveFileManager to detect available save files.
     /// </summary>
@@ -283,7 +342,7 @@ public class MainMenuController : BaseWindow
     
     /// <summary>
     /// Handles Settings button click.
-    /// AIDEV-NOTE: Should open the main menu settings modal.
+    /// AIDEV-NOTE: Opens the settings modal for user preferences configuration.
     /// </summary>
     private void OnSettingsClicked()
     {
@@ -292,9 +351,17 @@ public class MainMenuController : BaseWindow
         // Publish event for settings opened
         EventBus.Publish(new MenuNavigationEvent("Settings"));
         
-        // AIDEV-TODO: Open settings modal
-        // For now, just log the action
-        Debug.Log("Settings modal functionality not yet implemented");
+        // Open settings modal
+        if (_settingsModalInstance != null)
+        {
+            // Get current settings from SettingsManager instead of using the asset reference
+            var currentSettings = SettingsManager.Instance.GetCurrentSettings();
+            _settingsModalInstance.ShowSettings(currentSettings);
+        }
+        else
+        {
+            Debug.LogWarning("Settings modal not available");
+        }
     }
     
     /// <summary>
@@ -367,6 +434,195 @@ public class MainMenuController : BaseWindow
         }
     }
     
+    /// <summary>
+    /// Cleanup settings modal and event subscriptions.
+    /// AIDEV-NOTE: Called in OnDestroy to prevent memory leaks.
+    /// </summary>
+    private void CleanupSettingsModal()
+    {
+        if (_settingsModalInstance != null)
+        {
+            // Unsubscribe from settings events
+            SettingsModalController.OnSettingsApplied -= OnSettingsApplied;
+            SettingsModalController.OnSettingsCancelled -= OnSettingsCancelled;
+            SettingsModalController.OnSettingsReset -= OnSettingsReset;
+            
+            // Unsubscribe from modal open/close events
+            _settingsModalInstance.OnModalOpened -= OnSettingsModalOpened;
+            _settingsModalInstance.OnModalClosed -= OnSettingsModalClosed;
+            
+            // Destroy the modal instance
+            if (_settingsModalInstance.gameObject != null)
+            {
+                Destroy(_settingsModalInstance.gameObject);
+            }
+            
+            _settingsModalInstance = null;
+        }
+    }
+    
+    // ===== MODAL EVENT HANDLERS =====
+    
+    /// <summary>
+    /// Handles settings modal opened event.
+    /// AIDEV-NOTE: Hides the main menu when settings modal opens.
+    /// </summary>
+    /// <param name="modal">The modal that was opened</param>
+    private void OnSettingsModalOpened(BaseModal modal)
+    {
+        Debug.Log("Main Menu: Settings modal opened, hiding main menu");
+        
+        // Hide the main menu by hiding the root container
+        // Since MainMenu doesn't use BaseWindow structure, we hide the root directly
+        if (_rootContainer != null)
+        {
+            _rootContainer.style.display = DisplayStyle.None;
+            Debug.Log("Main Menu: Root container hidden");
+        }
+        else
+        {
+            Debug.LogWarning("Main Menu: Cannot hide - root container is null");
+        }
+    }
+    
+    /// <summary>
+    /// Handles settings modal closed event.
+    /// AIDEV-NOTE: Shows the main menu when settings modal closes.
+    /// </summary>
+    /// <param name="modal">The modal that was closed</param>
+    private void OnSettingsModalClosed(BaseModal modal)
+    {
+        Debug.Log("Main Menu: Settings modal closed, showing main menu");
+        
+        // Show the main menu by showing the root container
+        if (_rootContainer != null)
+        {
+            _rootContainer.style.display = DisplayStyle.Flex;
+            Debug.Log("Main Menu: Root container shown");
+        }
+        else
+        {
+            Debug.LogWarning("Main Menu: Cannot show - root container is null");
+        }
+    }
+    
+    // ===== SETTINGS EVENT HANDLERS =====
+    
+    /// <summary>
+    /// Handles settings applied event.
+    /// AIDEV-NOTE: Called when user applies settings changes.
+    /// </summary>
+    /// <param name="settingsData">The applied settings data</param>
+    private void OnSettingsApplied(SettingsData settingsData)
+    {
+        Debug.Log("Main Menu: Settings applied");
+        
+        // Update our reference to the settings data
+        _settingsData = settingsData;
+        
+        // Settings are automatically saved by SettingsManager
+        // No need to manually save here as SettingsManager handles persistence
+        
+        // Publish event for other systems to react to settings changes
+        EventBus.Publish(new NotificationRequestedEvent(
+            NotificationType.Success,
+            "Settings saved successfully",
+            3f
+        ));
+    }
+    
+    /// <summary>
+    /// Handles settings cancelled event.
+    /// AIDEV-NOTE: Called when user cancels settings changes.
+    /// </summary>
+    private void OnSettingsCancelled()
+    {
+        Debug.Log("Main Menu: Settings cancelled");
+        // No specific action needed for cancel
+    }
+    
+    /// <summary>
+    /// Handles settings reset event.
+    /// AIDEV-NOTE: Called when user resets settings to defaults.
+    /// </summary>
+    private void OnSettingsReset()
+    {
+        Debug.Log("Main Menu: Settings reset to defaults");
+        
+        // Publish notification about reset
+        EventBus.Publish(new NotificationRequestedEvent(
+            NotificationType.Info,
+            "Settings reset to defaults",
+            3f
+        ));
+    }
+    
+    /// <summary>
+    /// Subscribes to localization events for language change updates.
+    /// AIDEV-NOTE: Ensures UI text updates when language is changed in settings.
+    /// </summary>
+    private void SubscribeToLocalizationEvents()
+    {
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.OnLanguageChanged += OnLanguageChanged;
+        }
+    }
+    
+    /// <summary>
+    /// Unsubscribes from localization events to prevent memory leaks.
+    /// AIDEV-NOTE: Called in OnDestroy to clean up event subscriptions.
+    /// </summary>
+    private void UnsubscribeFromLocalizationEvents()
+    {
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.OnLanguageChanged -= OnLanguageChanged;
+        }
+    }
+    
+    /// <summary>
+    /// Handles language change events by refreshing localized UI text.
+    /// AIDEV-NOTE: Updates all button text to reflect the new language selection.
+    /// </summary>
+    private void OnLanguageChanged(UnityEngine.Localization.Locale newLocale)
+    {
+        RefreshLocalizedText();
+    }
+    
+    /// <summary>
+    /// Refreshes all localized text elements in the main menu.
+    /// AIDEV-NOTE: Gets current localized strings and updates button text programmatically.
+    /// </summary>
+    private void RefreshLocalizedText()
+    {
+        if (LocalizationManager.Instance == null || !LocalizationManager.Instance.IsInitialized)
+            return;
+            
+        try
+        {
+            // Update button text with current localized strings
+            if (_newGameButton != null)
+                _newGameButton.text = LocalizationManager.Instance.GetLocalizedString("MainMenu", "NewGame_Button");
+                
+            if (_loadGameButton != null)
+                _loadGameButton.text = LocalizationManager.Instance.GetLocalizedString("MainMenu", "LoadGame_Button");
+                
+            if (_settingsButton != null)
+                _settingsButton.text = LocalizationManager.Instance.GetLocalizedString("MainMenu", "Settings_Button");
+                
+            if (_creditsButton != null)
+                _creditsButton.text = LocalizationManager.Instance.GetLocalizedString("MainMenu", "Credits_Button");
+                
+            if (_exitButton != null)
+                _exitButton.text = LocalizationManager.Instance.GetLocalizedString("MainMenu", "Exit_Button");
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"MainMenuController: Failed to refresh localized text - {ex.Message}");
+        }
+    }
+    
     #if UNITY_EDITOR
     /// <summary>
     /// AIDEV-NOTE: Debug method for testing menu functionality in editor.
@@ -388,7 +644,8 @@ public class MainMenuController : BaseWindow
         Debug.Log($"Save games available: {_hasSaveGames}");
     }
     #endif
-}
+    }
+} // End LogisticGame.UI namespace
 
 // AIDEV-NOTE: Menu navigation event for EventBus integration
 namespace LogisticGame.Events

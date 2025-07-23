@@ -39,6 +39,102 @@ MonoBehaviour:
     m_Key: Save_Button
     m_Metadata:
       m_Items: []
+  - m_Id: 950000000000
+    m_Key: Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000001
+    m_Key: ResetDefaults_Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000002
+    m_Key: Language_Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000003
+    m_Key: Units_Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000004
+    m_Key: Audio_Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000005
+    m_Key: Gameplay_Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000006
+    m_Key: Interface_Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000007
+    m_Key: Language_Dropdown_Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000008
+    m_Key: DistanceUnits_Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000009
+    m_Key: UseMetric_Toggle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000010
+    m_Key: TimeFormat_Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000011
+    m_Key: Use24Hour_Toggle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000012
+    m_Key: MasterVolume_Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000013
+    m_Key: MusicVolume_Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000014
+    m_Key: SFXVolume_Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000015
+    m_Key: EnableAudio_Toggle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000016
+    m_Key: GameSpeed_Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000017
+    m_Key: AutopauseFuel_Toggle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000018
+    m_Key: AutopauseContract_Toggle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000019
+    m_Key: ConfirmDangerous_Toggle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000020
+    m_Key: UIScale_Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000021
+    m_Key: ShowTooltips_Toggle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000022
+    m_Key: ShowNotifications_Toggle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 950000000023
+    m_Key: TooltipDelay_Label
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
