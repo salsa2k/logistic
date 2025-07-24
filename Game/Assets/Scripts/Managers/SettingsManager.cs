@@ -136,12 +136,43 @@ namespace LogisticGame.Managers
         }
         
         /// <summary>
+        /// Gets language preference from PlayerPrefs as fallback.
+        /// AIDEV-NOTE: Used when settings file doesn't exist but language was previously saved to PlayerPrefs.
+        /// </summary>
+        private string GetLanguagePreferenceFromPlayerPrefs()
+        {
+            try
+            {
+                string savedLanguage = PlayerPrefs.GetString("SelectedLanguage", "");
+                
+                // Handle legacy locale codes that might be saved from previous versions
+                if (savedLanguage == "en-US")
+                {
+                    savedLanguage = "en";
+                }
+                
+                if (_debugLogging && !string.IsNullOrEmpty(savedLanguage))
+                    Debug.Log($"SettingsManager: Found language preference in PlayerPrefs: {savedLanguage}");
+                
+                return savedLanguage;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"SettingsManager: Failed to get language from PlayerPrefs - {ex.Message}");
+                return "";
+            }
+        }
+        
+        /// <summary>
         /// Creates default settings instance.
         /// AIDEV-NOTE: Used when no saved settings exist or loading fails.
         /// </summary>
         private void CreateDefaultSettings()
         {
-            Debug.LogWarning("SettingsManager: CreateDefaultSettings() called - this will reset language to default!");
+            Debug.Log("SettingsManager: Creating default settings...");
+            
+            // AIDEV-NOTE: Try to preserve language preference even when creating defaults
+            string preservedLanguage = GetLanguagePreferenceFromPlayerPrefs();
             
             if (_defaultSettings != null)
             {
@@ -157,10 +188,17 @@ namespace LogisticGame.Managers
                 Debug.Log($"SettingsManager: Created settings from LoadDefaults(). Default language: {_currentSettings.LocaleCode}");
             }
             
+            // AIDEV-NOTE: Apply preserved language if found
+            if (!string.IsNullOrEmpty(preservedLanguage))
+            {
+                _currentSettings.SetLocaleCode(preservedLanguage);
+                Debug.Log($"SettingsManager: Preserved language setting: {preservedLanguage}");
+            }
+            
             _currentSettings.name = "CurrentSettings";
             HasUnsavedChanges = true;
             
-            Debug.Log("SettingsManager: Created default settings");
+            Debug.Log($"SettingsManager: Created default settings with final language: {_currentSettings.LocaleCode}");
         }
         
         /// <summary>
@@ -566,6 +604,71 @@ namespace LogisticGame.Managers
                 Debug.Log($"Language: {_currentSettings.Language}");
                 Debug.Log($"Distance Unit: {_currentSettings.DistanceUnit}");
                 Debug.Log($"Has Unsaved Changes: {HasUnsavedChanges}");
+            }
+        }
+        
+        /// <summary>
+        /// AIDEV-NOTE: Editor-only method to get the DefaultSettings asset for syncing.
+        /// Used by SettingsAssetUpdater to update the asset with runtime changes.
+        /// </summary>
+        public SettingsData GetDefaultSettingsAsset()
+        {
+            return _defaultSettings;
+        }
+        
+        /// <summary>
+        /// AIDEV-NOTE: Editor-only method to sync current settings back to DefaultSettings asset.
+        /// This ensures that changes made during play mode are reflected in the asset.
+        /// </summary>
+        [ContextMenu("Sync to Default Settings Asset")]
+        public void SyncToDefaultSettingsAsset()
+        {
+            if (_defaultSettings != null && _currentSettings != null)
+            {
+                // Record for undo in editor
+                #if UNITY_EDITOR
+                UnityEditor.Undo.RecordObject(_defaultSettings, "Sync Runtime Settings to Asset");
+                #endif
+                
+                // Copy all current setting values to the default asset
+                _defaultSettings.SetMasterVolume(_currentSettings.MasterVolume);
+                _defaultSettings.SetMusicVolume(_currentSettings.MusicVolume);
+                _defaultSettings.SetSfxVolume(_currentSettings.SfxVolume);
+                _defaultSettings.SetUiVolume(_currentSettings.UiVolume);
+                _defaultSettings.SetAudioEnabled(_currentSettings.AudioEnabled);
+                
+                _defaultSettings.SetTargetFrameRate(_currentSettings.TargetFrameRate);
+                _defaultSettings.SetVSyncEnabled(_currentSettings.VSyncEnabled);
+                _defaultSettings.SetScreenMode(_currentSettings.ScreenMode);
+                _defaultSettings.SetResolution(_currentSettings.Resolution);
+                _defaultSettings.SetUiScale(_currentSettings.UiScale);
+                
+                _defaultSettings.SetGameSpeed(_currentSettings.GameSpeed);
+                _defaultSettings.SetAutopauseOnLowFuel(_currentSettings.AutopauseOnLowFuel);
+                _defaultSettings.SetAutopauseOnContractExpiry(_currentSettings.AutopauseOnContractExpiry);
+                _defaultSettings.SetShowDistanceInKm(_currentSettings.ShowDistanceInKm);
+                _defaultSettings.SetShow24HourTime(_currentSettings.Show24HourTime);
+                _defaultSettings.SetConfirmDangerousActions(_currentSettings.ConfirmDangerousActions);
+                
+                _defaultSettings.SetShowTooltips(_currentSettings.ShowTooltips);
+                _defaultSettings.SetShowNotifications(_currentSettings.ShowNotifications);
+                _defaultSettings.SetTooltipDelay(_currentSettings.TooltipDelay);
+                
+                // Most importantly for the reported issue - sync localization settings
+                _defaultSettings.SetLocaleCode(_currentSettings.LocaleCode);
+                _defaultSettings.SetCurrencySymbol(_currentSettings.CurrencySymbol);
+                
+                #if UNITY_EDITOR
+                // Mark the asset as dirty and save
+                UnityEditor.EditorUtility.SetDirty(_defaultSettings);
+                UnityEditor.AssetDatabase.SaveAssets();
+                #endif
+                
+                Debug.Log($"SettingsManager: Synced current settings to DefaultSettings asset. Language: {_currentSettings.LocaleCode}");
+            }
+            else
+            {
+                Debug.LogWarning("SettingsManager: Cannot sync - missing DefaultSettings asset or current settings");
             }
         }
         #endif

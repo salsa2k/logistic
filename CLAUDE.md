@@ -68,17 +68,17 @@ public void MoveVehicle()
 
 ## Folder Structure
 ```
-Assets/Art/                # e.g., Sprites/, Icons/, Backgrounds/
-Assets/Scripts/            # e.g., Managers/, UI/, Vehicles/, Contracts/
-Assets/Prefabs/            # e.g., Vehicles/, UI/, Environment/
-Assets/Scenes/             # e.g., MainMenu/, Game/, Test/
-Assets/Audio/              # e.g., Music/, SFX/, UI/
-Assets/Resources/          # e.g., Configs/, Templates/
-Assets/Animations/         # e.g., Characters/, Vehicles/
-Assets/Fonts/              # e.g., UI/, Titles/
-Assets/Materials/          # e.g., UI/, Vehicles/, Environment/
-Assets/Data/               # e.g., ScriptableObjects/, SaveData/
-Assets/UI/                 # UI Toolkit files
+Game/Assets/Art/                # e.g., Sprites/, Icons/, Backgrounds/
+Game/Assets/Scripts/            # e.g., Managers/, UI/, Vehicles/, Contracts/
+Game/Assets/Prefabs/            # e.g., Vehicles/, UI/, Environment/
+Game/Assets/Scenes/             # e.g., MainMenu/, Game/, Test/
+Game/Assets/Audio/              # e.g., Music/, SFX/, UI/
+Game/Assets/Resources/          # e.g., Configs/, Templates/
+Game/Assets/Animations/         # e.g., Characters/, Vehicles/
+Game/Assets/Fonts/              # e.g., UI/, Titles/
+Game/Assets/Materials/          # e.g., UI/, Vehicles/, Environment/
+Game/Assets/Data/               # e.g., ScriptableObjects/, SaveData/
+Game/Assets/UI/                 # UI Toolkit files
 ├── Documents/             # e.g., .uxml files
 ├── StyleSheets/           # e.g., .uss files
 ├── Resources/             # e.g., Runtime UI assets

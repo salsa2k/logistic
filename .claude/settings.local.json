@@ -49,7 +49,6 @@
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "sequential-thinking",
-    "serena",
     "context7",
     "filesystem",
     "memory",

@@ -56,6 +56,7 @@ namespace LogisticGame.UI
         private Dictionary<string, object> _originalValues = new Dictionary<string, object>();
         private Dictionary<string, object> _currentValues = new Dictionary<string, object>();
         private bool _hasChanges = false;
+        private bool _isLoadingSettings = false; // AIDEV-NOTE: Prevents event handlers from firing during initialization
         
         // Language options
         private readonly List<string> _languageOptions = new List<string> { "English", "Português" };
@@ -302,6 +303,9 @@ namespace LogisticGame.UI
         {
             if (_settingsData == null) return;
             
+            // AIDEV-NOTE: Set flag to prevent event handlers from triggering during initial load
+            _isLoadingSettings = true;
+            
             try
             {
                 // Language settings - Use current locale from LocalizationManager if available
@@ -379,6 +383,11 @@ namespace LogisticGame.UI
             {
                 Debug.LogError($"SettingsModalController: Failed to load settings - {ex.Message}");
             }
+            finally
+            {
+                // AIDEV-NOTE: Clear flag to allow normal event handling
+                _isLoadingSettings = false;
+            }
         }
         
         /// <summary>
@@ -436,6 +445,14 @@ namespace LogisticGame.UI
         // Event Handlers - Language Section
         private void OnLanguageChanged(ChangeEvent<string> evt)
         {
+            // AIDEV-NOTE: Skip event handling during initial settings load to prevent overwriting saved settings
+            if (_isLoadingSettings)
+            {
+                if (_debugMode)
+                    Debug.Log("SettingsModalController: Skipping language change event during settings load");
+                return;
+            }
+            
             var selectedIndex = _languageDropdown.index;
             UpdateCurrentValue("language", selectedIndex);
             
@@ -698,8 +715,11 @@ namespace LogisticGame.UI
                 // Apply settings to the system
                 _settingsData.ApplySettings();
                 
-                // Save settings (integration with save system would go here)
-                // AIDEV-TODO: Integrate with save system for persistence
+                // Save all settings to persistent storage through SettingsManager
+                if (SettingsManager.Instance != null && SettingsManager.Instance.IsInitialized)
+                {
+                    _ = SettingsManager.Instance.UpdateSettingsAsync(_settingsData, true);
+                }
                 
                 // Update original values to current values
                 _originalValues = new Dictionary<string, object>(_currentValues);

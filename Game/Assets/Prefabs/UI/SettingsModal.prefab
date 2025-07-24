@@ -127,7 +127,7 @@ MonoBehaviour:
   _animationType: 3
   _backdropFadeDuration: 0.2
   _modalDebugMode: 0
-  _settingsData: {fileID: 11400000, guid: 3c66d6dd2baf5b84b961ca8ee480adae, type: 2}
+  _settingsData: {fileID: 11400000, guid: 5ec1a1113ed07144a8c228b5d2be4ee1, type: 2}
   _darkGraphiteTheme: {fileID: 7433441132597879392, guid: 9db520c1ee890bc428eb8bf06586f6c7, type: 3}
   _baseWindowStyles: {fileID: 7433441132597879392, guid: 684a97b4b7e7eb048b364f77f26e4e15, type: 3}
   _settingsModalStyles: {fileID: 7433441132597879392, guid: a0fbadc1fa093944fa4449269ba6db9c, type: 3}

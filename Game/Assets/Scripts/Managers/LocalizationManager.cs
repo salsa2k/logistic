@@ -106,12 +106,18 @@ namespace LogisticGame.Managers
             if (settingsManager != null && settingsManager.IsInitialized)
             {
                 if (_debugLogging)
-                    Debug.Log("LocalizationManager: SettingsManager is now available");
+                    Debug.Log("LocalizationManager: SettingsManager is now available, continuing initialization");
+                
+                // AIDEV-NOTE: Continue initialization now that SettingsManager is ready
+                OnLocalizationInitialized();
             }
             else
             {
                 if (_debugLogging)
-                    Debug.LogWarning("LocalizationManager: SettingsManager still not available, using fallback");
+                    Debug.LogWarning("LocalizationManager: SettingsManager still not available, retrying in 0.1s");
+                
+                // AIDEV-NOTE: Keep waiting - retry after a short delay
+                Invoke(nameof(CheckSettingsManagerStatus), 0.1f);
             }
         }
 
@@ -119,6 +125,9 @@ namespace LogisticGame.Managers
         {
             try
             {
+                // Subscribe to SettingsManager events for proper coordination
+                SubscribeToSettingsManagerEvents();
+                
                 // Set up initial locale
                 SetupInitialLocale();
 
@@ -155,11 +164,9 @@ namespace LogisticGame.Managers
             }
             else
             {
-                // SettingsManager not ready yet, delay initialization
+                // SettingsManager not ready yet - event handler will retry when ready
                 if (_debugLogging)
-                    Debug.Log("LocalizationManager: SettingsManager not ready, delaying language setup...");
-                    
-                Invoke(nameof(SetupInitialLocale), 0.1f);
+                    Debug.Log("LocalizationManager: SettingsManager not ready, will wait for OnSettingsLoaded event");
                 return;
             }
 
@@ -180,6 +187,29 @@ namespace LogisticGame.Managers
             SetLanguage(LOCALE_ENGLISH, skipSave: true);
             if (_debugLogging)
                 Debug.Log($"Using default language: {LOCALE_ENGLISH}");
+        }
+
+        /// <summary>
+        /// Subscribes to SettingsManager events for proper coordination during startup.
+        /// AIDEV-NOTE: Uses event-driven approach instead of polling to wait for settings to load.
+        /// </summary>
+        private void SubscribeToSettingsManagerEvents()
+        {
+            // Subscribe to SettingsManager events to know when settings are loaded
+            SettingsManager.OnSettingsLoaded += OnSettingsManagerLoaded;
+        }
+
+        /// <summary>
+        /// Event handler called when SettingsManager finishes loading settings.
+        /// AIDEV-NOTE: Retries language setup now that settings are available.
+        /// </summary>
+        private void OnSettingsManagerLoaded(SettingsData settingsData)
+        {
+            if (_debugLogging)
+                Debug.Log("LocalizationManager: SettingsManager loaded, retrying language setup");
+            
+            // Now that SettingsManager is ready, retry language setup
+            SetupInitialLocale();
         }
 
         public bool SetLanguage(string localeCode, bool skipSave = false)
@@ -389,6 +419,9 @@ namespace LogisticGame.Managers
         {
             // Cancel any pending Invoke calls to prevent accessing SettingsManager during cleanup
             CancelInvoke();
+            
+            // Unsubscribe from SettingsManager events
+            SettingsManager.OnSettingsLoaded -= OnSettingsManagerLoaded;
             
             if (IsInitialized)
             {

@@ -9,14 +9,6 @@
         "@modelcontextprotocol/server-sequential-thinking"
       ]
     },
-    "serena": {
-      "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/oraios/serena",
-        "serena-mcp-server"
-      ]
-    },
     "context7": {
       "command": "cmd",
       "args": ["/c", "npx", "-y", "@upstash/context7-mcp@latest"],
@@ -30,9 +22,10 @@
         "npx",
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "C:/Users/rafae/OneDrive/Documents/logistic",
+        "D:/logistic",
         "C:/Users/rafae/OneDrive/Pictures/Screenshots"
       ]
+
     },
     "memory": {
       "command": "cmd",
