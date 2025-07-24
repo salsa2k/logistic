@@ -112,10 +112,7 @@ namespace LogisticGame.Managers
                 OnLocalizationInitialized();
             }
             else
-            {
-                if (_debugLogging)
-                    Debug.LogWarning("LocalizationManager: SettingsManager still not available, retrying in 0.1s");
-                
+            {               
                 // AIDEV-NOTE: Keep waiting - retry after a short delay
                 Invoke(nameof(CheckSettingsManagerStatus), 0.1f);
             }

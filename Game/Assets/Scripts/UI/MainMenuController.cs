@@ -307,15 +307,7 @@ namespace LogisticGame.UI
         
         // AIDEV-TODO: For now, transition directly to game scene
         // Later this should open company creation modal first
-        if (SceneTransitionManager.Instance != null)
-        {
-            SceneTransitionManager.Instance.LoadScene(_gameSceneName);
-        }
-        else
-        {
-            Debug.LogWarning("SceneTransitionManager not available, using direct scene load");
-            UnityEngine.SceneManagement.SceneManager.LoadScene(_gameSceneName);
-        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene(_gameSceneName);
     }
     
     /// <summary>
@@ -366,7 +358,7 @@ namespace LogisticGame.UI
     
     /// <summary>
     /// Handles Credits button click.
-    /// AIDEV-NOTE: Transitions to the credits scene.
+    /// AIDEV-NOTE: Direct scene load to credits scene.
     /// </summary>
     private void OnCreditsClicked()
     {
@@ -375,16 +367,8 @@ namespace LogisticGame.UI
         // Publish event for credits navigation
         EventBus.Publish(new MenuNavigationEvent("Credits"));
         
-        // Transition to credits scene
-        if (SceneTransitionManager.Instance != null)
-        {
-            SceneTransitionManager.Instance.LoadScene(_creditsSceneName);
-        }
-        else
-        {
-            Debug.LogWarning("SceneTransitionManager not available, using direct scene load");
-            UnityEngine.SceneManagement.SceneManager.LoadScene(_creditsSceneName);
-        }
+        // Direct scene load for instant transition
+        UnityEngine.SceneManagement.SceneManager.LoadScene(_creditsSceneName);
     }
     
     /// <summary>

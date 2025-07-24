@@ -1,0 +1,45 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <Style src="project://database/Assets/UI/StyleSheets/CreditsStyles.uss" />
+    <ui:VisualElement name="credits-background" class="credits-background" 
+                      style="background-color: rgb(43, 43, 43); width: 100%; height: 100%; padding: 20px;">
+        <ui:Button name="back-button" text="Back to Menu" class="credits-back-button" 
+                   style="position: absolute; top: 20px; left: 20px; background-color: rgb(60, 60, 60); color: rgb(232, 232, 232); border-width: 1px; border-color: rgb(90, 90, 90); padding: 10px 20px; font-size: 14px;" />
+        <ui:ScrollView name="credits-scroll" class="credits-scroll" 
+                       style="margin-top: 60px; margin-bottom: 60px; padding: 20px;">
+            <ui:Label text="LOGISTICS GAME" class="credits-title" 
+                      style="font-size: 36px; color: rgb(232, 232, 232); -unity-text-align: middle-center; margin-bottom: 10px; -unity-font-style: bold;" />
+            <ui:Label name="version-label" text="Version 1.0.0" class="credits-version" 
+                      style="font-size: 16px; color: rgb(184, 184, 184); -unity-text-align: middle-center; margin-bottom: 30px;" />
+            
+            <ui:Label text="DEVELOPMENT TEAM" class="credits-section-title"
+                      style="font-size: 20px; color: rgb(122, 156, 198); -unity-text-align: middle-center; margin-top: 30px; margin-bottom: 15px; -unity-font-style: bold;" />
+            <ui:Label text="Lead Developer: Game Development Team" class="credits-text"
+                      style="font-size: 14px; color: rgb(232, 232, 232); -unity-text-align: middle-center; margin-bottom: 8px;" />
+            <ui:Label text="Designers: UI/UX Design Team" class="credits-text"
+                      style="font-size: 14px; color: rgb(232, 232, 232); -unity-text-align: middle-center; margin-bottom: 8px;" />
+            <ui:Label text="Programmers: Development Team" class="credits-text"
+                      style="font-size: 14px; color: rgb(232, 232, 232); -unity-text-align: middle-center; margin-bottom: 8px;" />
+            
+            <ui:Label text="THIRD-PARTY ACKNOWLEDGMENTS" class="credits-section-title"
+                      style="font-size: 20px; color: rgb(122, 156, 198); -unity-text-align: middle-center; margin-top: 30px; margin-bottom: 15px; -unity-font-style: bold;" />
+            <ui:Label text="Unity Technologies - Unity Engine 6.1" class="credits-text"
+                      style="font-size: 14px; color: rgb(232, 232, 232); -unity-text-align: middle-center; margin-bottom: 8px;" />
+            <ui:Label text="Unity UI Toolkit" class="credits-text"
+                      style="font-size: 14px; color: rgb(232, 232, 232); -unity-text-align: middle-center; margin-bottom: 8px;" />
+            <ui:Label text="Universal Render Pipeline" class="credits-text"
+                      style="font-size: 14px; color: rgb(232, 232, 232); -unity-text-align: middle-center; margin-bottom: 8px;" />
+            
+            <ui:Label text="SPECIAL THANKS" class="credits-section-title"
+                      style="font-size: 20px; color: rgb(122, 156, 198); -unity-text-align: middle-center; margin-top: 30px; margin-bottom: 15px; -unity-font-style: bold;" />
+            <ui:Label text="Beta Testers and Community Contributors" class="credits-text"
+                      style="font-size: 14px; color: rgb(232, 232, 232); -unity-text-align: middle-center; margin-bottom: 8px;" />
+            
+            <ui:Label text="© 2024 Logistics Game Development Team" class="credits-copyright"
+                      style="font-size: 14px; color: rgb(232, 232, 232); -unity-text-align: middle-center; margin-top: 40px; margin-bottom: 5px; -unity-font-style: bold;" />
+            <ui:Label text="All rights reserved." class="credits-legal"
+                      style="font-size: 12px; color: rgb(184, 184, 184); -unity-text-align: middle-center; margin-bottom: 30px;" />
+        </ui:ScrollView>
+        <ui:Button name="skip-button" text="Skip Credits" class="credits-skip-button"
+                   style="position: absolute; bottom: 20px; right: 20px; background-color: rgb(60, 60, 60); color: rgb(232, 232, 232); border-width: 1px; border-color: rgb(90, 90, 90); padding: 10px 20px; font-size: 14px;" />
+    </ui:VisualElement>
+</ui:UXML>
