@@ -25,6 +25,9 @@ namespace LogisticGame.UI
     [SerializeField] private SettingsModalController _settingsModalPrefab;
     [SerializeField] private SettingsData _settingsData;
     
+    [Header("New Game Integration")]
+    [SerializeField] private NewGameModalController _newGameModalPrefab;
+    
     // Menu button references
     private Button _newGameButton;
     private Button _loadGameButton;
@@ -39,6 +42,7 @@ namespace LogisticGame.UI
     // State management
     private bool _hasSaveGames = false;
     private SettingsModalController _settingsModalInstance;
+    private NewGameModalController _newGameModalInstance;
     
     protected override void Awake()
     {
@@ -67,6 +71,9 @@ namespace LogisticGame.UI
         // Initialize settings modal
         InitializeSettingsModal();
         
+        // Initialize new game modal
+        InitializeNewGameModal();
+        
         // Subscribe to localization events and load initial text
         SubscribeToLocalizationEvents();
         RefreshLocalizedText(); // Load initial localized text
@@ -83,6 +90,7 @@ namespace LogisticGame.UI
         // AIDEV-NOTE: Clean up event subscriptions to prevent memory leaks
         RemoveMenuEventListeners();
         CleanupSettingsModal();
+        CleanupNewGameModal();
         UnsubscribeFromLocalizationEvents();
         EventBus.Unsubscribe<GameSavedEvent>(OnGameSaved);
         
@@ -251,6 +259,47 @@ namespace LogisticGame.UI
     }
     
     /// <summary>
+    /// Initialize the new game modal instance.
+    /// AIDEV-NOTE: Creates new game modal instance if prefab is assigned.
+    /// </summary>
+    private void InitializeNewGameModal()
+    {
+        if (_newGameModalPrefab != null)
+        {
+            try
+            {
+                Debug.Log($"MainMenuController: Instantiating new game modal from prefab: {_newGameModalPrefab.name}");
+                
+                // Instantiate new game modal
+                _newGameModalInstance = Instantiate(_newGameModalPrefab);
+                _newGameModalInstance.name = "NewGameModal";
+                
+                // Ensure the modal instance is active and properly configured
+                _newGameModalInstance.gameObject.SetActive(true);
+                
+                Debug.Log($"MainMenuController: New game modal instantiated. GameObject: {_newGameModalInstance.gameObject.name}, Active: {_newGameModalInstance.gameObject.activeInHierarchy}");
+                
+                // Subscribe to company creation events
+                _newGameModalInstance.OnCompanyCreated += OnCompanyCreated;
+                
+                // Subscribe to modal open/close events for hiding/showing main menu
+                _newGameModalInstance.OnModalOpened += OnNewGameModalOpened;
+                _newGameModalInstance.OnModalClosed += OnNewGameModalClosed;
+                
+                Debug.Log("New game modal initialized successfully");
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Failed to initialize new game modal: {ex.Message}\nStackTrace: {ex.StackTrace}");
+            }
+        }
+        else
+        {
+            Debug.LogError("New game modal prefab not assigned in MainMenuController! Please assign the NewGameModal prefab in the inspector.");
+        }
+    }
+    
+    /// <summary>
     /// Check if save games exist and update internal state.
     /// AIDEV-NOTE: Uses SaveFileManager to detect available save files.
     /// </summary>
@@ -296,7 +345,7 @@ namespace LogisticGame.UI
     
     /// <summary>
     /// Handles New Game button click.
-    /// AIDEV-NOTE: Should start the company creation flow or transition to game scene.
+    /// AIDEV-NOTE: Opens the NewGameModal for company creation flow.
     /// </summary>
     private void OnNewGameClicked()
     {
@@ -305,9 +354,15 @@ namespace LogisticGame.UI
         // Publish event for new game started
         EventBus.Publish(new MenuNavigationEvent("NewGame"));
         
-        // AIDEV-TODO: For now, transition directly to game scene
-        // Later this should open company creation modal first
-        UnityEngine.SceneManagement.SceneManager.LoadScene(_gameSceneName);
+        // Open new game modal for company creation
+        if (_newGameModalInstance != null)
+        {
+            _newGameModalInstance.ShowWindow();
+        }
+        else
+        {
+            Debug.LogWarning("New Game modal not available");
+        }
     }
     
     /// <summary>
@@ -445,6 +500,31 @@ namespace LogisticGame.UI
         }
     }
     
+    /// <summary>
+    /// Cleanup new game modal and event subscriptions.
+    /// AIDEV-NOTE: Called in OnDestroy to prevent memory leaks.
+    /// </summary>
+    private void CleanupNewGameModal()
+    {
+        if (_newGameModalInstance != null)
+        {
+            // Unsubscribe from company creation events
+            _newGameModalInstance.OnCompanyCreated -= OnCompanyCreated;
+            
+            // Unsubscribe from modal open/close events
+            _newGameModalInstance.OnModalOpened -= OnNewGameModalOpened;
+            _newGameModalInstance.OnModalClosed -= OnNewGameModalClosed;
+            
+            // Destroy the modal instance
+            if (_newGameModalInstance.gameObject != null)
+            {
+                Destroy(_newGameModalInstance.gameObject);
+            }
+            
+            _newGameModalInstance = null;
+        }
+    }
+    
     // ===== MODAL EVENT HANDLERS =====
     
     /// <summary>
@@ -539,6 +619,70 @@ namespace LogisticGame.UI
             "Settings reset to defaults",
             3f
         ));
+    }
+    
+    // ===== NEW GAME MODAL EVENT HANDLERS =====
+    
+    /// <summary>
+    /// Handles new game modal opened event.
+    /// AIDEV-NOTE: Hides the main menu when new game modal opens.
+    /// </summary>
+    /// <param name="modal">The modal that was opened</param>
+    private void OnNewGameModalOpened(BaseModal modal)
+    {
+        Debug.Log("Main Menu: New game modal opened, hiding main menu");
+        
+        // Hide the main menu by hiding the root container
+        if (_rootContainer != null)
+        {
+            _rootContainer.style.display = DisplayStyle.None;
+            Debug.Log("Main Menu: Root container hidden");
+        }
+        else
+        {
+            Debug.LogWarning("Main Menu: Cannot hide - root container is null");
+        }
+    }
+    
+    /// <summary>
+    /// Handles new game modal closed event.
+    /// AIDEV-NOTE: Shows the main menu when new game modal closes.
+    /// </summary>
+    /// <param name="modal">The modal that was closed</param>
+    private void OnNewGameModalClosed(BaseModal modal)
+    {
+        Debug.Log("Main Menu: New game modal closed, showing main menu");
+        
+        // Show the main menu by showing the root container
+        if (_rootContainer != null)
+        {
+            _rootContainer.style.display = DisplayStyle.Flex;
+            Debug.Log("Main Menu: Root container shown");
+        }
+        else
+        {
+            Debug.LogWarning("Main Menu: Cannot show - root container is null");
+        }
+    }
+    
+    /// <summary>
+    /// Handles company creation completion.
+    /// AIDEV-NOTE: Called when user successfully creates a new company.
+    /// </summary>
+    /// <param name="companySetup">The completed company setup data</param>
+    private void OnCompanyCreated(CompanySetup companySetup)
+    {
+        Debug.Log($"Main Menu: Company '{companySetup.CompanyName}' created successfully");
+        
+        // Publish notification about successful company creation
+        EventBus.Publish(new NotificationRequestedEvent(
+            NotificationType.Success,
+            $"Company '{companySetup.CompanyName}' created successfully!",
+            5f
+        ));
+        
+        // The NewGameModalController handles game scene transition automatically
+        // No additional action needed here
     }
     
     /// <summary>

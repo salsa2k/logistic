@@ -158,4 +158,53 @@ public class CompanyData : ScriptableObject
         // Check if company has required license
         return HasLicense(contract.MinimumLicense);
     }
+    
+    /// <summary>
+    /// AIDEV-NOTE: Initializes company data for new company creation.
+    /// Used by GameManager when creating a new game from NewGameModal setup.
+    /// </summary>
+    /// <param name="companyName">Name of the company</param>
+    /// <param name="companyLogo">Company logo sprite</param>
+    /// <param name="initialCredits">Starting credits amount</param>
+    /// <param name="foundedDate">Company foundation date</param>
+    public void InitializeNewCompany(string companyName, Sprite companyLogo, float initialCredits, DateTime foundedDate)
+    {
+        _companyName = companyName;
+        _companyLogo = companyLogo;
+        _initialCredits = initialCredits;
+        _foundedDate = foundedDate;
+        
+        // Set default values for new company
+        _companyDescription = $"A logistics company founded on {foundedDate:MMMM dd, yyyy}.";
+        _creditLine = 0f;
+        _loanInterestRate = 0.05f;
+        _reputation = 50f; // Start with neutral reputation
+        _contractsCompleted = 0;
+        _contractsFailed = 0;
+        _isPlayerCompany = true;
+        
+        // Initialize with standard license
+        _ownedLicenses = new List<LicenseType> { LicenseType.Standard };
+        
+        // Initialize license costs
+        InitializeLicenseCosts();
+        
+        // Mark as dirty for Unity serialization
+        #if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(this);
+        #endif
+    }
+    
+    /// <summary>
+    /// AIDEV-NOTE: Updates company description after initialization.
+    /// </summary>
+    /// <param name="description">New company description</param>
+    public void SetCompanyDescription(string description)
+    {
+        _companyDescription = description;
+        
+        #if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(this);
+        #endif
+    }
 }

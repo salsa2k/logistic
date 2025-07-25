@@ -59,7 +59,7 @@ public class BaseModal : BaseWindow
     {
         // AIDEV-NOTE: Ensure modal is configured before base initialization
         _isModal = true; // Force modal mode for BaseModal
-        _centerOnShow = true; // Always center modals
+        _centerOnShow = false; // Disable manual centering - use CSS flexbox instead
         
         base.Awake();
         InitializeModalSpecificElements();

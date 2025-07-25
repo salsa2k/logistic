@@ -43,7 +43,9 @@
       "mcp__serena__write_memory",
       "mcp__serena__find_symbol",
       "mcp__serena__replace_regex",
-      "Bash(mcp list:*)"
+      "Bash(mcp list:*)",
+      "mcp__filesystem__list_allowed_directories",
+      "mcp__filesystem__read_multiple_files"
     ]
   },
   "enableAllProjectMcpServers": true,

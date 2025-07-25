@@ -387,7 +387,8 @@ MonoBehaviour:
   _darkGraphiteTheme: {fileID: 7433441132597879392, guid: 9db520c1ee890bc428eb8bf06586f6c7, type: 3}
   _mainMenuStyles: {fileID: 7433441132597879392, guid: 2a4dc26e8d33a95459bb5bcec88664f3, type: 3}
   _settingsModalPrefab: {fileID: 6547027785311514800, guid: 026822ba7b9b0024983f97638d21d2fb, type: 3}
-  _settingsData: {fileID: 11400000, guid: 3c66d6dd2baf5b84b961ca8ee480adae, type: 2}
+  _settingsData: {fileID: 11400000, guid: 5ec1a1113ed07144a8c228b5d2be4ee1, type: 2}
+  _newGameModalPrefab: {fileID: 9086111614964947448, guid: d2715dd29ec5ea140b2df0253600ef2a, type: 3}
 --- !u!114 &2017374009
 MonoBehaviour:
   m_ObjectHideFlags: 0

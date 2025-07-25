@@ -10,6 +10,9 @@ namespace LogisticGame.Managers
         [Header("UI Assets")]
         [SerializeField] private Sprite[] _uiSprites;
         [SerializeField] private AudioClip[] _uiSounds;
+        
+        [Header("Company Assets")]
+        [SerializeField] private Sprite[] _companyLogos;
 
         [Header("Vehicle Assets")]
         [SerializeField] private Sprite[] _vehicleSprites;
@@ -26,6 +29,7 @@ namespace LogisticGame.Managers
         // Public getters for asset arrays
         public Sprite[] UISprites => _uiSprites;
         public AudioClip[] UISounds => _uiSounds;
+        public Sprite[] CompanyLogos => _companyLogos;
         public Sprite[] VehicleSprites => _vehicleSprites;
         public GameObject[] VehiclePrefabs => _vehiclePrefabs;
         public Sprite[] EnvironmentSprites => _environmentSprites;
@@ -94,6 +98,7 @@ namespace LogisticGame.Managers
 
             // Cache UI sprites
             CacheAssets(_assetDatabase.UISprites, _spriteCache, "UI");
+            CacheAssets(_assetDatabase.CompanyLogos, _spriteCache, "Company");
             CacheAssets(_assetDatabase.VehicleSprites, _spriteCache, "Vehicle");
             CacheAssets(_assetDatabase.EnvironmentSprites, _spriteCache, "Environment");
 
@@ -165,6 +170,7 @@ namespace LogisticGame.Managers
 
         // Convenience methods for specific asset types
         public Sprite GetUISprite(string spriteName) => GetSprite(spriteName, "UI");
+        public Sprite GetCompanyLogo(string logoName) => GetSprite(logoName, "Company");
         public Sprite GetVehicleSprite(string spriteName) => GetSprite(spriteName, "Vehicle");
         public Sprite GetEnvironmentSprite(string spriteName) => GetSprite(spriteName, "Environment");
         
@@ -194,6 +200,32 @@ namespace LogisticGame.Managers
         public GameObject InstantiateEnvironmentPrefab(string prefabName, Transform parent = null)
         {
             return InstantiatePrefab(prefabName, "Environment", parent);
+        }
+        
+        /// <summary>
+        /// AIDEV-NOTE: Gets company logo by index for NewGameModal integration.
+        /// Returns null if index is out of bounds or no logos are available.
+        /// </summary>
+        /// <param name="logoIndex">Index of the logo (0-based)</param>
+        /// <returns>Company logo sprite or null if not found</returns>
+        public Sprite GetCompanyLogoByIndex(int logoIndex)
+        {
+            if (_assetDatabase?.CompanyLogos == null || logoIndex < 0 || logoIndex >= _assetDatabase.CompanyLogos.Length)
+            {
+                Debug.LogWarning($"Company logo index {logoIndex} is out of bounds. Available logos: {_assetDatabase?.CompanyLogos?.Length ?? 0}");
+                return null;
+            }
+            
+            return _assetDatabase.CompanyLogos[logoIndex];
+        }
+        
+        /// <summary>
+        /// AIDEV-NOTE: Gets the total number of available company logos.
+        /// </summary>
+        /// <returns>Number of company logos available</returns>
+        public int GetCompanyLogoCount()
+        {
+            return _assetDatabase?.CompanyLogos?.Length ?? 0;
         }
     }
 }

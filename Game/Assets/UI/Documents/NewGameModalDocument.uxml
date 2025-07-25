@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <!-- AIDEV-NOTE: New Game Modal for company creation with multi-step setup process -->
+    <!-- Root container using BaseModal structure -->
+    <engine:VisualElement name="base-window-root" class="modal-root container-fullscreen new-game-modal">
+        
+        <!-- Modal backdrop -->
+        <engine:VisualElement name="modal-backdrop" class="modal-backdrop">
+            
+            <!-- Modal window container -->
+            <engine:VisualElement name="window-container" class="modal-window modal-large new-game-modal">
+                
+                <!-- Modal header -->
+                <engine:VisualElement name="title-bar" class="modal-header">
+                    <engine:Label name="window-title" class="modal-title" text="Create New Company" />
+                    <engine:Button name="close-button" class="modal-close-button" text="×" />
+                </engine:VisualElement>
+                
+                <!-- Progress indicator -->
+                <engine:VisualElement name="progress-container" class="setup-progress">
+                    <engine:VisualElement name="progress-step-1" class="progress-step active" />
+                    <engine:VisualElement name="progress-step-2" class="progress-step" />
+                    <engine:VisualElement name="progress-step-3" class="progress-step" />
+                    <engine:VisualElement name="progress-step-4" class="progress-step" />
+                </engine:VisualElement>
+                
+                <!-- Modal content with setup steps -->
+                <engine:ScrollView name="content-scroll" class="modal-content-scroll" 
+                                   vertical-scroller-visibility="Auto" 
+                                   horizontal-scroller-visibility="Hidden">
+                    <engine:VisualElement name="content-container" class="modal-content">
+                        
+                        <!-- Step 1: Company Information -->
+                        <engine:VisualElement name="step-company-info" class="setup-step active">
+                            <engine:Label class="step-title" text="Company Information" />
+                            <engine:Label class="step-description" text="Choose your company name and basic information" />
+                            
+                            <!-- Company Name Input -->
+                            <engine:VisualElement class="input-group">
+                                <engine:Label class="input-label" text="Company Name" />
+                                <engine:TextField name="company-name-input" class="company-name-input" 
+                                                  placeholder-text="Enter your company name..." />
+                                <engine:Label name="company-name-error" class="input-error hidden" text="" />
+                            </engine:VisualElement>
+                            
+                            <!-- Starting Credits Display -->
+                            <engine:VisualElement class="credits-info">
+                                <engine:Label class="credits-label" text="Starting Capital" />
+                                <engine:Label class="credits-amount" text="$100,000" />
+                                <engine:Label class="credits-description" text="Your initial budget for vehicles, contracts, and operations" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        
+                        <!-- Step 2: Logo Selection -->
+                        <engine:VisualElement name="step-logo-selection" class="setup-step hidden">
+                            <engine:Label class="step-title" text="Company Logo" />
+                            <engine:Label class="step-description" text="Select a logo that represents your logistics company" />
+                            
+                            <engine:VisualElement name="logo-selection" class="logo-selection">
+                                <engine:Button name="logo-option-1" class="logo-option" />
+                                <engine:Button name="logo-option-2" class="logo-option" />
+                                <engine:Button name="logo-option-3" class="logo-option" />
+                            </engine:VisualElement>
+                            
+                            <!-- Logo Preview -->
+                            <engine:VisualElement class="logo-preview">
+                                <engine:Label class="preview-label" text="Preview" />
+                                <engine:VisualElement name="logo-preview-display" class="logo-preview-display" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        
+                        <!-- Step 3: Vehicle Color Selection -->
+                        <engine:VisualElement name="step-color-selection" class="setup-step hidden">
+                            <engine:Label class="step-title" text="Vehicle Colors" />
+                            <engine:Label class="step-description" text="Choose the primary color for your company vehicles" />
+                            
+                            <engine:VisualElement name="color-palette" class="color-palette">
+                                <!-- Professional color options -->
+                                <engine:Button name="color-blue" class="color-option color-blue" />
+                                <engine:Button name="color-red" class="color-option color-red" />
+                                <engine:Button name="color-green" class="color-option color-green" />
+                                <engine:Button name="color-gray" class="color-option color-gray" />
+                                <engine:Button name="color-white" class="color-option color-white" />
+                                <engine:Button name="color-black" class="color-option color-black" />
+                            </engine:VisualElement>
+                            
+                            <!-- Vehicle Preview -->
+                            <engine:VisualElement class="vehicle-preview">
+                                <engine:Label class="preview-label" text="Vehicle Preview" />
+                                <engine:VisualElement name="vehicle-preview-display" class="vehicle-preview-display" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        
+                        <!-- Step 4: Confirmation -->
+                        <engine:VisualElement name="step-confirmation" class="setup-step hidden">
+                            <engine:Label class="step-title" text="Confirm Company Setup" />
+                            <engine:Label class="step-description" text="Review your choices before creating your company" />
+                            
+                            <engine:VisualElement class="confirmation-summary">
+                                <engine:VisualElement class="summary-item">
+                                    <engine:Label class="summary-label" text="Company Name:" />
+                                    <engine:Label name="confirm-company-name" class="summary-value" text="" />
+                                </engine:VisualElement>
+                                
+                                <engine:VisualElement class="summary-item">
+                                    <engine:Label class="summary-label" text="Logo:" />
+                                    <engine:VisualElement name="confirm-logo" class="summary-logo" />
+                                </engine:VisualElement>
+                                
+                                <engine:VisualElement class="summary-item">
+                                    <engine:Label class="summary-label" text="Vehicle Color:" />
+                                    <engine:VisualElement name="confirm-color" class="summary-color" />
+                                </engine:VisualElement>
+                                
+                                <engine:VisualElement class="summary-item">
+                                    <engine:Label class="summary-label" text="Starting Capital:" />
+                                    <engine:Label class="summary-value" text="$100,000" />
+                                </engine:VisualElement>
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        
+                    </engine:VisualElement>
+                </engine:ScrollView>
+                
+                <!-- Modal footer with navigation buttons -->
+                <engine:VisualElement name="footer-container" class="modal-footer setup-actions">
+                    <engine:Button name="back-button" class="button-secondary hidden" text="Back" />
+                    <engine:Button name="next-button" class="button-primary" text="Next" />
+                    <engine:Button name="create-button" class="button-primary hidden" text="Create Company" />
+                </engine:VisualElement>
+                
+            </engine:VisualElement>
+            
+        </engine:VisualElement>
+        
+    </engine:VisualElement>
+</engine:UXML>
